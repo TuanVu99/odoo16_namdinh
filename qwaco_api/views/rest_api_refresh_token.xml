@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_api_refresh_token_tree_view" model="ir.ui.view">
+        <field name="name">Refresh Token</field>
+        <field name="model">rest.api.refresh.token</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="refresh_token"/>
+                <field name="access_token"/>
+                <field name="user_id"/>
+                <field name="expiry_time" widget="float_time"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--        Form Views-->
+    <record id="res_api_refresh_token_form_view" model="ir.ui.view">
+        <field name="name">Refresh Token</field>
+        <field name="model">rest.api.refresh.token</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="refresh_token"/>
+
+                    <field name="user_id"/>
+                    </group>
+                    <group>
+                        <field name="access_token"/>
+                        <field name="expiry_time" widget="float_time"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_api_refresh_token" model="ir.actions.act_window">
+            <field name="name">Refresh Token</field>
+            <field name="res_model">rest.api.refresh.token</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- actions -->
+    <menuitem name="Refresh Token" id="refresh_token" parent="qwaco_api.rest_api_root"
+              action="qwaco_api.action_api_refresh_token"/>
+
+</odoo>

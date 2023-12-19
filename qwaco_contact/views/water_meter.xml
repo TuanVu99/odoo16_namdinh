@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_water_meter_form" model="ir.ui.view">
+        <field name="name">qwaco.water.meter.form</field>
+        <field name="model">qwaco.water.meter</field>
+        <field name="arch" type="xml">
+            <form string="Water Meter">
+                <sheet>
+                    <group name="info">
+                        <group>
+                            <field name="name"/>
+                            <field name="partner_id"/>
+                            <field name="manufacturing_date"/>
+                            <field name="expired_date"/>
+                            <field name="setting_date"/>
+                        </group>
+                        <group>
+                            <field name="batch_number"/>
+                            <field name="first_balance"/>
+                            <field name="balance"/>
+                            <field name="reason"/>
+                            <field name="state"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="activity_ids" widget="mail_activity" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_water_meter_tree" model="ir.ui.view">
+        <field name="name">qwaco.water.meter.tree</field>
+        <field name="model">qwaco.water.meter</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="partner_id"/>
+                <field name="balance"/>
+                <field name="manufacturing_date"/>
+                <field name="reason"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_water_meter_search" model="ir.ui.view">
+        <field name="name">qwaco.water.meter.search</field>
+        <field name="model">qwaco.water.meter</field>
+        <field name="arch" type="xml">
+            <search string="Water Meter">
+                <field name="name" string="Water Meter"
+                    filter_domain="['|', ('name', 'ilike', self),  ('partner_id', 'child_of', self)]"/>
+                <filter string='Active' name="active" domain="[('state', '=', 'active')]"/>
+                <filter string='Inactive' name="inactive" domain="[('state', '=', 'inactive')]"/>
+                <group expand='0' string='Group By'>
+                    <filter string='Customer' name="customergroup" context="{'group_by': 'partner_id'}"/>
+               </group>
+            </search>
+        </field>
+    </record>
+
+     <record id="action_water_meter" model="ir.actions.act_window">
+        <field name="name">Water Meter</field>
+        <field name="res_model">qwaco.water.meter</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create a Water Meter
+          </p>
+        </field>
+     </record>
+
+    <menuitem id="menu_water_meter"
+              name="Water Meter"
+              parent="contacts.menu_contacts"
+              sequence="4"
+              action="action_water_meter"/>
+
+
+</odoo>

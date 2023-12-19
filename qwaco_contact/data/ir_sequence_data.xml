@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Sequences for contract no -->
+        <record id="ir_sequence_partner_contract_no" model="ir.sequence">
+            <field name="name">Contract No</field>
+            <field name="code">res.partner.contract_no</field>
+            <field name="prefix">HD%(y)s%(month)s</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <!-- Sequences for customer code -->
+        <record id="ir_sequence_zone" model="ir.sequence">
+            <field name="name">Customer Code</field>
+            <field name="code">res.country.zone</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

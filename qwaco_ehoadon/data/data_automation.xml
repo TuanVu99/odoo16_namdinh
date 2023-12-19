@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="ehoadon_trigger_sale_automation" model="base.automation">
+            <field name="name">Send e-invoice Automation</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="state">code</field>
+            <field name="code" eval="'record._send_einvoice_automation()'"/>
+            <field name="trigger">on_write</field>
+            <field name="active" eval="True"/>
+            <field name="filter_domain">[('state', '=', 'sale')]</field>
+            <field name="filter_pre_domain">[('state', 'in', ['draft', 'sent'])]</field>
+        </record>
+    </data>
+</odoo>

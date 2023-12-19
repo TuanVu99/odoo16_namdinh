@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="ehoadon_service_url" model="ir.config_parameter">
+            <field name="key">ehoadon.url</field>
+            <field name="value">http://wsdemo.ehoadon.vn/WSPublicEhoadon.asmx/ExecCommand</field>
+        </record>
+
+        <record id="ehoadon_tax_rate_id" model="ir.config_parameter">
+            <field name="key">ehoadon.tax_rate_id</field>
+            <field name="value">9</field>
+        </record>
+
+        <record id="ehoadon_tax_rate" model="ir.config_parameter">
+            <field name="key">ehoadon.tax_rate</field>
+            <field name="value">8</field>
+        </record>
+
+        <record id="ehoadon_pguid" model="ir.config_parameter">
+            <field name="key">ehoadon.pguid</field>
+            <field name="value"></field>
+        </record>
+
+        <record id="ehoadon_tracking_url" model="ir.config_parameter">
+            <field name="key">ehoadon.tracking_url</field>
+            <field name="value">https://van.ehoadon.vn/TCHD</field>
+        </record>
+
+        <record id="ehoadon_invoice_form" model="ir.config_parameter">
+            <field name="key">ehoadon.invoice_form</field>
+            <field name="value"></field>
+        </record>
+
+        <record id="ehoadon_invoice_serial" model="ir.config_parameter">
+            <field name="key">ehoadon.invoice_serial</field>
+            <field name="value"></field>
+        </record>
+   </data>
+
+</odoo>

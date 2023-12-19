@@ -1,0 +1,25 @@
+<odoo>
+  <data>
+    <record id="qwaco_ehoadon_view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form.view (qwaco_ehoadon)</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[last()]" position="after">
+                <field name="ehoadon_ids" invisible="1"/>
+                <page string="eHoadon" attrs="{'invisible': [('ehoadon_ids','=', False)]}">
+                  <group>
+                      <group string="eHoadon">
+                          <field name="ehoadon_guid" readonly="1"/>
+                          <field name="ehoadon_form" readonly="1"/>
+                          <field name="ehoadon_serial" readonly="1"/>
+                          <field name="ehoadon_no" readonly="1"/>
+                          <field name="ehoadon_mtc" readonly="1"/>
+                      </group>
+                  </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+  </data>
+</odoo>

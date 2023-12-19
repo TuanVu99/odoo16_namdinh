@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="qwaco_contact.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <div name="qwaco_setting_container" position="inside">
+                <div class="col-lg-12 o_setting_box">
+                    <div class="o_setting_left_pane"/>
+                    <div class="o_setting_right_pane">
+                        <div class="content-group">
+                            <div class="row">
+                                <label for="qwaco_reminder_days" string="Remider Days" class="col-3 o_light_label"/>
+                                <field name="qwaco_reminder_days"/>
+                            </div>
+                        </div>
+                        <div class="content-group">
+                            <div class="row">
+                                <label for="qwaco_sale_product_default" string="Sale Product Default" class="col-3 o_light_label"/>
+                                <field name="qwaco_sale_product_default" options="{'no_create': True, 'no_open': True}"/>
+                            </div>
+                        </div>
+                        <div class="content-group">
+                            <div class="row">
+                                <label for="qwaco_allow_discount_first_order" string="Discount First Order" class="col-3 o_light_label"/>
+                                <field name="qwaco_allow_discount_first_order"/>
+                            </div>
+                        </div>
+                        <div class="content-group" attrs="{'invisible':[('qwaco_allow_discount_first_order', '=', False)]}">
+                            <div class="row">
+                                <label for="qwaco_quantity_discount_first_order" string="Quantity Discount" class="col-3 o_light_label"/>
+                                <field name="qwaco_quantity_discount_first_order"/>
+                            </div>
+                        </div>
+                        <div class="content-group" attrs="{'invisible':[('qwaco_allow_discount_first_order', '=', False)]}">
+                            <div class="row">
+                                <label for="qwaco_sale_product_discount_first_order" string="Product Discount" class="col-3 o_light_label"/>
+                                <field name="qwaco_sale_product_discount_first_order"/>
+                            </div>
+                        </div>
+                        <div class="content-group" attrs="{'invisible':[('qwaco_allow_discount_first_order', '=', False)]}">
+                            <div class="row">
+                                <label for="qwaco_excluded_water_meter_discount_first_order" string="Excluded Water Meter" class="col-3 o_light_label"/>
+                                <field name="qwaco_excluded_water_meter_discount_first_order" widget="many2many_tags" options="{'no_create': True, 'no_open': True}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+
+</data>

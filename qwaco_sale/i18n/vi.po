@@ -1,0 +1,231 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* qwaco_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0-20221013\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-01 07:59+0000\n"
+"PO-Revision-Date: 2022-12-01 15:03+0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.2\n"
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_sale_order_reminder__actual_reminder_date
+msgid "Actual Reminder Date"
+msgstr "Ngày nhắc thực tế"
+
+#. module: qwaco_sale
+#: model:ir.model,name:qwaco_sale.model_res_country_zone
+msgid "Address: Zone"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_account_payment_term__code
+msgid "Code"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.model.constraint,message:qwaco_sale.constraint_qwaco_sale_order_reminder_order_reminder_uniq
+msgid "Constraints with the same reminder are unique per order."
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_sale_order__contract_no
+msgid "Contract No"
+msgstr "Mã hợp đồng"
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_reminder_category__create_uid
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_sale_order_reminder__create_uid
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_water_meter_quantity_history__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_reminder_category__create_date
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_sale_order_reminder__create_date
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_water_meter_quantity_history__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_reminder_category__display_name
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_sale_order_reminder__display_name
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_water_meter_quantity_history__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.model.fields,help:qwaco_sale.field_qwaco_sale_order_reminder__is_processed
+msgid "Has the reminder been processed"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_reminder_category__id
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_sale_order_reminder__id
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_water_meter_quantity_history__id
+msgid "ID"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_sale_order_reminder__is_processed
+msgid "Is processed"
+msgstr "Đã xử lý"
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_reminder_category____last_update
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_sale_order_reminder____last_update
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_water_meter_quantity_history____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_reminder_category__write_uid
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_sale_order_reminder__write_uid
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_water_meter_quantity_history__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_reminder_category__write_date
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_sale_order_reminder__write_date
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_water_meter_quantity_history__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: qwaco_sale
+#: code:addons/qwaco_sale/models/sale_order.py:0
+#, python-format
+msgid "Missing product default settings!"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_reminder_category__name
+msgid "Name"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_water_meter_quantity_history__new_quantity
+msgid "New Quantity"
+msgstr "Chỉ số mới"
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_water_meter_quantity_history__old_quantity
+msgid "Old Quantity"
+msgstr "Chỉ số cũ"
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_sale_order_reminder__order_id
+msgid "Order"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_sale_order__is_paid
+msgid "Paid"
+msgstr "Đã thanh toán"
+
+#. module: qwaco_sale
+#: model:ir.model,name:qwaco_sale.model_account_payment_term
+msgid "Payment Terms"
+msgstr "Các điều khoản thanh toán"
+
+#. module: qwaco_sale
+#: code:addons/qwaco_sale/models/sale_order.py:0
+#, python-format
+msgid "Please select Payment Terms before confirm order !"
+msgstr "Vui lòng chọn điều khoản thanh toán trước khi xác nhận đơn hàng !"
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_sale_order__popular_name
+msgid "Popular Name"
+msgstr "Tên phổ thông"
+
+#. module: qwaco_sale
+#: code:addons/qwaco_sale/models/sale_order.py:0
+#, python-format
+msgid "Product not exist!"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.actions.server,name:qwaco_sale.qwaco_sale_order_ir_actions_server
+#: model:ir.cron,cron_name:qwaco_sale.qwaco_sale_order
+#: model:ir.cron,name:qwaco_sale.qwaco_sale_order
+msgid "QWACO: Create Sale Order"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.actions.server,name:qwaco_sale.qwaco_sale_reminder_ir_actions_server
+#: model:ir.cron,cron_name:qwaco_sale.qwaco_sale_reminder
+#: model:ir.cron,name:qwaco_sale.qwaco_sale_reminder
+msgid "QWACO: Remider Sale Order"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.actions.act_window,name:qwaco_sale.action_reminder_category
+#: model:ir.model,name:qwaco_sale.model_qwaco_reminder_category
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_sale_order_reminder__reminder_category_id
+#: model:ir.ui.menu,name:qwaco_sale.menu_reminder_category
+#: model_terms:ir.ui.view,arch_db:qwaco_sale.view_reminder_category_form
+#: model_terms:ir.ui.view,arch_db:qwaco_sale.view_reminder_category_tree
+msgid "Reminder Category"
+msgstr "Danh mục nhắc nhở"
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_sale_order_reminder__reminder_date
+msgid "Reminder Date"
+msgstr "Ngày nhắc nước"
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_sale_order__reminder_ids
+#: model_terms:ir.ui.view,arch_db:qwaco_sale.qwaco_view_order_form
+msgid "Reminder List"
+msgstr "Danh sách nhắc nước"
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_water_meter_quantity_history__order_id
+msgid "Sale Order"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.model,name:qwaco_sale.model_sale_order
+msgid "Sales Order"
+msgstr "Đơn bán hàng"
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_res_country_zone__team_id
+msgid "Sales Team"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_reminder_category__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_sale_order_reminder__user_id
+msgid "User Reminder"
+msgstr "Người đi nhắc"
+
+#. module: qwaco_sale
+#: model:ir.model.fields,field_description:qwaco_sale.field_qwaco_water_meter_quantity_history__water_meter_id
+#: model:ir.model.fields,field_description:qwaco_sale.field_sale_order__water_meter_id
+msgid "Water Meter"
+msgstr "Mã đồng hồ nước"
+
+#. module: qwaco_sale
+#: model:ir.model,name:qwaco_sale.model_qwaco_sale_order_reminder
+msgid "qwaco.sale.order.reminder"
+msgstr ""
+
+#. module: qwaco_sale
+#: model:ir.model,name:qwaco_sale.model_qwaco_water_meter_quantity_history
+msgid "qwaco.water.meter.quantity.history"
+msgstr ""

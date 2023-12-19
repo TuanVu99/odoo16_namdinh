@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qwaco_water_meter_user,qwaco_water_meter.user,model_qwaco_water_meter,base.group_user,1,1,1,1

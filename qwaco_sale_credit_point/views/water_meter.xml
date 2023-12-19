@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+  <record id="view_water_meter_form_points" model="ir.ui.view">
+    <field name="name">qwaco.water.meter.form.points</field>
+    <field name="model">qwaco.water.meter</field>
+    <field name="inherit_id" ref="qwaco_contact.view_water_meter_form" />
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='setting_date']" position="after">
+        <field name="use_credit_point" groups="qwaco_sale_credit_point.group_manage_credit_point"/>
+        <field name="credit_point" string="Credit" readonly="1" widget="monetary"
+               groups="qwaco_sale_credit_point.group_manage_credit_point" attrs="{'invisible': [('use_credit_point', '=', False)]}"/>
+        <field name="min_quantity" groups="qwaco_sale_credit_point.group_manage_credit_point" attrs="{'invisible': [('use_credit_point', '=', False)]}"/>
+        <field name="min_credit" widget="monetary" groups="qwaco_sale_credit_point.group_manage_credit_point" attrs="{'invisible': [('use_credit_point', '=', False)]}"/>
+      </xpath>
+      <xpath expr="//group[@name='info']" position="before">
+        <div name="button_box" class="oe_button_box">
+          <button
+              name="action_update_credit_point"
+              type="object"
+              string="Update Credit"
+              icon="fa-money"
+              groups="qwaco_sale_credit_point.group_manage_credit_point"
+              attrs="{'invisible': [('use_credit_point', '=', False)]}"
+          >
+          </button>
+        </div>
+      </xpath>
+      <xpath expr="//notebook" position="inside">
+          <page string="Points" name="setting_points" groups="qwaco_sale_credit_point.group_manage_credit_point"
+          attrs="{'invisible': [('use_credit_point', '=', False)]}">
+            <field name="credit_history_ids" readonly="1">
+                <tree>
+                    <field name="create_date" readonly="True" />
+                    <field name="order_id" readonly="True" />
+                    <field name="amount" readonly="True" />
+                    <field name="operation" readonly="True" />
+                    <field name="comment" readonly="True" />
+                </tree>
+            </field>
+          </page>
+    </xpath>
+    </field>
+  </record>
+
+  <record id="view_water_meter_search_points" model="ir.ui.view">
+    <field name="name">qwaco.water.meter.search.points</field>
+    <field name="model">qwaco.water.meter</field>
+    <field name="inherit_id" ref="qwaco_contact.view_water_meter_search" />
+    <field name="arch" type="xml">
+      <xpath expr="//filter[@name='inactive']" position="after">
+        <separator />
+        <filter
+            string="Points &gt; 0"
+            name="credit_point"
+            domain="[('credit_point','&gt;',0)]"
+        />
+        <filter
+            string="Use Credit"
+            name="use_credit_point"
+            domain="[('use_credit_point','=', True)]"
+        />
+      </xpath>
+    </field>
+  </record>
+
+</odoo>

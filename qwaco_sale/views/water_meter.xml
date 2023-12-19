@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_water_meter_form" model="ir.ui.view">
+        <field name="name">qwaco.water.meter.form</field>
+        <field name="model">qwaco.water.meter</field>
+        <field name="inherit_id" ref="qwaco_contact.view_water_meter_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='info']" position="after">
+                <notebook>
+                    <page string="Quantity History" name="quantity_history">
+                        <field name="water_meter_quantity_ids" readonly="1">
+                            <tree>
+                                <field name="create_date" widget="date"/>
+                                <field name="order_id"/>
+                                <field name="old_quantity"/>
+                                <field name="new_quantity"/>
+                                <field name="type"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

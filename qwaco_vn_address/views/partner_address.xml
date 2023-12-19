@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partners_form" model="ir.ui.view">
+		<field name="name">view.res.partner.form.inherited</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_form"/>
+		<field eval="1" name="priority"/>
+		<field name="arch" type="xml">
+			<xpath expr="//div[hasclass('o_address_format')]" position="replace">
+				<div class="o_address_format">
+					<field name="street" placeholder="Street..." class="o_address_street" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+					<field name="street2" placeholder="Street 2..." class="o_address_street"
+										attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" invisible="1"/>
+					<field name="city" placeholder="City" class="o_address_city" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" invisible="1"/>
+					<field name="state_id" class="o_address_state" placeholder="State" options="{'no_open': True, 'no_quick_create': True}" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" context="{'country_id': country_id, 'default_country_id': country_id}"/>
+					<field name="district_id" class="o_address_district" placeholder="District" options="{'no_open': True, 'no_quick_create': True}" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)], 'required': [('parent_id', '=', False)]}" context="{'country_id': country_id ,'state_id': state_id, 'default_country_id': country_id}"/>
+					<field name="ward_id" class="o_address_ward" placeholder="Ward" options="{'no_open': True, 'no_quick_create': True}" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)], 'required': [('parent_id', '=', False)]}" context="{'country_id': country_id , 'district_id': district_id, 'state_id': state_id, 'default_country_id': country_id}"/>
+					<field name="zone_id" class="o_address_zone" placeholder="Zone" options="{'no_open': True, 'no_quick_create': True}" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)], 'required': [('parent_id', '=', False)]}" context="{'country_id': country_id , 'district_id': district_id, 'state_id': state_id, 'ward_id': ward_id, 'default_country_id': country_id}"/>
+					<field name="zip" placeholder="ZIP" class="o_address_zip"
+										attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" invisible="1"/>
+					<field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+				</div>
+            </xpath>
+		</field>
+	</record>
+
+</odoo>

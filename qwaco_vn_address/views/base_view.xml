@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="action_country_state" model="ir.actions.act_window">
+		<field name="name">State</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.country.state</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+	</record>
+
+	<record id="action_district" model="ir.actions.act_window">
+		<field name="name">District</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.country.state.district</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+	</record>
+
+	<record id="action_ward" model="ir.actions.act_window">
+		<field name="name">Ward</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.country.ward</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+	</record>
+
+	<record id="action_zone" model="ir.actions.act_window">
+		<field name="name">Zone</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.country.zone</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+	</record>
+
+    <menuitem id="menu_location"
+              name="Location"
+	      parent="contacts.menu_contacts"
+	      sequence="10"/>
+
+    <menuitem id="menu_country_state"
+	      name="State"
+	      parent="menu_location"
+	      sequence="1"
+	      action="action_country_state"/>
+
+    <menuitem id="menu_district"
+	      name="District"
+	      parent="menu_location"
+	      sequence="2"
+	      action="action_district"/>
+
+    <menuitem id="menu_ward"
+	      name="Ward"
+	      parent="menu_location"
+	      sequence="3"
+	      action="action_ward"/>
+
+	<menuitem id="menu_zone"
+	      name="Zone"
+	      parent="menu_location"
+	      sequence="4"
+	      action="action_zone"/>
+
+</odoo>

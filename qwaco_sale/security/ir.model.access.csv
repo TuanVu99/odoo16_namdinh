@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_qwaco_reminder_category_user,qwaco_reminder_category.user,model_qwaco_reminder_category,base.group_user,1,1,1,0
+access_qwaco_sale_order_reminder_user,qwaco_sale_order_reminder.user,model_qwaco_sale_order_reminder,base.group_user,1,1,1,0
+access_qwaco_water_meter_quantity_history_user,qwaco_water_meter_quantity_history.user,model_qwaco_water_meter_quantity_history,base.group_user,1,1,1,0

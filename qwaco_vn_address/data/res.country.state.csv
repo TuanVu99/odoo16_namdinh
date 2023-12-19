@@ -1,0 +1,64 @@
+id,country_id/id,code,name
+vnstate01,base.vn,01,Thành phố Hà Nội
+vnstate02,base.vn,02,Tỉnh Hà Giang
+vnstate04,base.vn,04,Tỉnh Cao Bằng
+vnstate06,base.vn,06,Tỉnh Bắc Kạn
+vnstate08,base.vn,08,Tỉnh Tuyên Quang
+vnstate10,base.vn,10,Tỉnh Lào Cai
+vnstate11,base.vn,11,Tỉnh Điện Biên
+vnstate12,base.vn,12,Tỉnh Lai Châu
+vnstate14,base.vn,14,Tỉnh Sơn La
+vnstate15,base.vn,15,Tỉnh Yên Bái
+vnstate17,base.vn,17,Tỉnh Hoà Bình
+vnstate19,base.vn,19,Tỉnh Thái Nguyên
+vnstate20,base.vn,20,Tỉnh Lạng Sơn
+vnstate22,base.vn,22,Tỉnh Quảng Ninh
+vnstate24,base.vn,24,Tỉnh Bắc Giang
+vnstate25,base.vn,25,Tỉnh Phú Thọ
+vnstate26,base.vn,26,Tỉnh Vĩnh Phúc
+vnstate27,base.vn,27,Tỉnh Bắc Ninh
+vnstate30,base.vn,30,Tỉnh Hải Dương
+vnstate31,base.vn,31,Thành phố Hải Phòng
+vnstate33,base.vn,33,Tỉnh Hưng Yên
+vnstate34,base.vn,34,Tỉnh Thái Bình
+vnstate35,base.vn,35,Tỉnh Hà Nam
+vnstate36,base.vn,36,Tỉnh Nam Định
+vnstate37,base.vn,37,Tỉnh Ninh Bình
+vnstate38,base.vn,38,Tỉnh Thanh Hoá
+vnstate40,base.vn,40,Tỉnh Nghệ An
+vnstate42,base.vn,42,Tỉnh Hà Tĩnh
+vnstate44,base.vn,44,Tỉnh Quảng Bình
+vnstate45,base.vn,45,Tỉnh Quảng Trị
+vnstate46,base.vn,46,Tỉnh Thừa Thiên Huế
+vnstate48,base.vn,48,Thành phố Đà Nẵng
+vnstate49,base.vn,49,Tỉnh Quảng Nam
+vnstate51,base.vn,51,Tỉnh Quảng Ngãi
+vnstate52,base.vn,52,Tỉnh Bình Định
+vnstate54,base.vn,54,Tỉnh Phú Yên
+vnstate56,base.vn,56,Tỉnh Khánh Hoà
+vnstate58,base.vn,58,Tỉnh Ninh Thuận
+vnstate60,base.vn,60,Tỉnh Bình Thuận
+vnstate62,base.vn,62,Tỉnh Kon Tum
+vnstate64,base.vn,64,Tỉnh Gia Lai
+vnstate66,base.vn,66,Tỉnh Đắk Lắk
+vnstate67,base.vn,67,Tỉnh Đắk Nông
+vnstate68,base.vn,68,Tỉnh Lâm Đồng
+vnstate70,base.vn,70,Tỉnh Bình Phước
+vnstate72,base.vn,72,Tỉnh Tây Ninh
+vnstate74,base.vn,74,Tỉnh Bình Dương
+vnstate75,base.vn,75,Tỉnh Đồng Nai
+vnstate77,base.vn,77,Tỉnh Bà Rịa - Vũng Tàu
+vnstate79,base.vn,79,Thành phố Hồ Chí Minh
+vnstate80,base.vn,80,Tỉnh Long An
+vnstate82,base.vn,82,Tỉnh Tiền Giang
+vnstate83,base.vn,83,Tỉnh Bến Tre
+vnstate84,base.vn,84,Tỉnh Trà Vinh
+vnstate86,base.vn,86,Tỉnh Vĩnh Long
+vnstate87,base.vn,87,Tỉnh Đồng Tháp
+vnstate89,base.vn,89,Tỉnh An Giang
+vnstate91,base.vn,91,Tỉnh Kiên Giang
+vnstate92,base.vn,92,Thành phố Cần Thơ
+vnstate93,base.vn,93,Tỉnh Hậu Giang
+vnstate94,base.vn,94,Tỉnh Sóc Trăng
+vnstate95,base.vn,95,Tỉnh Bạc Liêu
+vnstate96,base.vn,96,Tỉnh Cà Mau

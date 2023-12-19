@@ -1,0 +1,700 @@
+id,code,name,state_id/id,country_id/id
+vndistrict1,1,Quận Ba Đình,vnstate01,base.vn
+vndistrict2,2,Quận Hoàn Kiếm,vnstate01,base.vn
+vndistrict3,3,Quận Tây Hồ,vnstate01,base.vn
+vndistrict4,4,Quận Long Biên,vnstate01,base.vn
+vndistrict5,5,Quận Cầu Giấy,vnstate01,base.vn
+vndistrict6,6,Quận Đống Đa,vnstate01,base.vn
+vndistrict7,7,Quận Hai Bà Trưng,vnstate01,base.vn
+vndistrict8,8,Quận Hoàng Mai,vnstate01,base.vn
+vndistrict9,9,Quận Thanh Xuân,vnstate01,base.vn
+vndistrict16,16,Quận Hà Đông,vnstate01,base.vn
+vndistrict17,17,Thị Xã Sơn Tây,vnstate01,base.vn
+vndistrict18,18,Huyện Sóc Sơn,vnstate01,base.vn
+vndistrict19,19,Huyện Đông Anh,vnstate01,base.vn
+vndistrict20,20,Huyện Gia Lâm,vnstate01,base.vn
+vndistrict24,24,Huyện Từ Liêm,vnstate02,base.vn
+vndistrict26,26,Huyện Thanh Trì,vnstate02,base.vn
+vndistrict27,27,Huyện Mê Linh,vnstate02,base.vn
+vndistrict28,28,Huyện Ba Vì,vnstate02,base.vn
+vndistrict29,29,Huyện Phúc Thọ,vnstate02,base.vn
+vndistrict30,30,Huyện Đan Phượng,vnstate02,base.vn
+vndistrict31,31,Huyện Hoài Đức,vnstate02,base.vn
+vndistrict32,32,Huyện Quốc Oai,vnstate02,base.vn
+vndistrict33,33,Huyện Thạch Thất,vnstate02,base.vn
+vndistrict34,34,Huyện Chương Mỹ,vnstate02,base.vn
+vndistrict35,35,Huyện Thanh Oai,vnstate02,base.vn
+vndistrict40,40,Huyện Thường Tín,vnstate04,base.vn
+vndistrict42,42,Huyện Phú Xuyên,vnstate04,base.vn
+vndistrict43,43,Huyện Ứng Hòa,vnstate04,base.vn
+vndistrict44,44,Huyện Mỹ Đức,vnstate04,base.vn
+vndistrict45,45,Thị Xã Hà Giang,vnstate04,base.vn
+vndistrict46,46,Huyện Đồng Văn,vnstate04,base.vn
+vndistrict47,47,Huyện Mèo Vạc,vnstate04,base.vn
+vndistrict48,48,Huyện Yên Minh,vnstate04,base.vn
+vndistrict49,49,Huyện Quản Bạ,vnstate04,base.vn
+vndistrict50,50,Huyện Vị Xuyên,vnstate04,base.vn
+vndistrict51,51,Huyện Bắc Mê,vnstate04,base.vn
+vndistrict52,52,Huyện Hoàng Su Phì,vnstate04,base.vn
+vndistrict53,53,Huyện Xín Mần,vnstate04,base.vn
+vndistrict58,58,Huyện Bắc Quang,vnstate06,base.vn
+vndistrict60,60,Huyện Quang Bình,vnstate06,base.vn
+vndistrict61,61,Thị Xã Cao Bằng,vnstate06,base.vn
+vndistrict62,62,Huyện Bảo Lâm,vnstate06,base.vn
+vndistrict63,63,Huyện Bảo Lạc,vnstate06,base.vn
+vndistrict64,64,Huyện Thông Nông,vnstate06,base.vn
+vndistrict65,65,Huyện Hà Quảng,vnstate06,base.vn
+vndistrict66,66,Huyện Trà Lĩnh,vnstate06,base.vn
+vndistrict70,70,Huyện Trùng Khánh,vnstate08,base.vn
+vndistrict72,72,Huyện Hạ Lang,vnstate08,base.vn
+vndistrict73,73,Huyện Quảng Uyên,vnstate08,base.vn
+vndistrict74,74,Huyện Phục Hoà,vnstate08,base.vn
+vndistrict75,75,Huyện Hoà An,vnstate08,base.vn
+vndistrict76,76,Huyện Nguyên Bình,vnstate08,base.vn
+vndistrict80,80,Huyện Thạch An,vnstate10,base.vn
+vndistrict82,82,Thị Xã Bắc Kạn,vnstate10,base.vn
+vndistrict83,83,Huyện Pác Nặm,vnstate10,base.vn
+vndistrict84,84,Huyện Ba Bể,vnstate10,base.vn
+vndistrict85,85,Huyện Ngân Sơn,vnstate10,base.vn
+vndistrict86,86,Huyện Bạch Thông,vnstate10,base.vn
+vndistrict87,87,Huyện Chợ Đồn,vnstate10,base.vn
+vndistrict88,88,Huyện Chợ Mới,vnstate10,base.vn
+vndistrict89,89,Huyện Na Rì,vnstate10,base.vn
+vndistrict94,94,Thị Xã Tuyên Quang,vnstate11,base.vn
+vndistrict95,95,Huyện Nà Hang,vnstate11,base.vn
+vndistrict96,96,Huyện Chiêm Hóa,vnstate11,base.vn
+vndistrict97,97,Huyện Hàm Yên,vnstate11,base.vn
+vndistrict98,98,Huyện Yên Sơn,vnstate11,base.vn
+vndistrict99,99,Huyện Sơn Dương,vnstate11,base.vn
+vndistrict100,100,Thành Phố Lào Cai,vnstate11,base.vn
+vndistrict101,101,Huyện Bát Xát,vnstate11,base.vn
+vndistrict102,102,Huyện Mường Khương,vnstate11,base.vn
+vndistrict104,104,Huyện Si Ma Cai,vnstate12,base.vn
+vndistrict106,106,Huyện Bắc Hà,vnstate12,base.vn
+vndistrict107,107,Huyện Bảo Thắng,vnstate12,base.vn
+vndistrict108,108,Huyện Bảo Yên,vnstate12,base.vn
+vndistrict109,109,Huyện Sa Pa,vnstate12,base.vn
+vndistrict110,110,Huyện Văn Bàn,vnstate12,base.vn
+vndistrict111,111,Thành Phố Điện Biên Phủ,vnstate12,base.vn
+vndistrict116,116,Thị Xã Mường Lay,vnstate14,base.vn
+vndistrict118,118,Huyện Mường Nhé,vnstate14,base.vn
+vndistrict119,119,Huyện Mường Chà,vnstate14,base.vn
+vndistrict120,120,Huyện Tủa Chùa,vnstate14,base.vn
+vndistrict121,121,Huyện Tuần Giáo,vnstate14,base.vn
+vndistrict122,122,Huyện Điện Biên,vnstate14,base.vn
+vndistrict123,123,Huyện Điện Biên Đông,vnstate14,base.vn
+vndistrict124,124,Huyện Mường Ảng,vnstate14,base.vn
+vndistrict125,125,Thị Xã Lai Châu,vnstate14,base.vn
+vndistrict126,126,Huyện Tam Đường,vnstate14,base.vn
+vndistrict127,127,Huyện Mường Tè,vnstate14,base.vn
+vndistrict132,132,Huyện Sìn Hồ,vnstate15,base.vn
+vndistrict133,133,Huyện Phong Thổ,vnstate15,base.vn
+vndistrict135,135,Huyện Than Uyên,vnstate15,base.vn
+vndistrict136,136,Huyện Tân Uyên,vnstate15,base.vn
+vndistrict137,137,Thành Phố Sơn La,vnstate15,base.vn
+vndistrict138,138,Huyện Quỳnh Nhai,vnstate15,base.vn
+vndistrict139,139,Huyện Thuận Châu,vnstate15,base.vn
+vndistrict140,140,Huyện Mường La,vnstate15,base.vn
+vndistrict141,141,Huyện Bắc Yên,vnstate15,base.vn
+vndistrict148,148,Huyện Phù Yên,vnstate17,base.vn
+vndistrict150,150,Huyện Mộc Châu,vnstate17,base.vn
+vndistrict151,151,Huyện Yên Châu,vnstate17,base.vn
+vndistrict152,152,Huyện Mai Sơn,vnstate17,base.vn
+vndistrict153,153,Huyện Sông Mã,vnstate17,base.vn
+vndistrict154,154,Huyện Sốp Cộp,vnstate17,base.vn
+vndistrict155,155,Thành Phố Yên Bái,vnstate17,base.vn
+vndistrict156,156,Thị Xã Nghĩa Lộ,vnstate17,base.vn
+vndistrict157,157,Huyện Lục Yên,vnstate17,base.vn
+vndistrict158,158,Huyện Văn Yên,vnstate17,base.vn
+vndistrict159,159,Huyện Mù Cang Chải,vnstate17,base.vn
+vndistrict164,164,Huyện Trấn Yên,vnstate19,base.vn
+vndistrict165,165,Huyện Trạm Tấu,vnstate19,base.vn
+vndistrict167,167,Huyện Văn Chấn,vnstate19,base.vn
+vndistrict168,168,Huyện Yên Bình,vnstate19,base.vn
+vndistrict169,169,Thành Phố Hòa Bình,vnstate19,base.vn
+vndistrict170,170,Huyện Đà Bắc,vnstate19,base.vn
+vndistrict171,171,Huyện Kỳ Sơn,vnstate19,base.vn
+vndistrict172,172,Huyện Lương Sơn,vnstate19,base.vn
+vndistrict173,173,Huyện Kim Bôi,vnstate19,base.vn
+vndistrict178,178,Huyện Cao Phong,vnstate20,base.vn
+vndistrict180,180,Huyện Tân Lạc,vnstate20,base.vn
+vndistrict181,181,Huyện Mai Châu,vnstate20,base.vn
+vndistrict182,182,Huyện Lạc Sơn,vnstate20,base.vn
+vndistrict183,183,Huyện Yên Thủy,vnstate20,base.vn
+vndistrict184,184,Huyện Lạc Thủy,vnstate20,base.vn
+vndistrict185,185,Thành Phố Thái Nguyên,vnstate20,base.vn
+vndistrict186,186,Thị Xã Sông Công,vnstate20,base.vn
+vndistrict187,187,Huyện Định Hóa,vnstate20,base.vn
+vndistrict188,188,Huyện Phú Lương,vnstate20,base.vn
+vndistrict189,189,Huyện Đồng Hỷ,vnstate20,base.vn
+vndistrict193,193,Huyện Võ Nhai,vnstate22,base.vn
+vndistrict194,194,Huyện Đại Từ,vnstate22,base.vn
+vndistrict195,195,Huyện Phổ Yên,vnstate22,base.vn
+vndistrict196,196,Huyện Phú Bình,vnstate22,base.vn
+vndistrict198,198,Thành Phố Lạng Sơn,vnstate22,base.vn
+vndistrict199,199,Huyện Tràng Định,vnstate22,base.vn
+vndistrict200,200,Huyện Bình Gia,vnstate22,base.vn
+vndistrict201,201,Huyện Văn Lãng,vnstate22,base.vn
+vndistrict202,202,Huyện Cao Lộc,vnstate22,base.vn
+vndistrict203,203,Huyện Văn Quan,vnstate22,base.vn
+vndistrict204,204,Huyện Bắc Sơn,vnstate22,base.vn
+vndistrict205,205,Huyện Hữu Lũng,vnstate22,base.vn
+vndistrict206,206,Huyện Chi Lăng,vnstate22,base.vn
+vndistrict207,207,Huyện Lộc Bình,vnstate22,base.vn
+vndistrict213,213,Huyện Đình Lập,vnstate24,base.vn
+vndistrict215,215,Thành Phố Hạ Long,vnstate24,base.vn
+vndistrict216,216,Thành Phố Móng Cái,vnstate24,base.vn
+vndistrict217,217,Thị Xã Cẩm Phả,vnstate24,base.vn
+vndistrict218,218,Thị Xã Uông Bí,vnstate24,base.vn
+vndistrict219,219,Huyện Bình Liêu,vnstate24,base.vn
+vndistrict220,220,Huyện Tiên Yên,vnstate24,base.vn
+vndistrict221,221,Huyện Đầm Hà,vnstate24,base.vn
+vndistrict222,222,Huyện Hải Hà,vnstate24,base.vn
+vndistrict223,223,Huyện Ba Chẽ,vnstate24,base.vn
+vndistrict227,227,Huyện Vân Đồn,vnstate25,base.vn
+vndistrict228,228,Huyện Hoành Bồ,vnstate25,base.vn
+vndistrict230,230,Huyện Đông Triều,vnstate25,base.vn
+vndistrict231,231,Huyện Yên Hưng,vnstate25,base.vn
+vndistrict232,232,Huyện Cô Tô,vnstate25,base.vn
+vndistrict233,233,Thành Phố Bắc Giang,vnstate25,base.vn
+vndistrict234,234,Huyện Yên Thế,vnstate25,base.vn
+vndistrict235,235,Huyện Tân Yên,vnstate25,base.vn
+vndistrict236,236,Huyện Lạng Giang,vnstate25,base.vn
+vndistrict237,237,Huyện Lục Nam,vnstate25,base.vn
+vndistrict238,238,Huyện Lục Ngạn,vnstate25,base.vn
+vndistrict239,239,Huyện Sơn Động,vnstate25,base.vn
+vndistrict240,240,Huyện Yên Dũng,vnstate25,base.vn
+vndistrict243,243,Huyện Việt Yên,vnstate26,base.vn
+vndistrict244,244,Huyện Hiệp Hòa,vnstate26,base.vn
+vndistrict246,246,Thành Phố Việt Trì,vnstate26,base.vn
+vndistrict247,247,Thị Xã Phú Thọ,vnstate26,base.vn
+vndistrict248,248,Huyện Đoan Hùng,vnstate26,base.vn
+vndistrict249,249,Huyện Hạ Hoà,vnstate26,base.vn
+vndistrict250,250,Huyện Thanh Ba,vnstate01,base.vn
+vndistrict251,251,Huyện Phù Ninh,vnstate26,base.vn
+vndistrict252,252,Huyện Yên Lập,vnstate26,base.vn
+vndistrict253,253,Huyện Cẩm Khê,vnstate26,base.vn
+vndistrict256,256,Huyện Tam Nông,vnstate27,base.vn
+vndistrict258,258,Huyện Lâm Thao,vnstate27,base.vn
+vndistrict259,259,Huyện Thanh Sơn,vnstate27,base.vn
+vndistrict260,260,Huyện Thanh Thuỷ,vnstate27,base.vn
+vndistrict261,261,Huyện Tân Sơn,vnstate27,base.vn
+vndistrict262,262,Thành Phố Vĩnh Yên,vnstate27,base.vn
+vndistrict263,263,Thị Xã Phúc Yên,vnstate27,base.vn
+vndistrict264,264,Huyện Lập Thạch,vnstate27,base.vn
+vndistrict268,268,Huyện Tam Dương,vnstate01,base.vn
+vndistrict269,269,Huyện Tam Đảo,vnstate01,base.vn
+vndistrict271,271,Huyện Bình Xuyên,vnstate01,base.vn
+vndistrict272,272,Huyện Yên Lạc,vnstate01,base.vn
+vndistrict273,273,Huyện Vĩnh Tường,vnstate01,base.vn
+vndistrict274,274,Huyện Sông Lô,vnstate01,base.vn
+vndistrict275,275,Thành Phố Bắc Ninh,vnstate01,base.vn
+vndistrict276,276,Thị Xã Từ Sơn,vnstate01,base.vn
+vndistrict277,277,Huyện Yên Phong,vnstate01,base.vn
+vndistrict278,278,Huyện Quế Võ,vnstate01,base.vn
+vndistrict279,279,Huyện Tiên Du,vnstate01,base.vn
+vndistrict280,280,Huyện Thuận Thành,vnstate01,base.vn
+vndistrict281,281,Huyện Gia Bình,vnstate01,base.vn
+vndistrict282,282,Huyện Lương Tài,vnstate01,base.vn
+vndistrict288,288,Thành Phố Hải Dương,vnstate30,base.vn
+vndistrict290,290,Huyện Chí Linh,vnstate30,base.vn
+vndistrict291,291,Huyện Nam Sách,vnstate30,base.vn
+vndistrict292,292,Huyện Kinh Môn,vnstate30,base.vn
+vndistrict293,293,Huyện Kim Thành,vnstate30,base.vn
+vndistrict294,294,Huyện Thanh Hà,vnstate30,base.vn
+vndistrict295,295,Huyện Cẩm Giàng,vnstate30,base.vn
+vndistrict296,296,Huyện Bình Giang,vnstate30,base.vn
+vndistrict297,297,Huyện Gia Lộc,vnstate30,base.vn
+vndistrict298,298,Huyện Tứ Kỳ,vnstate30,base.vn
+vndistrict299,299,Huyện Ninh Giang,vnstate30,base.vn
+vndistrict300,300,Huyện Thanh Miện,vnstate30,base.vn
+vndistrict303,303,Quận Hồng Bàng,vnstate31,base.vn
+vndistrict304,304,Quận Ngô Quyền,vnstate31,base.vn
+vndistrict305,305,Quận Lê Chân,vnstate31,base.vn
+vndistrict306,306,Quận Hải An,vnstate31,base.vn
+vndistrict307,307,Quận Kiến An,vnstate31,base.vn
+vndistrict308,308,Quận Đồ Sơn,vnstate31,base.vn
+vndistrict309,309,Quận Kinh Dương,vnstate31,base.vn
+vndistrict311,311,Huyện Thuỷ Nguyên,vnstate31,base.vn
+vndistrict312,312,Huyện An Dương,vnstate31,base.vn
+vndistrict313,313,Huyện An Lão,vnstate31,base.vn
+vndistrict314,314,Huyện Kiến Thụy,vnstate31,base.vn
+vndistrict315,315,Huyện Tiên Lãng,vnstate31,base.vn
+vndistrict316,316,Huyện Vĩnh Bảo,vnstate31,base.vn
+vndistrict317,317,Huyện Cát Hải,vnstate31,base.vn
+vndistrict318,318,Huyện Bạch Long Vĩ,vnstate31,base.vn
+vndistrict323,323,Thành Phố Hưng Yên,vnstate33,base.vn
+vndistrict325,325,Huyện Văn Lâm,vnstate33,base.vn
+vndistrict326,326,Huyện Văn Giang,vnstate33,base.vn
+vndistrict327,327,Huyện Yên Mỹ,vnstate33,base.vn
+vndistrict328,328,Huyện Mỹ Hào,vnstate33,base.vn
+vndistrict329,329,Huyện Ân Thi,vnstate33,base.vn
+vndistrict330,330,Huyện Khoái Châu,vnstate33,base.vn
+vndistrict331,331,Huyện Kim Động,vnstate33,base.vn
+vndistrict332,332,Huyện Tiên Lữ,vnstate33,base.vn
+vndistrict333,333,Huyện Phù Cừ,vnstate33,base.vn
+vndistrict336,336,Thành Phố Thái Bình,vnstate34,base.vn
+vndistrict338,338,Huyện Quỳnh Phụ,vnstate34,base.vn
+vndistrict339,339,Huyện Hưng Hà,vnstate34,base.vn
+vndistrict340,340,Huyện Đông Hưng,vnstate34,base.vn
+vndistrict341,341,Huyện Thái Thụy,vnstate34,base.vn
+vndistrict342,342,Huyện Tiền Hải,vnstate34,base.vn
+vndistrict343,343,Huyện Kiến Xương,vnstate34,base.vn
+vndistrict344,344,Huyện Vũ Thư,vnstate34,base.vn
+vndistrict347,347,Thành Phố Phủ Lý,vnstate35,base.vn
+vndistrict349,349,Huyện Duy Tiên,vnstate35,base.vn
+vndistrict350,350,Huyện Kim Bảng,vnstate35,base.vn
+vndistrict351,351,Huyện Thanh Liêm,vnstate35,base.vn
+vndistrict352,352,Huyện Bình Lục,vnstate35,base.vn
+vndistrict353,353,Huyện Lý Nhân,vnstate35,base.vn
+vndistrict356,356,Thành Phố Nam Định,vnstate36,base.vn
+vndistrict358,358,Huyện Mỹ Lộc,vnstate36,base.vn
+vndistrict359,359,Huyện Vụ Bản,vnstate36,base.vn
+vndistrict360,360,Huyện Ý Yên,vnstate36,base.vn
+vndistrict361,361,Huyện Nghĩa Hưng,vnstate36,base.vn
+vndistrict362,362,Huyện Nam Trực,vnstate36,base.vn
+vndistrict363,363,Huyện Trực Ninh,vnstate36,base.vn
+vndistrict364,364,Huyện Xuân Trường,vnstate36,base.vn
+vndistrict365,365,Huyện Giao Thủy,vnstate36,base.vn
+vndistrict366,366,Huyện Hải Hậu,vnstate36,base.vn
+vndistrict369,369,Thành Phố Ninh Bình,vnstate37,base.vn
+vndistrict370,370,Thị Xã Tam Điệp,vnstate37,base.vn
+vndistrict372,372,Huyện Nho Quan,vnstate37,base.vn
+vndistrict373,373,Huyện Gia Viễn,vnstate37,base.vn
+vndistrict374,374,Huyện Hoa Lư,vnstate37,base.vn
+vndistrict375,375,Huyện Yên Khánh,vnstate37,base.vn
+vndistrict376,376,Huyện Kim Sơn,vnstate37,base.vn
+vndistrict377,377,Huyện Yên Mô,vnstate37,base.vn
+vndistrict380,380,Thành Phố Thanh Hóa,vnstate38,base.vn
+vndistrict381,381,Thị Xã Bỉm Sơn,vnstate38,base.vn
+vndistrict382,382,Thị Xã Sầm Sơn,vnstate38,base.vn
+vndistrict384,384,Huyện Mường Lát,vnstate38,base.vn
+vndistrict385,385,Huyện Quan Hóa,vnstate38,base.vn
+vndistrict386,386,Huyện Bá Thước,vnstate38,base.vn
+vndistrict387,387,Huyện Quan Sơn,vnstate38,base.vn
+vndistrict388,388,Huyện Lang Chánh,vnstate38,base.vn
+vndistrict389,389,Huyện Ngọc Lặc,vnstate38,base.vn
+vndistrict390,390,Huyện Cẩm Thủy,vnstate38,base.vn
+vndistrict391,391,Huyện Thạch Thành,vnstate38,base.vn
+vndistrict392,392,Huyện Hà Trung,vnstate38,base.vn
+vndistrict393,393,Huyện Vĩnh Lộc,vnstate38,base.vn
+vndistrict394,394,Huyện Yên Định,vnstate38,base.vn
+vndistrict395,395,Huyện Thọ Xuân,vnstate38,base.vn
+vndistrict396,396,Huyện Thường Xuân,vnstate38,base.vn
+vndistrict397,397,Huyện Triệu Sơn,vnstate38,base.vn
+vndistrict398,398,Huyện Thiệu Hoá,vnstate38,base.vn
+vndistrict399,399,Huyện Hoằng Hóa,vnstate38,base.vn
+vndistrict400,400,Huyện Hậu Lộc,vnstate38,base.vn
+vndistrict401,401,Huyện Nga Sơn,vnstate38,base.vn
+vndistrict402,402,Huyện Như Xuân,vnstate38,base.vn
+vndistrict403,403,Huyện Như Thanh,vnstate38,base.vn
+vndistrict404,404,Huyện Nông Cống,vnstate38,base.vn
+vndistrict405,405,Huyện Đông Sơn,vnstate38,base.vn
+vndistrict406,406,Huyện Quảng Xương,vnstate38,base.vn
+vndistrict407,407,Huyện Tĩnh Gia,vnstate38,base.vn
+vndistrict412,412,Thành Phố Vinh,vnstate40,base.vn
+vndistrict413,413,Thị Xã Cửa Lò,vnstate40,base.vn
+vndistrict414,414,Thị Xã Thái Hoà,vnstate40,base.vn
+vndistrict415,415,Huyện Quế Phong,vnstate40,base.vn
+vndistrict416,416,Huyện Quỳ Châu,vnstate40,base.vn
+vndistrict417,417,Huyện Kỳ Sơn,vnstate40,base.vn
+vndistrict418,418,Huyện Tương Dương,vnstate40,base.vn
+vndistrict419,419,Huyện Nghĩa Đàn,vnstate40,base.vn
+vndistrict420,420,Huyện Quỳ Hợp,vnstate40,base.vn
+vndistrict421,421,Huyện Quỳnh Lưu,vnstate40,base.vn
+vndistrict422,422,Huyện Con Cuông,vnstate40,base.vn
+vndistrict423,423,Huyện Tân Kỳ,vnstate40,base.vn
+vndistrict424,424,Huyện Anh Sơn,vnstate40,base.vn
+vndistrict425,425,Huyện Diễn Châu,vnstate40,base.vn
+vndistrict426,426,Huyện Yên Thành,vnstate40,base.vn
+vndistrict427,427,Huyện Đô Lương,vnstate40,base.vn
+vndistrict428,428,Huyện Thanh Chương,vnstate40,base.vn
+vndistrict429,429,Huyện Nghi Lộc,vnstate40,base.vn
+vndistrict430,430,Huyện Nam Đàn,vnstate40,base.vn
+vndistrict431,431,Huyện Hưng Nguyên,vnstate40,base.vn
+vndistrict432,432,Thị Xã Hoàng Mai,vnstate40,base.vn
+vndistrict436,436,Thành Phố Hà Tĩnh,vnstate42,base.vn
+vndistrict437,437,Thị Xã Hồng Lĩnh,vnstate42,base.vn
+vndistrict439,439,Huyện Hương Sơn,vnstate42,base.vn
+vndistrict440,440,Huyện Đức Thọ,vnstate42,base.vn
+vndistrict441,441,Huyện Vũ Quang,vnstate42,base.vn
+vndistrict442,442,Huyện Nghi Xuân,vnstate42,base.vn
+vndistrict443,443,Huyện Can Lộc,vnstate42,base.vn
+vndistrict444,444,Huyện Hương Khê,vnstate42,base.vn
+vndistrict445,445,Huyện Thạch Hà,vnstate42,base.vn
+vndistrict446,446,Huyện Cẩm Xuyên,vnstate42,base.vn
+vndistrict447,447,Huyện Kỳ Anh,vnstate42,base.vn
+vndistrict448,448,Huyện Lộc Hà,vnstate42,base.vn
+vndistrict450,450,Thành Phố Đồng Hới,vnstate44,base.vn
+vndistrict452,452,Huyện Minh Hóa,vnstate44,base.vn
+vndistrict453,453,Huyện Tuyên Hóa,vnstate44,base.vn
+vndistrict454,454,Huyện Quảng Trạch,vnstate44,base.vn
+vndistrict455,455,Huyện Bố Trạch,vnstate44,base.vn
+vndistrict456,456,Huyện Quảng Ninh,vnstate44,base.vn
+vndistrict457,457,Huyện Lệ Thủy,vnstate44,base.vn
+vndistrict461,461,Thành Phố Đông Hà,vnstate45,base.vn
+vndistrict462,462,Thị Xã Quảng Trị,vnstate45,base.vn
+vndistrict464,464,Huyện Vĩnh Linh,vnstate45,base.vn
+vndistrict465,465,Huyện Hướng Hóa,vnstate45,base.vn
+vndistrict466,466,Huyện Gio Linh,vnstate45,base.vn
+vndistrict467,467,Huyện Đa Krông,vnstate45,base.vn
+vndistrict468,468,Huyện Cam Lộ,vnstate45,base.vn
+vndistrict469,469,Huyện Triệu Phong,vnstate45,base.vn
+vndistrict470,470,Huyện Hải Lăng,vnstate45,base.vn
+vndistrict471,471,Huyện Cồn Cỏ,vnstate45,base.vn
+vndistrict474,474,Thành Phố Huế,vnstate46,base.vn
+vndistrict476,476,Huyện Phong Điền,vnstate46,base.vn
+vndistrict477,477,Huyện Quảng Điền,vnstate46,base.vn
+vndistrict478,478,Huyện Phú Vang,vnstate46,base.vn
+vndistrict479,479,Huyện Hương Thủy,vnstate46,base.vn
+vndistrict480,480,Huyện Hương Trà,vnstate46,base.vn
+vndistrict481,481,Huyện A Lưới,vnstate46,base.vn
+vndistrict482,482,Huyện Phú Lộc,vnstate46,base.vn
+vndistrict483,483,Huyện Nam Đông,vnstate46,base.vn
+vndistrict490,490,Quận Liên Chiểu,vnstate48,base.vn
+vndistrict491,491,Quận Thanh Khê,vnstate48,base.vn
+vndistrict492,492,Quận Hải Châu,vnstate48,base.vn
+vndistrict493,493,Quận Sơn Trà,vnstate48,base.vn
+vndistrict494,494,Quận Ngũ Hành Sơn,vnstate48,base.vn
+vndistrict495,495,Quận Cẩm Lệ,vnstate48,base.vn
+vndistrict497,497,Huyện Hoà Vang,vnstate48,base.vn
+vndistrict498,498,Huyện Hoàng Sa,vnstate48,base.vn
+vndistrict502,502,Thành Phố Tam Kỳ,vnstate49,base.vn
+vndistrict503,503,Thành Phố Hội An,vnstate49,base.vn
+vndistrict504,504,Huyện Tây Giang,vnstate49,base.vn
+vndistrict505,505,Huyện Đông Giang,vnstate49,base.vn
+vndistrict506,506,Huyện Đại Lộc,vnstate49,base.vn
+vndistrict507,507,Huyện Điện Bàn,vnstate49,base.vn
+vndistrict508,508,Huyện Duy Xuyên,vnstate49,base.vn
+vndistrict509,509,Huyện Quế Sơn,vnstate49,base.vn
+vndistrict510,510,Huyện Nam Giang,vnstate49,base.vn
+vndistrict511,511,Huyện Phước Sơn,vnstate49,base.vn
+vndistrict512,512,Huyện Hiệp Đức,vnstate49,base.vn
+vndistrict513,513,Huyện Thăng Bình,vnstate49,base.vn
+vndistrict514,514,Huyện Tiên Phước,vnstate49,base.vn
+vndistrict515,515,Huyện Bắc Trà My,vnstate49,base.vn
+vndistrict516,516,Huyện Nam Trà My,vnstate49,base.vn
+vndistrict517,517,Huyện Núi Thành,vnstate49,base.vn
+vndistrict518,518,Huyện Phú Ninh,vnstate49,base.vn
+vndistrict519,519,Huyện Nông Sơn,vnstate49,base.vn
+vndistrict522,522,Thành Phố Quảng Ngãi,vnstate51,base.vn
+vndistrict524,524,Huyện Bình Sơn,vnstate51,base.vn
+vndistrict525,525,Huyện Trà Bồng,vnstate51,base.vn
+vndistrict526,526,Huyện Tây Trà,vnstate51,base.vn
+vndistrict527,527,Huyện Sơn Tịnh,vnstate51,base.vn
+vndistrict528,528,Huyện Tư Nghĩa,vnstate51,base.vn
+vndistrict529,529,Huyện Sơn Hà,vnstate51,base.vn
+vndistrict530,530,Huyện Sơn Tây,vnstate51,base.vn
+vndistrict531,531,Huyện Minh Long,vnstate51,base.vn
+vndistrict532,532,Huyện Nghĩa Hành,vnstate51,base.vn
+vndistrict533,533,Huyện Mộ Đức,vnstate51,base.vn
+vndistrict534,534,Huyện Đức Phổ,vnstate51,base.vn
+vndistrict535,535,Huyện Ba Tơ,vnstate51,base.vn
+vndistrict536,536,Huyện Lý Sơn,vnstate51,base.vn
+vndistrict540,540,Thành Phố Qui Nhơn,vnstate52,base.vn
+vndistrict542,542,Huyện An Lão,vnstate52,base.vn
+vndistrict543,543,Huyện Hoài Nhơn,vnstate52,base.vn
+vndistrict544,544,Huyện Hoài Ân,vnstate52,base.vn
+vndistrict545,545,Huyện Phù Mỹ,vnstate52,base.vn
+vndistrict546,546,Huyện Vĩnh Thạnh,vnstate52,base.vn
+vndistrict547,547,Huyện Tây Sơn,vnstate52,base.vn
+vndistrict548,548,Huyện Phù Cát,vnstate52,base.vn
+vndistrict549,549,Huyện An Nhơn,vnstate52,base.vn
+vndistrict550,550,Huyện Tuy Phước,vnstate52,base.vn
+vndistrict551,551,Huyện Vân Canh,vnstate52,base.vn
+vndistrict555,555,Thành Phố Tuy Hòa,vnstate54,base.vn
+vndistrict557,557,Thị Xã Sông Cầu,vnstate54,base.vn
+vndistrict558,558,Huyện Đồng Xuân,vnstate54,base.vn
+vndistrict559,559,Huyện Tuy An,vnstate54,base.vn
+vndistrict560,560,Huyện Sơn Hòa,vnstate54,base.vn
+vndistrict561,561,Huyện Sông Hinh,vnstate54,base.vn
+vndistrict562,562,Huyện Tây Hoà,vnstate54,base.vn
+vndistrict563,563,Huyện Phú Hoà,vnstate54,base.vn
+vndistrict564,564,Huyện Đông Hoà,vnstate54,base.vn
+vndistrict568,568,Thành Phố Nha Trang,vnstate56,base.vn
+vndistrict569,569,Thị Xã Cam Ranh,vnstate56,base.vn
+vndistrict570,570,Huyện Cam Lâm,vnstate56,base.vn
+vndistrict571,571,Huyện Vạn Ninh,vnstate56,base.vn
+vndistrict572,572,Huyện Ninh Hòa,vnstate56,base.vn
+vndistrict573,573,Huyện Khánh Vĩnh,vnstate56,base.vn
+vndistrict574,574,Huyện Diên Khánh,vnstate56,base.vn
+vndistrict575,575,Huyện Khánh Sơn,vnstate56,base.vn
+vndistrict576,576,Huyện Trường Sa,vnstate56,base.vn
+vndistrict582,582,Thành Phố Phan Rang-Tháp Chàm,vnstate58,base.vn
+vndistrict584,584,Huyện Bác Ái,vnstate58,base.vn
+vndistrict585,585,Huyện Ninh Sơn,vnstate58,base.vn
+vndistrict586,586,Huyện Ninh Hải,vnstate58,base.vn
+vndistrict587,587,Huyện Ninh Phước,vnstate58,base.vn
+vndistrict588,588,Huyện Thuận Bắc,vnstate58,base.vn
+vndistrict589,589,Huyện Thuận Nam,vnstate58,base.vn
+vndistrict593,593,Thành Phố Phan Thiết,vnstate60,base.vn
+vndistrict594,594,Thị Xã La Gi,vnstate60,base.vn
+vndistrict595,595,Huyện Tuy Phong,vnstate60,base.vn
+vndistrict596,596,Huyện Bắc Bình,vnstate60,base.vn
+vndistrict597,597,Huyện Hàm Thuận Bắc,vnstate60,base.vn
+vndistrict598,598,Huyện Hàm Thuận Nam,vnstate60,base.vn
+vndistrict599,599,Huyện Tánh Linh,vnstate60,base.vn
+vndistrict600,600,Huyện Đức Linh,vnstate60,base.vn
+vndistrict601,601,Huyện Hàm Tân,vnstate60,base.vn
+vndistrict602,602,Huyện Phú Quí,vnstate60,base.vn
+vndistrict608,608,Thành Phố Kon Tum,vnstate62,base.vn
+vndistrict610,610,Huyện Đắk Glei,vnstate62,base.vn
+vndistrict611,611,Huyện Ngọc Hồi,vnstate62,base.vn
+vndistrict612,612,Huyện Đắk Tô,vnstate62,base.vn
+vndistrict613,613,Huyện Kon Plông,vnstate62,base.vn
+vndistrict614,614,Huyện Kon Rẫy,vnstate62,base.vn
+vndistrict615,615,Huyện Đắk Hà,vnstate62,base.vn
+vndistrict616,616,Huyện Sa Thầy,vnstate62,base.vn
+vndistrict617,617,Huyện Tu Mơ Rông,vnstate62,base.vn
+vndistrict622,622,Thành Phố Pleiku,vnstate64,base.vn
+vndistrict623,623,Thị Xã An Khê,vnstate64,base.vn
+vndistrict624,624,Thị Xã Ayun Pa,vnstate64,base.vn
+vndistrict625,625,Huyện Kbang,vnstate64,base.vn
+vndistrict626,626,Huyện Đăk Đoa,vnstate64,base.vn
+vndistrict627,627,Huyện Chư Păh,vnstate64,base.vn
+vndistrict628,628,Huyện Ia Grai,vnstate64,base.vn
+vndistrict629,629,Huyện Mang Yang,vnstate64,base.vn
+vndistrict630,630,Huyện Kông Chro,vnstate64,base.vn
+vndistrict631,631,Huyện Đức Cơ,vnstate64,base.vn
+vndistrict632,632,Huyện Chư Prông,vnstate64,base.vn
+vndistrict633,633,Huyện Chư Sê,vnstate64,base.vn
+vndistrict634,634,Huyện Đăk Pơ,vnstate64,base.vn
+vndistrict635,635,Huyện Ia Pa,vnstate64,base.vn
+vndistrict637,637,Huyện Krông Pa,vnstate64,base.vn
+vndistrict638,638,Huyện Phú Thiện,vnstate64,base.vn
+vndistrict639,639,Huyện Chư Pưh,vnstate64,base.vn
+vndistrict643,643,Thành Phố Buôn Ma Thuột,vnstate66,base.vn
+vndistrict644,644,Thị Xã Buôn Hồ,vnstate66,base.vn
+vndistrict645,645,Huyện Ea H'leo,vnstate66,base.vn
+vndistrict646,646,Huyện Ea Súp,vnstate66,base.vn
+vndistrict647,647,Huyện Buôn Đôn,vnstate66,base.vn
+vndistrict648,648,Huyện Cư M'gar,vnstate66,base.vn
+vndistrict649,649,Huyện Krông Búk,vnstate66,base.vn
+vndistrict650,650,Huyện Krông Năng,vnstate66,base.vn
+vndistrict651,651,Huyện Ea Kar,vnstate66,base.vn
+vndistrict652,652,Huyện M'đrắk,vnstate66,base.vn
+vndistrict653,653,Huyện Krông Bông,vnstate66,base.vn
+vndistrict654,654,Huyện Krông Pắc,vnstate66,base.vn
+vndistrict655,655,Huyện Krông A Na,vnstate66,base.vn
+vndistrict656,656,Huyện Lắk,vnstate66,base.vn
+vndistrict657,657,Huyện Cư Kuin,vnstate66,base.vn
+vndistrict660,660,Thị Xã Gia Nghĩa,vnstate67,base.vn
+vndistrict661,661,Huyện Đắk Glong,vnstate67,base.vn
+vndistrict662,662,Huyện Cư Jút,vnstate67,base.vn
+vndistrict663,663,Huyện Đắk Mil,vnstate67,base.vn
+vndistrict664,664,Huyện Krông Nô,vnstate67,base.vn
+vndistrict665,665,Huyện Đắk Song,vnstate67,base.vn
+vndistrict666,666,Huyện Đắk R'lấp,vnstate67,base.vn
+vndistrict667,667,Huyện Tuy Đức,vnstate67,base.vn
+vndistrict672,672,Thành Phố Đà Lạt,vnstate68,base.vn
+vndistrict673,673,Thị Xã Bảo Lộc,vnstate68,base.vn
+vndistrict674,674,Huyện Đam Rông,vnstate68,base.vn
+vndistrict675,675,Huyện Lạc Dương,vnstate68,base.vn
+vndistrict676,676,Huyện Lâm Hà,vnstate68,base.vn
+vndistrict677,677,Huyện Đơn Dương,vnstate68,base.vn
+vndistrict678,678,Huyện Đức Trọng,vnstate68,base.vn
+vndistrict679,679,Huyện Di Linh,vnstate68,base.vn
+vndistrict680,680,Huyện Bảo Lâm,vnstate68,base.vn
+vndistrict681,681,Huyện Đạ Huoai,vnstate68,base.vn
+vndistrict682,682,Huyện Đạ Tẻh,vnstate68,base.vn
+vndistrict683,683,Huyện Cát Tiên,vnstate68,base.vn
+vndistrict688,688,Thị Xã Đồng Xoài,vnstate70,base.vn
+vndistrict689,689,Thị Xã Phước Long,vnstate70,base.vn
+vndistrict690,690,Thị Xã Bình Long,vnstate70,base.vn
+vndistrict691,691,Huyện Bù Gia Mập,vnstate70,base.vn
+vndistrict692,692,Huyện Lộc Ninh,vnstate70,base.vn
+vndistrict693,693,Huyện Bù Đốp,vnstate70,base.vn
+vndistrict694,694,Huyện Hớn Quản,vnstate70,base.vn
+vndistrict695,695,Huyện Đồng Phù,vnstate70,base.vn
+vndistrict696,696,Huyện Bù Đăng,vnstate70,base.vn
+vndistrict697,697,Huyện Chơn Thành,vnstate70,base.vn
+vndistrict703,703,Thị Xã Tây Ninh,vnstate72,base.vn
+vndistrict705,705,Huyện Tân Biên,vnstate72,base.vn
+vndistrict706,706,Huyện Tân Châu,vnstate72,base.vn
+vndistrict707,707,Huyện Dương Minh Châu,vnstate72,base.vn
+vndistrict708,708,Huyện Châu Thành,vnstate72,base.vn
+vndistrict709,709,Huyện Hòa Thành,vnstate72,base.vn
+vndistrict710,710,Huyện Gò Dầu,vnstate72,base.vn
+vndistrict711,711,Huyện Bến Cầu,vnstate72,base.vn
+vndistrict712,712,Huyện Trảng Bàng,vnstate72,base.vn
+vndistrict718,718,Thị Xã Thủ Dầu Một,vnstate74,base.vn
+vndistrict720,720,Huyện Dầu Tiếng,vnstate74,base.vn
+vndistrict721,721,Huyện Bến Cát,vnstate74,base.vn
+vndistrict722,722,Huyện Phú Giáo,vnstate74,base.vn
+vndistrict723,723,Huyện Tân Uyên,vnstate74,base.vn
+vndistrict724,724,Huyện Dĩ An,vnstate74,base.vn
+vndistrict725,725,Huyện Thuận An,vnstate74,base.vn
+vndistrict731,731,Thành Phố Biên Hòa,vnstate75,base.vn
+vndistrict732,732,Thị Xã Long Khánh,vnstate75,base.vn
+vndistrict734,734,Huyện Tân Phú,vnstate75,base.vn
+vndistrict735,735,Huyện Vĩnh Cửu,vnstate75,base.vn
+vndistrict736,736,Huyện Định Quán,vnstate75,base.vn
+vndistrict737,737,Huyện Trảng Bom,vnstate75,base.vn
+vndistrict738,738,Huyện Thống Nhất,vnstate75,base.vn
+vndistrict739,739,Huyện Cẩm Mỹ,vnstate75,base.vn
+vndistrict740,740,Huyện Long Thành,vnstate75,base.vn
+vndistrict741,741,Huyện Xuân Lộc,vnstate75,base.vn
+vndistrict742,742,Huyện Nhơn Trạch,vnstate75,base.vn
+vndistrict747,747,Thành Phố Vũng Tầu,vnstate77,base.vn
+vndistrict748,748,Thị Xã Bà Rịa,vnstate77,base.vn
+vndistrict750,750,Huyện Châu Đức,vnstate77,base.vn
+vndistrict751,751,Huyện Xuyên Mộc,vnstate77,base.vn
+vndistrict752,752,Huyện Long Điền,vnstate77,base.vn
+vndistrict753,753,Huyện Đất Đỏ,vnstate77,base.vn
+vndistrict754,754,Huyện Tân Thành,vnstate77,base.vn
+vndistrict755,755,Huyện Côn Đảo,vnstate77,base.vn
+vndistrict760,760,Quận 1,vnstate79,base.vn
+vndistrict761,761,Quận 12,vnstate79,base.vn
+vndistrict762,762,Quận Thủ Đức,vnstate79,base.vn
+vndistrict763,763,Quận 9,vnstate79,base.vn
+vndistrict764,764,Quận Gò Vấp,vnstate79,base.vn
+vndistrict765,765,Quận Bình Thạnh,vnstate79,base.vn
+vndistrict766,766,Quận Tân Bình,vnstate79,base.vn
+vndistrict767,767,Quận Tân Phú,vnstate79,base.vn
+vndistrict768,768,Quận Phú Nhuận,vnstate79,base.vn
+vndistrict769,769,Quận 2,vnstate79,base.vn
+vndistrict770,770,Quận 3,vnstate79,base.vn
+vndistrict771,771,Quận 10,vnstate79,base.vn
+vndistrict772,772,Quận 11,vnstate79,base.vn
+vndistrict773,773,Quận 4,vnstate79,base.vn
+vndistrict774,774,Quận 5,vnstate79,base.vn
+vndistrict775,775,Quận 6,vnstate79,base.vn
+vndistrict776,776,Quận 8,vnstate79,base.vn
+vndistrict777,777,Quận Bình Tân,vnstate79,base.vn
+vndistrict778,778,Quận 7,vnstate79,base.vn
+vndistrict783,783,Huyện Củ Chi,vnstate79,base.vn
+vndistrict784,784,Huyện Hóc Môn,vnstate79,base.vn
+vndistrict785,785,Huyện Bình Chánh,vnstate79,base.vn
+vndistrict786,786,Huyện Nhà Bè,vnstate79,base.vn
+vndistrict787,787,Huyện Cần Giờ,vnstate79,base.vn
+vndistrict794,794,Thành Phố Tân An,vnstate80,base.vn
+vndistrict796,796,Huyện Tân Hưng,vnstate80,base.vn
+vndistrict797,797,Huyện Vĩnh Hưng,vnstate80,base.vn
+vndistrict798,798,Huyện Mộc Hóa,vnstate80,base.vn
+vndistrict799,799,Huyện Tân Thạnh,vnstate80,base.vn
+vndistrict800,800,Huyện Thạnh Hóa,vnstate80,base.vn
+vndistrict801,801,Huyện Đức Huệ,vnstate80,base.vn
+vndistrict802,802,Huyện Đức Hòa,vnstate80,base.vn
+vndistrict803,803,Huyện Bến Lức,vnstate80,base.vn
+vndistrict804,804,Huyện Thủ Thừa,vnstate80,base.vn
+vndistrict805,805,Huyện Tân Trụ,vnstate80,base.vn
+vndistrict806,806,Huyện Cần Đước,vnstate80,base.vn
+vndistrict807,807,Huyện Cần Giuộc,vnstate80,base.vn
+vndistrict808,808,Huyện Châu Thành,vnstate80,base.vn
+vndistrict815,815,Thành Phố Mỹ Tho,vnstate82,base.vn
+vndistrict816,816,Thị Xã Gò Công,vnstate82,base.vn
+vndistrict818,818,Huyện Tân Phước,vnstate82,base.vn
+vndistrict819,819,Huyện Cái Bè,vnstate82,base.vn
+vndistrict820,820,Huyện Cai Lậy,vnstate82,base.vn
+vndistrict821,821,Huyện Châu Thành,vnstate82,base.vn
+vndistrict822,822,Huyện Chợ Gạo,vnstate82,base.vn
+vndistrict823,823,Huyện Gò Công Tây,vnstate82,base.vn
+vndistrict824,824,Huyện Gò Công Đông,vnstate82,base.vn
+vndistrict825,825,Huyện Tân Phú Đông,vnstate82,base.vn
+vndistrict829,829,Thành Phố Bến Tre,vnstate83,base.vn
+vndistrict831,831,Huyện Châu Thành,vnstate83,base.vn
+vndistrict832,832,Huyện Chợ Lách,vnstate83,base.vn
+vndistrict833,833,Huyện Mỏ Cày Nam,vnstate83,base.vn
+vndistrict834,834,Huyện Giồng Trôm,vnstate83,base.vn
+vndistrict835,835,Huyện Bình Đại,vnstate83,base.vn
+vndistrict836,836,Huyện Ba Tri,vnstate83,base.vn
+vndistrict837,837,Huyện Thạnh Phú,vnstate83,base.vn
+vndistrict838,838,Huyện Mỏ Cày Bắc,vnstate83,base.vn
+vndistrict842,842,Thị Xã Trà Vinh,vnstate84,base.vn
+vndistrict844,844,Huyện Càng Long,vnstate84,base.vn
+vndistrict845,845,Huyện Cầu Kè,vnstate84,base.vn
+vndistrict846,846,Huyện Tiểu Cần,vnstate84,base.vn
+vndistrict847,847,Huyện Châu Thành,vnstate84,base.vn
+vndistrict848,848,Huyện Cầu Ngang,vnstate84,base.vn
+vndistrict849,849,Huyện Trà Cú,vnstate84,base.vn
+vndistrict850,850,Huyện Duyên Hải,vnstate84,base.vn
+vndistrict855,855,Thành Phố Vĩnh Long,vnstate86,base.vn
+vndistrict857,857,Huyện Long Hồ,vnstate86,base.vn
+vndistrict858,858,Huyện Mang Thít,vnstate86,base.vn
+vndistrict859,859,Huyện Vũng Liêm,vnstate86,base.vn
+vndistrict860,860,Huyện Tam Bình,vnstate86,base.vn
+vndistrict861,861,Huyện Bình Minh,vnstate86,base.vn
+vndistrict862,862,Huyện Trà Ôn,vnstate86,base.vn
+vndistrict863,863,Huyện Bình Tân,vnstate86,base.vn
+vndistrict866,866,Thành Phố Cao Lãnh,vnstate87,base.vn
+vndistrict867,867,Thị Xã Sa Đéc,vnstate87,base.vn
+vndistrict868,868,Thị Xã Hồng Ngự,vnstate87,base.vn
+vndistrict869,869,Huyện Tân Hồng,vnstate87,base.vn
+vndistrict870,870,Huyện Hồng Ngự,vnstate87,base.vn
+vndistrict871,871,Huyện Tam Nông,vnstate87,base.vn
+vndistrict872,872,Huyện Tháp Mười,vnstate87,base.vn
+vndistrict873,873,Huyện Cao Lãnh,vnstate87,base.vn
+vndistrict874,874,Huyện Thanh Bình,vnstate87,base.vn
+vndistrict875,875,Huyện Lấp Vò,vnstate87,base.vn
+vndistrict876,876,Huyện Lai Vung,vnstate87,base.vn
+vndistrict877,877,Huyện Châu Thành,vnstate87,base.vn
+vndistrict883,883,Thành Phố Long Xuyên,vnstate89,base.vn
+vndistrict884,884,Thị Xã Châu Đốc,vnstate89,base.vn
+vndistrict886,886,Huyện An Phú,vnstate89,base.vn
+vndistrict887,887,Thị Xã Tân Châu,vnstate89,base.vn
+vndistrict888,888,Huyện Phú Tân,vnstate89,base.vn
+vndistrict889,889,Huyện Châu Phú,vnstate89,base.vn
+vndistrict890,890,Huyện Tịnh Biên,vnstate89,base.vn
+vndistrict891,891,Huyện Tri Tôn,vnstate89,base.vn
+vndistrict892,892,Huyện Châu Thành,vnstate89,base.vn
+vndistrict893,893,Huyện Chợ Mới,vnstate89,base.vn
+vndistrict894,894,Huyện Thoại Sơn,vnstate89,base.vn
+vndistrict899,899,Thành Phố Rạch Giá,vnstate91,base.vn
+vndistrict900,900,Thị Xã Hà Tiên,vnstate91,base.vn
+vndistrict902,902,Huyện Kiên Lương,vnstate91,base.vn
+vndistrict903,903,Huyện Hòn Đất,vnstate91,base.vn
+vndistrict904,904,Huyện Tân Hiệp,vnstate91,base.vn
+vndistrict905,905,Huyện Châu Thành,vnstate91,base.vn
+vndistrict906,906,Huyện Giồng Giềng,vnstate91,base.vn
+vndistrict907,907,Huyện Gò Quao,vnstate91,base.vn
+vndistrict908,908,Huyện An Biên,vnstate91,base.vn
+vndistrict909,909,Huyện An Minh,vnstate91,base.vn
+vndistrict910,910,Huyện Vĩnh Thuận,vnstate91,base.vn
+vndistrict911,911,Huyện Phú Quốc,vnstate91,base.vn
+vndistrict912,912,Huyện Kiên Hải,vnstate91,base.vn
+vndistrict913,913,Huyện U Minh Thượng,vnstate91,base.vn
+vndistrict914,914,Huyện Giang Thành,vnstate91,base.vn
+vndistrict916,916,Quận Ninh Kiều,vnstate92,base.vn
+vndistrict917,917,Quận Ô Môn,vnstate92,base.vn
+vndistrict918,918,Quận Bình Thuỷ,vnstate92,base.vn
+vndistrict919,919,Quận Cái Răng,vnstate92,base.vn
+vndistrict923,923,Quận Thốt Nốt,vnstate92,base.vn
+vndistrict924,924,Huyện Vĩnh Thạnh,vnstate92,base.vn
+vndistrict925,925,Huyện Cờ Đỏ,vnstate92,base.vn
+vndistrict926,926,Huyện Phong Điền,vnstate92,base.vn
+vndistrict927,927,Huyện Thới Lai,vnstate92,base.vn
+vndistrict930,930,Thị Xã Vị Thanh,vnstate93,base.vn
+vndistrict931,931,Thị Xã Ngã Bảy,vnstate93,base.vn
+vndistrict932,932,Huyện Châu Thành A,vnstate93,base.vn
+vndistrict933,933,Huyện Châu Thành,vnstate93,base.vn
+vndistrict934,934,Huyện Phụng Hiệp,vnstate93,base.vn
+vndistrict935,935,Huyện Vị Thuỷ,vnstate93,base.vn
+vndistrict936,936,Huyện Long Mỹ,vnstate93,base.vn
+vndistrict941,941,Thành Phố Sóc Trăng,vnstate94,base.vn
+vndistrict942,942,Huyện Châu Thành,vnstate94,base.vn
+vndistrict943,943,Huyện Kế Sách,vnstate94,base.vn
+vndistrict944,944,Huyện Mỹ Tú,vnstate94,base.vn
+vndistrict945,945,Huyện Cù Lao Dung,vnstate94,base.vn
+vndistrict946,946,Huyện Long Phú,vnstate94,base.vn
+vndistrict947,947,Huyện Mỹ Xuyên,vnstate94,base.vn
+vndistrict948,948,Huyện Ngã Năm,vnstate94,base.vn
+vndistrict949,949,Huyện Thạnh Trị,vnstate94,base.vn
+vndistrict950,950,Huyện Vĩnh Châu,vnstate94,base.vn
+vndistrict951,951,Huyện Trần Đề,vnstate94,base.vn
+vndistrict954,954,Thị Xã Bạc Liêu,vnstate95,base.vn
+vndistrict956,956,Huyện Hồng Dân,vnstate95,base.vn
+vndistrict957,957,Huyện Phước Long,vnstate95,base.vn
+vndistrict958,958,Huyện Vĩnh Lợi,vnstate95,base.vn
+vndistrict959,959,Huyện Giá Rai,vnstate95,base.vn
+vndistrict960,960,Huyện Đông Hải,vnstate95,base.vn
+vndistrict961,961,Huyện Hoà Bình,vnstate95,base.vn
+vndistrict964,964,Thành Phố Cà Mau,vnstate96,base.vn
+vndistrict966,966,Huyện U Minh,vnstate96,base.vn
+vndistrict967,967,Huyện Thới Bình,vnstate96,base.vn
+vndistrict968,968,Huyện Trần Văn Thời,vnstate96,base.vn
+vndistrict969,969,Huyện Cái Nước,vnstate96,base.vn
+vndistrict970,970,Huyện Đầm Dơi,vnstate96,base.vn
+vndistrict971,971,Huyện Năm Căn,vnstate96,base.vn
+vndistrict972,972,Huyện Phú Tân,vnstate96,base.vn
+vndistrict973,973,Huyện Ngọc Hiển,vnstate96,base.vn
+vndistrict974,974,Quận Nam Từ Liêm,vnstate01,base.vn

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model='ir.ui.view' id='wizard_form_qwaco_sales_revenue'>
+            <field name="name">qwaco.sales.revenue.report.form</field>
+            <field name="model">qwaco.sales.revenue.report</field>
+            <field name="arch" type="xml">
+                <form string="Wizard">
+                    <group col="4" string="Dates">
+                        <group>
+                            <field name="date_start"/>
+                        </group>
+                        <group>
+                            <field name="date_end"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="export_xls" type="object" default_focus="1"
+                                string="Export" class="oe_highlight"
+                                context="{'xls_export':1}" icon="fa-download"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record model='ir.actions.act_window' id='wizard_act_qwaco_sales_revenue'>
+            <field name="name">Qwaco Sales Revenue</field>
+            <field name="res_model">qwaco.sales.revenue.report</field>
+            <field name="binding_model_id" eval="False"/>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_id" ref="wizard_form_qwaco_sales_revenue"/>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+        <report
+            id="qwaco_sales_revenue_xlsx"
+            model="qwaco.sales.revenue.report"
+            string="Qwaco Sales Revenue"
+            report_type="xlsx"
+            name="qwaco_sales_revenue_report_xls.sales_revenue_xlsx"
+            file="Qwaco Sales Revenue"
+            attachment_use="False"
+        />
+
+        <menuitem name="Qwaco Sales Revenue Report"
+                  parent="sale.menu_sale_report"
+                  id="export_excel_qwaco_sales_revenue"
+                  action="wizard_act_qwaco_sales_revenue"
+                  groups="sales_team.group_sale_manager"
+                  sequence="5"/>
+    </data>
+</odoo>

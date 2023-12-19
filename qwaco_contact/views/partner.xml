@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partners_form" model="ir.ui.view">
+		<field name="name">view.res.partner.form.inherited</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_form"/>
+		<field eval="1" name="priority"/>
+		<field name="arch" type="xml">
+			<xpath expr="//field[@name='category_id']" position="after">
+				<field name="popular_name"/>
+				<field name="customer_code"/>
+				<field name="id_number" string="Personal/Business ID"/>
+			</xpath>
+			<xpath expr="//field[@name='child_ids']/form//div[hasclass('o_address_format')]" position="replace">
+				<div class="o_address_format">
+					<field name="street" placeholder="Street..." class="o_address_street" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}"/>
+					<field name="street2" placeholder="Street 2..." class="o_address_street"
+										attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" invisible="1"/>
+					<field name="city" placeholder="City" class="o_address_city" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" invisible="1"/>
+					<field name="state_id" class="o_address_state" placeholder="State" options="{'no_open': True, 'no_quick_create': True}" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" context="{'country_id': country_id, 'default_country_id': country_id}"/>
+					<field name="district_id" class="o_address_district" placeholder="District" options="{'no_open': True, 'no_quick_create': True}" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)], 'required': [('parent_id', '=', False)]}" context="{'country_id': country_id ,'state_id': state_id, 'default_country_id': country_id}"/>
+					<field name="ward_id" class="o_address_ward" placeholder="Ward" options="{'no_open': True, 'no_quick_create': True}" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)], 'required': [('parent_id', '=', False)]}" context="{'country_id': country_id , 'district_id': district_id, 'state_id': state_id, 'default_country_id': country_id}"/>
+					<field name="zone_id" class="o_address_zone" placeholder="Zone" options="{'no_open': True, 'no_quick_create': True}" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)], 'required': [('parent_id', '=', False), ('type', '!=', 'invoice')]}" context="{'country_id': country_id , 'district_id': district_id, 'state_id': state_id, 'ward_id': ward_id, 'default_country_id': country_id}"/>
+					<field name="country_id" placeholder="Country" class="o_address_country" options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" attrs="{'readonly': [('type', '=', 'contact'),('parent_id', '!=', False)]}" invisible="1"/>
+
+				</div>
+            </xpath>
+			<xpath expr="//field[@name='child_ids']/form//field[@name='comment']" position="after">
+				<field name="contract_no" attrs="{'invisible': [('type', '=', 'invoice')]}"/>
+                <field name="water_meter_ids" widget="many2many_tags" domain="[('partner_id', '=', False)]" attrs="{'invisible': [('type', '=', 'invoice')]}"/>
+            </xpath>
+			<xpath expr="//page[@name='internal_notes']" position="after">
+				<page name='water_meter' string="Water Meter List">
+					<field name="water_meter_child_ids">
+						<tree string="Water Meter" create="0" delete="0" editable="bottom">
+							<field name="name" readonly="1"/>
+							<field name="manufacturing_date" />
+							<field name="expired_date" />
+							<field name="setting_date" />
+							<field name="batch_number" />
+							<field name="balance"/>
+							<field name="state" />
+							<field name="reason" />
+						</tree>
+					</field>
+				</page>
+			</xpath>
+		</field>
+	</record>
+
+</odoo>

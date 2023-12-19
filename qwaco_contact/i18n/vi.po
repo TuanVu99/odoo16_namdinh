@@ -1,0 +1,233 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* qwaco_contact
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0-20221013\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-01 07:40+0000\n"
+"PO-Revision-Date: 2022-12-01 14:49+0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.2\n"
+
+#. module: qwaco_contact
+#: model:ir.model.fields.selection,name:qwaco_contact.selection__qwaco_water_meter__state__active
+msgid "Active"
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model,name:qwaco_contact.model_res_country_zone
+msgid "Address: Zone"
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_qwaco_water_meter__batch_number
+msgid "Batch Number"
+msgstr ""
+
+#. module: qwaco_contact
+#: model_terms:ir.ui.view,arch_db:qwaco_contact.view_partners_form
+msgid "City"
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model.constraint,message:qwaco_contact.constraint_res_partner_contract_no_uniq
+msgid "Constraints with the same contract no are unique per contact."
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model.constraint,message:qwaco_contact.constraint_res_partner_id_number_uniq
+msgid "Constraints with the same id number are unique per contact."
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model.constraint,message:qwaco_contact.constraint_qwaco_water_meter_name_uniq
+msgid "Constraints with the same name are unique per water meter."
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model,name:qwaco_contact.model_res_partner
+msgid "Contact"
+msgstr "Danh bạ"
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_res_partner__contract_no
+#: model:ir.model.fields,field_description:qwaco_contact.field_res_users__contract_no
+msgid "Contract No"
+msgstr "Mã hợp đồng"
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_res_partner__country_id
+#: model:ir.model.fields,field_description:qwaco_contact.field_res_users__country_id
+#: model_terms:ir.ui.view,arch_db:qwaco_contact.view_partners_form
+msgid "Country"
+msgstr "Quốc gia"
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_qwaco_water_meter__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_qwaco_water_meter__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_qwaco_water_meter__balance
+msgid "Current Balance"
+msgstr "Số nước hiện tại"
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_res_partner__customer_code
+#: model:ir.model.fields,field_description:qwaco_contact.field_res_users__customer_code
+msgid "Customer Code"
+msgstr "Mã khách hàng"
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_res_country_zone__sequence_id
+msgid "Customer Code IDs Sequence"
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_qwaco_water_meter__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: qwaco_contact
+#: model_terms:ir.ui.view,arch_db:qwaco_contact.view_partners_form
+msgid "District"
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_qwaco_water_meter__expired_date
+msgid "Expired Date"
+msgstr "Ngày hết hạn"
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_qwaco_water_meter__first_balance
+msgid "First Balance"
+msgstr "Số nước đầu kỳ"
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_qwaco_water_meter__id
+msgid "ID"
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_res_partner__id_number
+#: model:ir.model.fields,field_description:qwaco_contact.field_res_users__id_number
+msgid "Identification Number"
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model.fields.selection,name:qwaco_contact.selection__qwaco_water_meter__state__inactive
+msgid "Inactive"
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_qwaco_water_meter____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_qwaco_water_meter__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_qwaco_water_meter__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_qwaco_water_meter__manufacturing_date
+msgid "Manufacturing Date"
+msgstr "Ngày sản xuất"
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_qwaco_water_meter__partner_id
+msgid "Partner"
+msgstr ""
+
+#. module: qwaco_contact
+#: model_terms:ir.ui.view,arch_db:qwaco_contact.view_partners_form
+msgid "Personal/Business ID"
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_res_partner__popular_name
+#: model:ir.model.fields,field_description:qwaco_contact.field_res_users__popular_name
+msgid "Popular Name"
+msgstr "Tên phổ thông"
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_qwaco_water_meter__reason
+msgid "Reason"
+msgstr "Lý do"
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_qwaco_water_meter__setting_date
+msgid "Setting Date"
+msgstr "Ngày lắp đặt (tại hộ dân)"
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_qwaco_water_meter__state
+#: model:ir.model.fields,field_description:qwaco_contact.field_res_partner__state_id
+#: model:ir.model.fields,field_description:qwaco_contact.field_res_users__state_id
+#: model_terms:ir.ui.view,arch_db:qwaco_contact.view_partners_form
+msgid "State"
+msgstr "Trạng thái"
+
+#. module: qwaco_contact
+#: model_terms:ir.ui.view,arch_db:qwaco_contact.view_partners_form
+msgid "Street 2..."
+msgstr ""
+
+#. module: qwaco_contact
+#: model_terms:ir.ui.view,arch_db:qwaco_contact.view_partners_form
+msgid "Street..."
+msgstr ""
+
+#. module: qwaco_contact
+#: model:ir.model.fields,help:qwaco_contact.field_res_partner__id_number
+#: model:ir.model.fields,help:qwaco_contact.field_res_users__id_number
+msgid "The ID itself. For example, Driver License number of this person"
+msgstr ""
+
+#. module: qwaco_contact
+#: model_terms:ir.ui.view,arch_db:qwaco_contact.view_partners_form
+msgid "Ward"
+msgstr "Thôn/Xã"
+
+#. module: qwaco_contact
+#: model:ir.model.fields,field_description:qwaco_contact.field_qwaco_water_meter__name
+#: model:ir.model.fields,field_description:qwaco_contact.field_res_partner__water_meter_child_ids
+#: model:ir.model.fields,field_description:qwaco_contact.field_res_partner__water_meter_ids
+#: model:ir.model.fields,field_description:qwaco_contact.field_res_users__water_meter_child_ids
+#: model:ir.model.fields,field_description:qwaco_contact.field_res_users__water_meter_ids
+#: model_terms:ir.ui.view,arch_db:qwaco_contact.view_partners_form
+msgid "Water Meter"
+msgstr "Mã đồng hồ nước"
+
+#. module: qwaco_contact
+#: model_terms:ir.ui.view,arch_db:qwaco_contact.view_partners_form
+msgid "Water Meter List"
+msgstr "Danh sách đồng hồ nước"
+
+#. module: qwaco_contact
+#: model_terms:ir.ui.view,arch_db:qwaco_contact.view_partners_form
+msgid "Zone"
+msgstr "Xóm/Tổ"
+
+#. module: qwaco_contact
+#: model:ir.model,name:qwaco_contact.model_qwaco_water_meter
+msgid "qwaco.water.meter"
+msgstr ""
