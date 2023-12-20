@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="intem_product_wizard">
+            <t t-call="web.basic_layout">
+                <t t-foreach="docs" t-as="o">
+                    <t t-if="o.partner_info">
+                        <t t-foreach="o.partner_ids" t-as="partner">
+                            <div style="width: 48%; display: inline-table; height: 10rem;margin-right: 10px ">
+                                <style type="text/css">
+                                    table {
+                                    font-family: Times New Roman;
+                                    font-size:12pt;
+                                    display: flex;
+                                    border: 1px solid black;
+                                    border-collapse: collapse;
+                                    }
+                                    td {
+                                    border: none;
+                                    }
+
+                                    td.image-cell {
+                                    border-left: 1px dashed black;
+                                    }
+                                    p {
+                                    display: block;
+                                    margin-bottom:0;
+                                    margin: 0 3px;
+                                    }
+                                </style>
+                                <table class="table table-bordered mb-0">
+                                    <tr>
+                                        <td class="text-left align-middle image-cell" style="padding:0; width:60%">
+                                            <p>
+                                                <strong t-field="partner.name"/>
+                                            </p>
+                                        </td>
+                                        <td rowspan="4" class="image-cell">
+                                            <p class="text-center align-middle">
+                                                <t t-if="partner.name">
+                                                    <img alt="Barcode"
+                                                         t-att-src="'/report/barcode/QR/value=%s' % ( quote_plus(partner.customer_code or ''))"
+                                                         style="width:80%;height:8rem"/>
+                                                </t>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left align-middle" style="padding:0; ">
+                                            <p>Mã khách hàng: <span t-field="partner.customer_code"/></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left align-middle" style="padding:0; ">
+                                             <p> CMT/CCCD: <span t-field="partner.id_number"/> </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left align-middle" style="padding:0; ">
+                                            <p>
+                                                Địa chỉ:<span t-field="partner.zone_id.name"/>,
+                                                        <span t-field="partner.ward_id.name"/>,
+                                                        <span t-field="partner.district_id.name"/>,
+                                                        <span t-field="partner.state_id.name"/>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </t>
+                    </t>
+                    <t t-if="o.water_meter_info">
+                        <t t-foreach="o.water_meter_ids" t-as="water_meter">
+                            <div style="width: 48%; display: inline-table; height: 10rem;margin-right: 10px ">
+                                <style type="text/css">
+                                    table {
+                                    font-family: Times New Roman;
+                                    font-size:12pt;
+                                    display: flex;
+                                    border: 1px solid black;
+                                    border-collapse: collapse;
+                                    }
+                                    td {
+                                    border: none;
+                                    }
+
+                                    td.image-cell {
+                                    border-left: 1px dashed black;
+                                    }
+                                    p {
+                                    display: block;
+                                    margin-bottom:0;
+                                    margin: 0 3px;
+                                    }
+                                </style>
+                                <table class="table table-bordered mb-0">
+                                    <tr>
+                                        <td class="text-left align-middle image-cell" style="padding:0; width:60%">
+                                            <p>
+                                                <strong>Đồng hồ nước: </strong> <strong t-field="water_meter.name"/>
+                                            </p>
+                                        </td>
+                                        <td rowspan="3" class="image-cell">
+                                            <p class="text-center align-middle">
+                                                <t t-if="water_meter.name">
+                                                    <img alt="Barcode"
+                                                         t-att-src="'/report/barcode/QR/value=%s' % ( quote_plus(water_meter.name or ''))"
+                                                         style="width:80%;height:8rem"/>
+                                                </t>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left align-middle" style="padding:0; ">
+                                            <p>Khách hàng: <span t-field="water_meter.partner_id.name"/></p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left align-middle" style="padding:0; ">
+                                            <p>
+                                                Địa chỉ:<span t-field="water_meter.partner_id.zone_id.name"/>,
+                                                        <span t-field="water_meter.partner_id.ward_id.name"/>,
+                                                        <span t-field="water_meter.partner_id.district_id.name"/>,
+                                                        <span t-field="water_meter.partner_id.state_id.name"/>
+                                            </p>
+                                        </td>
+                                    </tr>
+<!--                                    <tr>-->
+<!--                                        <td class="text-left align-middle" style="padding:0; ">-->
+<!--                                             <p> </p>-->
+<!--                                        </td>-->
+<!--                                    </tr>-->
+                                </table>
+                            </div>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+        <record id="in_tem_product_fm" model="report.paperformat">
+            <field name="name">Custom A4 without borders</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">5</field>
+            <field name="margin_bottom">2</field>
+            <field name="margin_left">2</field>
+            <field name="margin_right">2</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+        </record>
+
+        <report
+                id="in_tem_product"
+                string="In tem"
+                model="qr.partner.info"
+                report_type="qweb-pdf"
+                name="qwaco_sale.intem_product_wizard"
+                file="qwaco_sale.intem_product_wizard"
+                print_report_name="'QR thông tin khách hàng'"
+                paperformat="in_tem_product_fm"
+        />
+    </data>
+    <data>
+        <record id="qr_partner_view_form" model="ir.ui.view">
+            <field name="name">qr_partner_view_form</field>
+            <field name="model">qr.partner.info</field>
+            <field name="arch" type="xml">
+                <form string="intem_product_form">
+                    <sheet>
+                        <group>
+                            <field name="partner_ids" widget="many2many_tags"
+                                   domain="[('parent_id', '=', False),('type','=','contact')]" attrs="{'invisible' : [('print_all', '!=', False)]}"/>
+                            <field name="water_meter_ids" widget="many2many_tags" invisible="1"/>
+                            <field name="ward_id" widget="many2many_tags" attrs="{'invisible' : [('print_all', '=', False)],'required' : [('print_all', '=', False)] }" />
+                            <field name="partner_info" attrs="{'invisible' : [('water_meter_info', '!=', False)]}"/>
+                            <field name="water_meter_info" attrs="{'invisible' : [('partner_info', '!=', False)]}"/>
+                            <field name="print_all" string="In tất cả trên hệ thống !"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="export_report" string="In QR" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="qr_partner_action" model="ir.actions.act_window">
+            <field name="name">QR thông tin khách hàng</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">qr.partner.info</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="qr_partner_menu_id" name="QR thông tin khách hàng" parent="contacts.menu_contacts"
+                  action="qr_partner_action" sequence="1000"/>
+    </data>
+</odoo>
