@@ -173,7 +173,8 @@
                             <field name="partner_ids" widget="many2many_tags"
                                    domain="[('parent_id', '=', False),('type','=','contact')]" attrs="{'invisible' : [('print_all', '!=', False)]}"/>
                             <field name="water_meter_ids" widget="many2many_tags" invisible="1"/>
-                            <field name="ward_id" widget="many2many_tags" attrs="{'invisible' : [('print_all', '=', False)],'required' : [('print_all', '=', False)] }" />
+                            <field name="ward_id" attrs="{'invisible' : [('print_all', '=', False)],'required' : [('print_all', '!=', False)] }" />
+                            <field name="zone_id" widget="many2many_tags" attrs="{'invisible' : [('print_all', '=', False)],'required' : [('print_all', '!=', False)] }" />
                             <field name="partner_info" attrs="{'invisible' : [('water_meter_info', '!=', False)]}"/>
                             <field name="water_meter_info" attrs="{'invisible' : [('partner_info', '!=', False)]}"/>
                             <field name="print_all" string="In tất cả trên hệ thống !"/>

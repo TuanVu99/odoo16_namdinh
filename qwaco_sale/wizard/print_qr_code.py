@@ -10,7 +10,8 @@ class PrintTemWizard(models.TransientModel):
 
     partner_ids = fields.Many2many('res.partner', string='Khách hàng')
     water_meter_ids = fields.Many2many('qwaco.water.meter', compute="compute_water_meter",string="Đồng hồ nước")
-    ward_id = fields.Many2many('res.country.ward',string="Xã")
+    ward_id = fields.Many2one('res.country.ward',string="Xã/Phường")
+    zone_id = fields.Many2many('res.country.zone',string="Thôn/Xóm", domain="[('ward_id', '=', ward_id)]")
     partner_info = fields.Boolean('In thông tin khách hàng')
     water_meter_info = fields.Boolean('In thông tin đồng hồ')
     print_all = fields.Boolean('In tất cả', default=False)
@@ -32,7 +33,7 @@ class PrintTemWizard(models.TransientModel):
 
         else: self.water_meter_ids = None
 
-    @api.onchange('ward_id','print_all')
+    @api.onchange('zone_id','print_all')
     def compute_print_all(self):
         if self.print_all == True and self.ward_id:
             sql = '''select id 
@@ -40,9 +41,9 @@ class PrintTemWizard(models.TransientModel):
                     where active = 't' 
                           and parent_id is null 
                           and type = 'contact' 
-                          and ward_id in %s
+                          and zone_id in %s
                      '''
-            self._cr.execute(sql, [tuple(self.ward_id.ids + [0, 0])])
+            self._cr.execute(sql, [tuple(self.zone_id.ids + [0, 0])])
             rec = self._cr.dictfetchall()
             partner = [r['id'] for r in rec]
             self.partner_ids = partner
