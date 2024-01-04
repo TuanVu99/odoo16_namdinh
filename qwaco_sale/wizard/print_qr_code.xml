@@ -30,7 +30,7 @@
                                 </style>
                                 <table class="table table-bordered mb-0">
                                     <tr>
-                                        <td class="text-left align-middle image-cell" style="padding:0; width:60%">
+                                        <td class="text-left align-middle " style="padding:0; width:60%">
                                             <p>
                                                 <strong t-field="partner.name"/>
                                             </p>
