@@ -24,12 +24,12 @@ SUPPORTED_IMAGE_EXTENSIONS = ['.gif', '.jpe', '.jpeg', '.jpg', '.png', '.svg']
 
 class SaleControllerREST(http.Controller):
 
-    @http.route('%s/get_list_sale' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)
+    @http.route('%s/get_list_sale' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)  # Upgraded
     @check_permissions
     def api__sale__get_list_sale(self, **kw):
         args = {}
         try:
-            body = json.loads(request.httprequest.data)            
+            body = json.loads(request.httprequest.data)
         except:
             body = {}
         # Merge all parameters with body priority
@@ -41,10 +41,10 @@ class SaleControllerREST(http.Controller):
         data = []
         if meter_code and len(meter_code) > 0:
             orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
-                                                          ('team_id', '!=', False),
-                                                          ('water_meter_id.name', '=', meter_code),
-                                                          ('water_meter_id.state', '=', 'active'),
-                                                          ('state', 'in', ('draft', 'sent'))])
+                                                              ('team_id', '!=', False),
+                                                              ('water_meter_id.name', '=', meter_code),
+                                                              ('water_meter_id.state', '=', 'active'),
+                                                              ('state', 'in', ('draft', 'sent'))])
         else:
             orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
                                                               ('team_id', '!=', False),
@@ -52,34 +52,51 @@ class SaleControllerREST(http.Controller):
                                                               ('water_meter_id.state', '=', 'active'),
                                                               ('state', 'in', ('draft', 'sent'))])
         tz = pytz.timezone(str(uid.partner_id.tz) if uid.partner_id.tz else "Asia/Ho_Chi_Minh")
+
+        banghi = 0
         for order in orders:
+            if banghi > 260:
+                break  # Trả về request 60 bản ghi
+
             if order.water_meter_id.balance > 0:
                 last_quantity = order.water_meter_id.balance
             else:
                 last_quantity = order.water_meter_id.first_balance
 
-            if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
-                address = order.water_meter_id.partner_id.vietnam_full_address
-            else:
-                address = order.partner_id.vietnam_full_address
+            ##if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
+            ##    address = order.water_meter_id.partner_id.vietnam_full_address
+            ##else:
+            address = order.partner_id.vietnam_full_address  # Địa chỉ khách hàng (không phải địa chỉ lắp đồng hồ)
+
             popular_name = order.partner_id.popular_name
-            if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
-                name = order.water_meter_id.partner_id.name
+
+            # if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
+            #    name = order.water_meter_id.partner_id.name
+            # else:
+            name = order.partner_id.name  # Tên khách hàng, không phải tên đại diện lắp đồng hồ
+
+            if order.partner_id.id_number:
+                id_number = order.partner_id.id_number
             else:
-                name = order.partner_id.name
+                id_number = ""
 
             vals = {'order_no': order.name,
                     'customer': {'name': name,
                                  'popular_name': popular_name,
+                                 'id_number': id_number,  # Thêm thông tin CCDC với cá nhân / MST với tổ chức
                                  'address': address
-                                },
+                                 },
                     'meter': {'code': order.water_meter_id.name,
+                              'address': order.water_meter_id.partner_id.vietnam_full_address,
+                              # Thêm thông tin địa chỉ lắp đồng hồ
                               'last_quantity': round(last_quantity, 3)
                               },
                     'create_date': order.create_date.astimezone(tz).strftime(DEFAULT_SERVER_DATE_FORMAT),
                     'is_paid': order.is_paid
                     }
             data.append(vals)
+            banghi += 1  # Tăng số đếm bản ghi
+
             # Successful response:
         return werkzeug.wrappers.Response(
             status=OUT__customer__call_method__SUCCESS_CODE,
@@ -94,12 +111,13 @@ class SaleControllerREST(http.Controller):
             }),
         )
 
-    @http.route('%s/get_list_sale_confirmations' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)
+    @http.route('%s/get_list_sale_confirmations' % api_prefix, methods=['POST'], type='http', auth='none',
+                csrf=False)  # Upgraded
     @check_permissions
     def api__sale__get_list_sale_confirmations(self, **kw):
         args = {}
         try:
-            body = json.loads(request.httprequest.data)            
+            body = json.loads(request.httprequest.data)
         except:
             body = {}
         # Merge all parameters with body priority
@@ -133,35 +151,51 @@ class SaleControllerREST(http.Controller):
                                                               ('state', 'in', ('sale', 'done'))])
 
         tz = pytz.timezone(str(uid.partner_id.tz) if uid.partner_id.tz else "Asia/Ho_Chi_Minh")
+
+        banghi = 0
         for order in orders:
+            if banghi > 260:
+                break  # Trả về request 60 bản ghi
+
             if order.water_meter_id.balance > 0:
                 last_quantity = order.water_meter_id.balance
             else:
                 last_quantity = order.water_meter_id.first_balance
 
-            if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
-                address = order.water_meter_id.partner_id.vietnam_full_address
-            else:
-                address = order.partner_id.vietnam_full_address
+            # if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
+            #    address = order.water_meter_id.partner_id.vietnam_full_address
+            # else:
+            address = order.partner_id.vietnam_full_address  # Lấy địa chỉ khách hàng
 
             popular_name = order.partner_id.popular_name
-            if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
-                name = order.water_meter_id.partner_id.name
+
+            if order.partner_id.id_number:
+                id_number = order.partner_id.id_number
             else:
-                name = order.partner_id.name
+                id_number = ""
+
+            # if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
+            #    name = order.water_meter_id.partner_id.name
+            # else:
+            name = order.partner_id.name  # Lấy tên khách hàng
 
             vals = {'order_no': order.name,
                     'customer': {'name': name,
                                  'popular_name': popular_name,
+                                 'id_number': id_number,  # Thêm thông tin CCDC với cá nhân / MST với tổ chức
                                  'address': address
                                  },
                     'meter': {'code': order.water_meter_id.name,
+                              'address': order.water_meter_id.partner_id.vietnam_full_address,
+                              # Thêm thông tin địa chỉ lắp đồng hồ
                               'last_quantity': round(last_quantity, 3)
                               },
                     'create_date': order.create_date.astimezone(tz).strftime(DEFAULT_SERVER_DATE_FORMAT),
                     'is_paid': order.is_paid
                     }
             data.append(vals)
+            banghi += 1  # Tăng số đếm bản ghi
+
             # Successful response:
         return werkzeug.wrappers.Response(
             status=OUT__customer__call_method__SUCCESS_CODE,
@@ -176,19 +210,20 @@ class SaleControllerREST(http.Controller):
             }),
         )
 
-    @http.route('%s/update_sale_info' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)
+    @http.route('%s/update_sale_info' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)  # Upgraded
     @check_permissions
     def api__sale__update_sale_info(self, **kw):
         order_no = kw.get('order_no')
         quantity = kw.get('quantity')
-        files = request.httprequest.files.getlist("images[]")        
+        files = request.httprequest.files.getlist("images[]")
         # # Convert json data into Odoo vals:
         if not order_no or not quantity:
             error_descrip = _("Vui lòng nhập đầy đủ giá trị !")
             error = error_code
             _logger.error(error_descrip)
             return error_response(400, error, error_descrip)
-        order = request.env['sale.order'].sudo().search([('name', '=', order_no), ('state', 'in', ('draft', 'sent'))], limit=1)
+        order = request.env['sale.order'].sudo().search([('name', '=', order_no), ('state', 'in', ('draft', 'sent'))],
+                                                        limit=1)
         if order:
             try:
                 new_quantity = float(quantity)
@@ -235,7 +270,7 @@ class SaleControllerREST(http.Controller):
                         'name': file.filename,
                         'datas': base64.b64encode(tools.image_process(data_image)),
                         'res_model': 'sale.order', 'res_id': order.id})
-                        # 'res_model': 'mail.compose.message', 'res_id': 0})
+                    # 'res_model': 'mail.compose.message', 'res_id': 0})
                     attachment_ids.append(attachment_id.id)
                 if len(attachment_ids) > 0:
                     order.with_user(get_user_id()).message_post(attachment_ids=attachment_ids, body='Ghi nước')
@@ -245,27 +280,34 @@ class SaleControllerREST(http.Controller):
                 _logger.error(e)
                 return error_response(400, error, error_descrip)
 
-            if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
-                address = order.water_meter_id.partner_id.vietnam_full_address
-            else:
-                address = order.partner_id.vietnam_full_address
+            # if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
+            #    address = order.water_meter_id.partner_id.vietnam_full_address
+            # else:
+            address = order.partner_id.vietnam_full_address
 
             popular_name = order.partner_id.popular_name
-            if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
-                name = order.water_meter_id.partner_id.name
+
+            # if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
+            #    name = order.water_meter_id.partner_id.name
+            # else:
+            name = order.partner_id.name
+
+            if order.partner_id.id_number:  # Bổ sung thông tin CCCD / MST
+                id_number = order.partner_id.id_number
             else:
-                name = order.partner_id.name
+                id_number = ""
 
             vals = {'order_no': order.name,
                     'customer': {'name': name,
                                  'popular_name': popular_name,
+                                 'id_number': id_number,
                                  'address': address
                                  },
                     'meter': {'code': order.water_meter_id.name,
                               'last_quantity': round(last_qty, 3),
                               'used_quantity': round(used_quantity, 3),
                               'current_quantity': round(new_quantity, 3)
-                             },
+                              },
                     'amount_total': order.amount_total,
                     'amount_untaxed': order.amount_untaxed + abs(order.get_discount_amount()),
                     'amount_tax': order.amount_tax,
@@ -294,7 +336,7 @@ class SaleControllerREST(http.Controller):
     def api__sale__confirm(self, **kw):
         args = {}
         try:
-            body = json.loads(request.httprequest.data)            
+            body = json.loads(request.httprequest.data)
         except:
             body = {}
         # Merge all parameters with body priority
@@ -347,12 +389,12 @@ class SaleControllerREST(http.Controller):
             }),
         )
 
-    @http.route('%s/review' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)
+    @http.route('%s/review' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)  # Upgraded
     @check_permissions
     def api__sale__print_review(self, **kw):
         args = {}
         try:
-            body = json.loads(request.httprequest.data)            
+            body = json.loads(request.httprequest.data)
         except:
             body = {}
         # Merge all parameters with body priority
@@ -379,8 +421,9 @@ class SaleControllerREST(http.Controller):
             price_unit = sum(order_line.mapped('price_unit')) or 0
             used_quantity = sum(order_line.mapped('product_uom_qty')) or 0
             quant_his = request.env['qwaco.water.meter.quantity.history'].sudo().search([('order_id', '=', order.id),
-                                                                                         ('water_meter_id', '=', order.water_meter_id.id)]
-                                                                                        ,limit=1, order="id desc")
+                                                                                         ('water_meter_id', '=',
+                                                                                          order.water_meter_id.id)]
+                                                                                        , limit=1, order="id desc")
             if quant_his and quant_his.type == 'addition':
                 last_qty = quant_his.old_quantity
                 new_quantity = quant_his.new_quantity
@@ -397,8 +440,8 @@ class SaleControllerREST(http.Controller):
                                       ('order_id.state', 'in', ['sale', 'done']),
                                       ('water_meter_id', '=', order.water_meter_id.id)]
             water_meter_old = request.env['qwaco.water.meter.quantity.history'].sudo().search(domain_water_meter_old,
-                                                                                           limit=1,
-                                                                                           order="create_date desc")
+                                                                                              limit=1,
+                                                                                              order="create_date desc")
             if water_meter_old:
                 last_date = water_meter_old.order_id.date_order.astimezone(tz)
 
@@ -413,10 +456,10 @@ class SaleControllerREST(http.Controller):
                 if len(count_months) > 0:
                     period_month = " & ".join(x for x in count_months)
 
-            if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
-                address = order.water_meter_id.partner_id.vietnam_full_address
-            else:
-                address = order.partner_id.vietnam_full_address
+            # if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
+            #    address = order.water_meter_id.partner_id.vietnam_full_address
+            # else:
+            address = order.partner_id.vietnam_full_address
 
             ehoadon_tracking_url = request.env['ir.config_parameter'].sudo().get_param(
                 'ehoadon.tracking_url') or False
@@ -425,16 +468,23 @@ class SaleControllerREST(http.Controller):
                 ehoadon_message = "Quý khách lấy hóa đơn điện tử vui lòng truy cập vào đường dẫn sau %s" % ehoadon_tracking_url
 
             popular_name = order.partner_id.popular_name
-            if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
-                name = order.water_meter_id.partner_id.name
+
+            # if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
+            #    name = order.water_meter_id.partner_id.name
+            # else:
+            name = order.partner_id.name
+
+            if order.partner_id.id_number:  # Bổ sung thông tin CCCD / MST
+                id_number = order.partner_id.id_number
             else:
-                name = order.partner_id.name
+                id_number = ""
 
             period = "{month}/{year}".format(month=period_month, year=period_year)
 
             data = {'order_no': order.name,
                     'customer': {'name': name,
                                  'popular_name': popular_name,
+                                 'id_number': id_number,
                                  'address': address,
                                  'phone': order.partner_id.phone if order.partner_id.phone else "",
                                  'customer_code': order.partner_id.customer_code,
@@ -477,12 +527,13 @@ class SaleControllerREST(http.Controller):
             }),
         )
 
-    @http.route('%s/reminder/get_list_sale' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)
+    @http.route('%s/reminder/get_list_sale' % api_prefix, methods=['POST'], type='http', auth='none',
+                csrf=False)  # Upgraded
     @check_permissions
     def api__sale__reminder__get_list_sale(self, **kw):
         args = {}
         try:
-            body = json.loads(request.httprequest.data)            
+            body = json.loads(request.httprequest.data)
         except:
             body = {}
         # Merge all parameters with body priority
@@ -498,47 +549,74 @@ class SaleControllerREST(http.Controller):
         # # Convert json data into Odoo vals:
         uid = request.env['res.users'].sudo().browse(request.session.uid)
         reminder_cat = request.env['qwaco.reminder.category'].sudo().search([('id', '=', int(reminder_category))])
+        if int(reminder_category) == 9:
+            reminder_cat = request.env['qwaco.reminder.category'].sudo().search(
+                [('id', '=', 1)])  # Gán trường bất kỳ với trường hợp search tất cả (reminder_category = 0)
         data = []
         tz = pytz.timezone("Asia/Ho_Chi_Minh")
         date_start = fields.datetime.now().astimezone(tz).strftime(DEFAULT_SERVER_DATE_FORMAT)
+
         if reminder_cat:
+
             domain = [('order_id.team_id.member_ids', 'in', uid.ids),
-                     ('order_id.team_id', '!=', False),
-                     ('order_id.state', 'in', ('sale', 'done')),
-                     ('order_id.is_paid', '=', False),
-                     ('reminder_category_id', '=', reminder_cat.id),
-                     ('reminder_date', '<=', date_start),
-                     ('is_processed', '=', False)]
+                      ('order_id.team_id', '!=', False),
+                      ('order_id.state', 'in', ('sale', 'done')),
+                      ('order_id.is_paid', '=', False),
+                      ('reminder_category_id', '=', reminder_cat.id),
+                      ('reminder_date', '<=', date_start),
+                      ('is_processed', '=', False)]
+            if int(reminder_category) == 9:  # Loại bỏ điều kiện reminder_category trong domain tìm kiếm
+                domain = [('order_id.team_id.member_ids', 'in', uid.ids),
+                          ('order_id.team_id', '!=', False),
+                          ('order_id.state', 'in', ('sale', 'done')),
+                          ('order_id.is_paid', '=', False),
+                          ('reminder_date', '<=', date_start),
+                          ('is_processed', '=', False)]
             if meter_code and len(meter_code) > 0:
                 domain += [('order_id.water_meter_id.name', '=', meter_code)]
+
             order_reminders = request.env['qwaco.sale.order.reminder'].sudo().search(domain)
 
+            banghi = 0
+
             for reminder in order_reminders:
-                quant_his = request.env['qwaco.water.meter.quantity.history'].sudo().search([('order_id', '=', reminder.order_id.id),
-                                                                                             ('water_meter_id', '=', reminder.order_id.water_meter_id.id),
-                                                                                             ('type', '=', 'addition')], limit=1)
+                if banghi > 260:  # Trả về 260 bản ghi
+                    break
+
+                quant_his = request.env['qwaco.water.meter.quantity.history'].sudo().search(
+                    [('order_id', '=', reminder.order_id.id),
+                     ('water_meter_id', '=', reminder.order_id.water_meter_id.id),
+                     ('type', '=', 'addition')], limit=1)
                 if quant_his:
                     last_qty = quant_his.old_quantity
                     new_quantity = quant_his.new_quantity
                     used_quantity = quant_his.new_quantity - quant_his.old_quantity
 
-                if reminder.order_id.water_meter_id and reminder.order_id.water_meter_id.partner_id.vietnam_full_address:
-                    address = reminder.order_id.water_meter_id.partner_id.vietnam_full_address
-                else:
-                    address = reminder.order_id.partner_id.vietnam_full_address
+                # if reminder.order_id.water_meter_id and reminder.order_id.water_meter_id.partner_id.vietnam_full_address:
+                #    address = reminder.order_id.water_meter_id.partner_id.vietnam_full_address
+                # else:
+                address = reminder.order_id.partner_id.vietnam_full_address  # Lấy địa chỉ khách hàng
 
                 popular_name = reminder.order_id.partner_id.popular_name
-                if reminder.order_id.water_meter_id and reminder.order_id.water_meter_id.partner_id and reminder.order_id.water_meter_id.partner_id.name:
-                    name = reminder.order_id.water_meter_id.partner_id.name
+
+                if reminder.order_id.partner_id.id_number:  # Lấy CCCD / MST của khách hàng
+                    id_number = reminder.order_id.partner_id.id_number
                 else:
-                    name = reminder.order_id.partner_id.name
+                    id_number = ""
+
+                # if reminder.order_id.water_meter_id and reminder.order_id.water_meter_id.partner_id and reminder.order_id.water_meter_id.partner_id.name:
+                #    name = reminder.order_id.water_meter_id.partner_id.name
+                # else:
+                name = reminder.order_id.partner_id.name  # Lấy tên khách hàng
 
                 vals = {'order_no': reminder.order_id.name,
                         'customer': {'name': name,
                                      'popular_name': popular_name,
+                                     'id_number': id_number,
                                      'address': address
                                      },
                         'meter': {'code': reminder.order_id.water_meter_id.name,
+                                  'address': reminder.order_id.water_meter_id.partner_id.vietnam_full_address,
                                   'last_quantity': round(last_qty, 3),
                                   'used_quantity': round(used_quantity, 3),
                                   'current_quantity': round(new_quantity, 3),
@@ -552,6 +630,7 @@ class SaleControllerREST(http.Controller):
                                      }
                         }
                 data.append(vals)
+                banghi += 1
         else:
             error_descrip = _("Vui lòng nhập đầy đủ giá trị !")
             error = error_code
@@ -576,7 +655,7 @@ class SaleControllerREST(http.Controller):
     def api__sale__reminder__update_sale_info(self, **kw):
         order_no = kw.get('order_no')
         payment_term = kw.get('payment_term')
-        files = request.httprequest.files.getlist("images[]")        
+        files = request.httprequest.files.getlist("images[]")
         # # Convert json data into Odoo vals:
         if not order_no or not payment_term:
             error_descrip = _("Vui lòng nhập đầy đủ giá trị !")
@@ -610,7 +689,7 @@ class SaleControllerREST(http.Controller):
                         'name': file.filename,
                         'datas': base64.b64encode(tools.image_process(data_image)),
                         'res_model': 'sale.order', 'res_id': order.id})
-                        # 'res_model': 'mail.compose.message', 'res_id': 0})
+                    # 'res_model': 'mail.compose.message', 'res_id': 0})
                     attachment_ids.append(attachment_id.id)
                 if len(attachment_ids) > 0:
                     order.with_user(get_user_id()).message_post(attachment_ids=attachment_ids, body='Ghi nước')
@@ -631,7 +710,7 @@ class SaleControllerREST(http.Controller):
                         reminder_cate = request.env['qwaco.reminder.category'].search([('sequence', '=', 2)], limit=1)
                     else:
                         reminder_cate = request.env['qwaco.reminder.category'].sudo().search([('sequence', '=', 0)],
-                                                                                           limit=1)
+                                                                                             limit=1)
                     if reminder_cate:
                         if sequence == 1:
                             vals = {'order_id': order.id,
@@ -673,12 +752,13 @@ class SaleControllerREST(http.Controller):
             }),
         )
 
-    @http.route('%s/reminder/get_sale_info' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)
+    @http.route('%s/reminder/get_sale_info' % api_prefix, methods=['POST'], type='http', auth='none',
+                csrf=False)  # Upgraded
     @check_permissions
     def api__sale__reminder__get_sale_info(self, **kw):
         args = {}
         try:
-            body = json.loads(request.httprequest.data)            
+            body = json.loads(request.httprequest.data)
         except:
             body = {}
         # Merge all parameters with body priority
@@ -699,9 +779,11 @@ class SaleControllerREST(http.Controller):
             new_quantity = 0
             used_quantity = 0
             quant_his = request.env['qwaco.water.meter.quantity.history'].sudo().search([('order_id', '=', order.id),
-                                                                                         ('water_meter_id', '=', order.water_meter_id.id),
+                                                                                         ('water_meter_id', '=',
+                                                                                          order.water_meter_id.id),
                                                                                          ('type', '=', 'addition')],
-                                                                                     limit=1, order="create_date desc")
+                                                                                        limit=1,
+                                                                                        order="create_date desc")
             if quant_his:
                 last_qty = quant_his.old_quantity
                 new_quantity = quant_his.new_quantity
@@ -714,26 +796,33 @@ class SaleControllerREST(http.Controller):
             else:
                 next_remind = request.env['qwaco.reminder.category'].sudo().search([('sequence', '=', 0)], limit=1)
 
-            if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
-                address = order.water_meter_id.partner_id.vietnam_full_address
-            else:
-                address = order.partner_id.vietnam_full_address
+            # if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
+            #    address = order.water_meter_id.partner_id.vietnam_full_address
+            # else:
+            address = order.partner_id.vietnam_full_address
 
             popular_name = order.partner_id.popular_name
-            if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
-                name = order.water_meter_id.partner_id.name
+
+            # if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
+            #    name = order.water_meter_id.partner_id.name
+            # else:
+            name = order.partner_id.name
+
+            if order.partner_id.id_number:  # Bổ sung thông tin CCCD / MST
+                id_number = order.partner_id.id_number
             else:
-                name = order.partner_id.name
+                id_number = ""
 
             data = {'order_no': order.name,
                     'customer': {'name': name,
                                  'popular_name': popular_name,
+                                 'id_number': id_number,
                                  'address': address
                                  },
                     'meter': {'code': order.water_meter_id.name,
                               'last_quantity': round(last_qty, 3),
-                              'used_quantity': round(used_quantity,3),
-                              'current_quantity': round(new_quantity,3)
+                              'used_quantity': round(used_quantity, 3),
+                              'current_quantity': round(new_quantity, 3)
                               },
                     'amount_total': order.amount_total,
                     'amount_untaxed': order.amount_untaxed + abs(order.get_discount_amount()),
@@ -748,7 +837,7 @@ class SaleControllerREST(http.Controller):
                     'next_reminder': {'name': next_remind.name,
                                       'sequence': next_remind.sequence,
                                       'action': 'lock' if next_remind.sequence == 0 else 'reminder'
-                                     },
+                                      },
                     }
         else:
             error_descrip = _('Hoá đơn không tồn tại !')
@@ -769,12 +858,12 @@ class SaleControllerREST(http.Controller):
             }),
         )
 
-    @http.route('%s/reminder/get_category' % api_prefix, methods=['GET'], type='http', auth='none', csrf=False)
+    @http.route('%s/reminder/get_category' % api_prefix, methods=['GET'], type='http', auth='none',csrf=False)  # Bổ sung giá trị tất cả ứng ID 9
     @check_permissions
     def api__sale__reminder__get_category(self, **kw):
         args = {}
         try:
-            body = json.loads(request.httprequest.data)            
+            body = json.loads(request.httprequest.data)
         except:
             body = {}
         # Merge all parameters with body priority
@@ -787,6 +876,9 @@ class SaleControllerREST(http.Controller):
             data.append({'name': cat.name,
                          'id': cat.id
                          })
+        data.append({'name': "Tất cả",
+                     'id': 9
+                     })
         # Successful response:
         return werkzeug.wrappers.Response(
             status=OUT__customer__call_method__SUCCESS_CODE,
@@ -801,12 +893,12 @@ class SaleControllerREST(http.Controller):
             }),
         )
 
-    @http.route('%s/get_sale_info' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)
+    @http.route('%s/get_sale_info' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)  # Upgraded
     @check_permissions
     def api__sale__get_sale_info(self, **kw):
         args = {}
         try:
-            body = json.loads(request.httprequest.data)            
+            body = json.loads(request.httprequest.data)
         except:
             body = {}
         # Merge all parameters with body priority
@@ -827,9 +919,11 @@ class SaleControllerREST(http.Controller):
             new_quantity = 0
             used_quantity = 0
             quant_his = request.env['qwaco.water.meter.quantity.history'].sudo().search([('order_id', '=', order.id),
-                                                                                         ('water_meter_id', '=', order.water_meter_id.id),
+                                                                                         ('water_meter_id', '=',
+                                                                                          order.water_meter_id.id),
                                                                                          ('type', '=', 'addition')],
-                                                                                        limit=1, order="create_date desc")
+                                                                                        limit=1,
+                                                                                        order="create_date desc")
             if quant_his:
                 last_qty = quant_his.old_quantity
                 new_quantity = quant_his.new_quantity
@@ -837,20 +931,27 @@ class SaleControllerREST(http.Controller):
             order_line = order.order_line.filtered(lambda l: l.product_uom_qty > 0)
             price_unit = sum(order_line.mapped('price_unit')) or 0
 
-            if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
-                address = order.water_meter_id.partner_id.vietnam_full_address
-            else:
-                address = order.partner_id.vietnam_full_address
+            # if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
+            #    address = order.water_meter_id.partner_id.vietnam_full_address
+            # else:
+            address = order.partner_id.vietnam_full_address
 
             popular_name = order.partner_id.popular_name
-            if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
-                name = order.water_meter_id.partner_id.name
+
+            if order.partner_id.id_number:  # Bổ sung thông tin CCCD / MST
+                id_number = order.partner_id.id_number
             else:
-                name = order.partner_id.name
+                id_number = ""
+
+            # if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
+            #    name = order.water_meter_id.partner_id.name
+            # else:
+            name = order.partner_id.name
 
             data = {'order_no': order.name,
                     'customer': {'name': name,
                                  'popular_name': popular_name,
+                                 'id_number': id_number,
                                  'address': address
                                  },
                     'meter': {'code': order.water_meter_id.name,
@@ -945,7 +1046,7 @@ class SaleControllerREST(http.Controller):
                     'customer': {'name': name,
                                  'popular_name': popular_name,
                                  'id_number':id_number,
-                                 'address': address
+                                 'address': order.partner_id.vietnam_full_address
                                  },
                     'meter': {'code': order.water_meter_id.name,
                               'last_quantity': round(last_quantity, 3),
@@ -1019,7 +1120,7 @@ class SaleControllerREST(http.Controller):
                     'customer': {'name': name,
                                  'popular_name': popular_name,
                                  'id_number':id_number,
-                                 'address': address
+                                 'address': order.partner_id.vietnam_full_address
                                  },
                     'meter': {'code': order.water_meter_id.name,
                               'last_quantity': round(last_quantity, 3),
@@ -1106,7 +1207,7 @@ class SaleControllerREST(http.Controller):
                         'customer': {'name': name,
                                      'popular_name': popular_name,
                                      'id_number':id_number,
-                                     'address': address
+                                     'address': reminder.partner_id.vietnam_full_address
                                      },
                         'meter': {'code': reminder.order_id.water_meter_id.name,
                                   'address': address,
