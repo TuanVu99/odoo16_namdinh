@@ -936,16 +936,20 @@ class SaleControllerREST(http.Controller):
             popular_name = order.partner_id.popular_name
             if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
                 name = order.water_meter_id.partner_id.name
+                id_number = order.water_meter_id.partner_id.id_number
             else:
                 name = order.partner_id.name
+                id_number = order.partner_id.id_number
 
             vals = {'order_no': order.name,
                     'customer': {'name': name,
                                  'popular_name': popular_name,
+                                 'id_number':id_number,
                                  'address': address
                                  },
                     'meter': {'code': order.water_meter_id.name,
-                              'last_quantity': round(last_quantity, 3)
+                              'last_quantity': round(last_quantity, 3),
+                              'address': address
                               },
                     'create_date': order.create_date.astimezone(tz).strftime(DEFAULT_SERVER_DATE_FORMAT),
                     'is_paid': order.is_paid
@@ -1006,16 +1010,20 @@ class SaleControllerREST(http.Controller):
             popular_name = order.partner_id.popular_name
             if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
                 name = order.water_meter_id.partner_id.name
+                id_number = order.water_meter_id.partner_id.id_number
             else:
                 name = order.partner_id.name
+                id_number = order.partner_id.id_number
 
             vals = {'order_no': order.name,
                     'customer': {'name': name,
                                  'popular_name': popular_name,
+                                 'id_number':id_number,
                                  'address': address
                                  },
                     'meter': {'code': order.water_meter_id.name,
-                              'last_quantity': round(last_quantity, 3)
+                              'last_quantity': round(last_quantity, 3),
+                              'address': address
                               },
                     'create_date': order.create_date.astimezone(tz).strftime(DEFAULT_SERVER_DATE_FORMAT),
                     'is_paid': order.is_paid
@@ -1089,15 +1097,19 @@ class SaleControllerREST(http.Controller):
                 popular_name = reminder.order_id.partner_id.popular_name
                 if reminder.order_id.water_meter_id and reminder.order_id.water_meter_id.partner_id and reminder.order_id.water_meter_id.partner_id.name:
                     name = reminder.order_id.water_meter_id.partner_id.name
+                    id_number = reminder.order_id.water_meter_id.partner_id.id_number
                 else:
                     name = reminder.order_id.partner_id.name
+                    id_number = reminder.order_id.partner_id.id_number
 
                 vals = {'order_no': reminder.order_id.name,
                         'customer': {'name': name,
                                      'popular_name': popular_name,
+                                     'id_number':id_number,
                                      'address': address
                                      },
                         'meter': {'code': reminder.order_id.water_meter_id.name,
+                                  'address': address,
                                   'last_quantity': round(last_qty, 3),
                                   'used_quantity': round(used_quantity, 3),
                                   'current_quantity': round(new_quantity, 3),
