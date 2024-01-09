@@ -882,3 +882,250 @@ class SaleControllerREST(http.Controller):
                 }
             }),
         )
+
+    @http.route('%s/get_list_sale_confirmations_customer' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)
+    @check_permissions
+    def api__sale_confirmations_customer__get_list_sale(self, **kw):
+        args = {}
+        try:
+            body = json.loads(request.httprequest.data)
+        except:
+            body = {}
+        # Merge all parameters with body priority
+        jdata = args.copy()
+        jdata.update(body)
+        customer = jdata.get('customer_code')
+        payment_term = jdata.get('payment_term')
+        # # Convert json data into Odoo vals:
+        uid = request.env['res.users'].sudo().browse(request.session.uid)
+        data = []
+        if not payment_term or payment_term not in "pay_later":
+            error_descrip = _("Vui lòng nhập đầy đủ giá trị !")
+            error = error_code
+            _logger.error(error_descrip)
+            return error_response(400, error, error_descrip)
+
+        payment_term_id = request.env['account.payment.term'].sudo().search([('code', '=', payment_term)], limit=1)
+        if customer and len(customer) > 0:
+            orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                              ('team_id', '!=', False),
+                                                              ('partner_id.customer_code', '=', customer),
+                                                              ('partner_id.state', '=', 'active'),
+                                                              ('payment_term_id', '=', payment_term_id.id),
+                                                              ('state', 'in', ('sale', 'done'))])
+        else:
+            orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                              ('team_id', '!=', False),
+                                                              ('partner_id.customer_code', '!=', False),
+                                                              ('partner_id.name.state', '=', 'active'),
+                                                              ('payment_term_id', '=', payment_term_id.id),
+                                                              ('state', 'in', ('sale', 'done'))],limit=300)
+
+        tz = pytz.timezone(str(uid.partner_id.tz) if uid.partner_id.tz else "Asia/Ho_Chi_Minh")
+        for order in orders:
+            if order.water_meter_id.balance > 0:
+                last_quantity = order.water_meter_id.balance
+            else:
+                last_quantity = order.water_meter_id.first_balance
+
+            if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
+                address = order.water_meter_id.partner_id.vietnam_full_address
+            else:
+                address = order.partner_id.vietnam_full_address
+
+            popular_name = order.partner_id.popular_name
+            if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
+                name = order.water_meter_id.partner_id.name
+            else:
+                name = order.partner_id.name
+
+            vals = {'order_no': order.name,
+                    'customer': {'name': name,
+                                 'popular_name': popular_name,
+                                 'address': address
+                                 },
+                    'meter': {'code': order.water_meter_id.name,
+                              'last_quantity': round(last_quantity, 3)
+                              },
+                    'create_date': order.create_date.astimezone(tz).strftime(DEFAULT_SERVER_DATE_FORMAT),
+                    'is_paid': order.is_paid
+                    }
+            data.append(vals)
+            # Successful response:
+        return werkzeug.wrappers.Response(
+            status=OUT__customer__call_method__SUCCESS_CODE,
+            content_type='application/json; charset=utf-8',
+            headers=[('Cache-Control', 'no-store'),
+                     ('Pragma', 'no-cache')],
+            response=json.dumps({
+                'success': True,
+                'result': {
+                    'data': data
+                }
+            }),
+        )
+
+    @http.route('%s/get_list_sale_customer' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)
+    @check_permissions
+    def api__sale__get_list_sale_customer(self, **kw):
+        args = {}
+        try:
+            body = json.loads(request.httprequest.data)
+        except:
+            body = {}
+        # Merge all parameters with body priority
+        jdata = args.copy()
+        jdata.update(body)
+        customer_code = jdata.get('customer_code')
+        # # Convert json data into Odoo vals:
+        uid = request.env['res.users'].sudo().browse(request.session.uid)
+        data = []
+        if customer_code and len(customer_code) > 0:
+            orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                              ('team_id', '!=', False),
+                                                              ('partner_id.customer_code', '=', customer_code),
+                                                              ('water_meter_id.state', '=', 'active'),
+                                                              ('state', 'in', ('draft', 'sent'))])
+        else:
+            orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                              ('team_id', '!=', False),
+                                                              ('partner_id', '!=', False),
+                                                              ('partner_id.state', '=', 'active'),
+                                                              ('state', 'in', ('draft', 'sent'))],limit=300)
+        tz = pytz.timezone(str(uid.partner_id.tz) if uid.partner_id.tz else "Asia/Ho_Chi_Minh")
+        for order in orders:
+            if order.water_meter_id.balance > 0:
+                last_quantity = order.water_meter_id.balance
+            else:
+                last_quantity = order.water_meter_id.first_balance
+
+            if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
+                address = order.water_meter_id.partner_id.vietnam_full_address
+            else:
+                address = order.partner_id.vietnam_full_address
+            popular_name = order.partner_id.popular_name
+            if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
+                name = order.water_meter_id.partner_id.name
+            else:
+                name = order.partner_id.name
+
+            vals = {'order_no': order.name,
+                    'customer': {'name': name,
+                                 'popular_name': popular_name,
+                                 'address': address
+                                 },
+                    'meter': {'code': order.water_meter_id.name,
+                              'last_quantity': round(last_quantity, 3)
+                              },
+                    'create_date': order.create_date.astimezone(tz).strftime(DEFAULT_SERVER_DATE_FORMAT),
+                    'is_paid': order.is_paid
+                    }
+            data.append(vals)
+            # Successful response:
+        return werkzeug.wrappers.Response(
+            status=OUT__customer__call_method__SUCCESS_CODE,
+            content_type='application/json; charset=utf-8',
+            headers=[('Cache-Control', 'no-store'),
+                     ('Pragma', 'no-cache')],
+            response=json.dumps({
+                'success': True,
+                'result': {
+                    'data': data
+                }
+            }),
+        )
+
+    @http.route('%s/reminder/get_list_sale_customer' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)
+    @check_permissions
+    def api__sale__reminder__get_list_sale_customer(self, **kw):
+        args = {}
+        try:
+            body = json.loads(request.httprequest.data)
+        except:
+            body = {}
+        # Merge all parameters with body priority
+        jdata = args.copy()
+        jdata.update(body)
+        customer_code = jdata.get('customer_code')
+        reminder_category = jdata.get('reminder_category')
+        if not reminder_category:
+            error_descrip = _("Vui lòng nhập đầy đủ giá trị !")
+            error = error_code
+            _logger.error(error_descrip)
+            return error_response(400, error, error_descrip)
+        # # Convert json data into Odoo vals:
+        uid = request.env['res.users'].sudo().browse(request.session.uid)
+        reminder_cat = request.env['qwaco.reminder.category'].sudo().search([('id', '=', int(reminder_category))])
+        data = []
+        tz = pytz.timezone("Asia/Ho_Chi_Minh")
+        date_start = fields.datetime.now().astimezone(tz).strftime(DEFAULT_SERVER_DATE_FORMAT)
+        if reminder_cat:
+            domain = [('order_id.team_id.member_ids', 'in', uid.ids),
+                      ('order_id.team_id', '!=', False),
+                      ('order_id.state', 'in', ('sale', 'done')),
+                      ('order_id.is_paid', '=', False),
+                      ('reminder_category_id', '=', reminder_cat.id),
+                      ('reminder_date', '<=', date_start),
+                      ('is_processed', '=', False)]
+            if customer_code and len(customer_code) > 0:
+                domain += [('order_id.partner_id.customer_code', '=',customer_code)]
+            order_reminders = request.env['qwaco.sale.order.reminder'].sudo().search(domain,limit=300)
+
+            for reminder in order_reminders:
+                quant_his = request.env['qwaco.water.meter.quantity.history'].sudo().search(
+                    [('order_id', '=', reminder.order_id.id),
+                     ('water_meter_id', '=', reminder.order_id.water_meter_id.id),
+                     ('type', '=', 'addition')], limit=1)
+                if quant_his:
+                    last_qty = quant_his.old_quantity
+                    new_quantity = quant_his.new_quantity
+                    used_quantity = quant_his.new_quantity - quant_his.old_quantity
+
+                if reminder.order_id.water_meter_id and reminder.order_id.water_meter_id.partner_id.vietnam_full_address:
+                    address = reminder.order_id.water_meter_id.partner_id.vietnam_full_address
+                else:
+                    address = reminder.order_id.partner_id.vietnam_full_address
+
+                popular_name = reminder.order_id.partner_id.popular_name
+                if reminder.order_id.water_meter_id and reminder.order_id.water_meter_id.partner_id and reminder.order_id.water_meter_id.partner_id.name:
+                    name = reminder.order_id.water_meter_id.partner_id.name
+                else:
+                    name = reminder.order_id.partner_id.name
+
+                vals = {'order_no': reminder.order_id.name,
+                        'customer': {'name': name,
+                                     'popular_name': popular_name,
+                                     'address': address
+                                     },
+                        'meter': {'code': reminder.order_id.water_meter_id.name,
+                                  'last_quantity': round(last_qty, 3),
+                                  'used_quantity': round(used_quantity, 3),
+                                  'current_quantity': round(new_quantity, 3),
+                                  'unit': "m3"
+                                  },
+                        'is_paid': reminder.order_id.is_paid,
+                        'reminder': {'name': reminder.reminder_category_id.name,
+                                     'sequence': reminder.reminder_category_id.sequence,
+                                     'date': reminder.reminder_date.strftime(
+                                         DEFAULT_SERVER_DATE_FORMAT),
+                                     }
+                        }
+                data.append(vals)
+        else:
+            error_descrip = _("Vui lòng nhập đầy đủ giá trị !")
+            error = error_code
+            _logger.error(error_descrip)
+            return error_response(400, error, error_descrip)
+        # Successful response:
+        return werkzeug.wrappers.Response(
+            status=OUT__customer__call_method__SUCCESS_CODE,
+            content_type='application/json; charset=utf-8',
+            headers=[('Cache-Control', 'no-store'),
+                     ('Pragma', 'no-cache')],
+            response=json.dumps({
+                'success': True,
+                'result': {
+                    'data': data
+                }
+            }),
+        )
