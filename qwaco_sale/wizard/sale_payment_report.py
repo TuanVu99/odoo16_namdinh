@@ -23,7 +23,7 @@ class SaleListReport(models.TransientModel):
         default=str(datetime.now().year), required=True)
     month = fields.Selection(
         selection='month_selection',
-        string="Năm",
+        string="Tháng",
         default=str(datetime.now().month), required=True)
     district_ids = fields.Many2many('res.country.state.district',string="Huyện")
 
@@ -75,9 +75,9 @@ class SaleListReport(models.TransientModel):
                     sol_1.product_uom_qty as slg_tieu_thu,
                     sol_2.product_uom_qty as giam_gia,
                     sol_1.product_uom_qty + sol_2.product_uom_qty as slg_thanh_toan,
-                    sol_1.price_subtotal as tien_truoc_thue,
-                    sol_1.price_tax as thue,
-                    sol_1.price_total as tien_sau_thue,
+                    sale_order.amount_untaxed as tien_truoc_thue,
+                    sale_order.amount_tax as thue,
+                    sale_order.amount_total as tien_sau_thue,
                     sale_order.is_paid as thanh_toan,
                     DATE(sale_order.paid_date) as ngay_thanh_toan
             from sale_order
@@ -138,6 +138,8 @@ class SaleListReport(models.TransientModel):
         highlight1.alignment = Alignment(horizontal='center', vertical='center', wrapText=True)
 
         ws.cell(3, 6).value = "Tháng " + self.month+" năm "+self.year
+        ws.cell(2, 21).value = "Tạo bởi:" + self.env.user.name
+        ws.cell(3, 21).value = "Ngày tạo: " + str(datetime.now().date())
 
         row = 5
 
