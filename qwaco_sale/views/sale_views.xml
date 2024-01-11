@@ -1,181 +1,297 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="qwaco_view_sales_order_filter" model="ir.ui.view">
-        <field name="name">sale.order.list.select</field>
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_sales_order_filter"/>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='name']" position="replace">
-                <field name="name" string="Order"
-                    filter_domain="['|', '|', '|', ('water_meter_id', 'ilike', self), ('name', 'ilike', self), ('client_order_ref', 'ilike', self), ('partner_id', 'child_of', self)]"/>
-                <field name="ward_id" string="Ward" filter_domain="[('partner_invoice_id.ward_id', 'ilike', self)]"/>
-                <field name="zone_id" string="Zone" filter_domain="[('partner_invoice_id.zone_id', 'ilike', self)]"/>
-            </xpath>
-            <xpath expr="//filter[@name='customer']" position="before">
-                <filter name="payment_term" string="Payment Method" domain="[]" context="{'group_by': 'payment_term_id'}"/>
-            </xpath>
-            <xpath expr="//field[@name='analytic_account_id']" position="before">
-                <filter string="Cash" name="pay_now" domain="[('payment_term_id.code', '=', 'pay_now')]"/>
-                <filter string="Pay Later" name="pay_later" domain="[('payment_term_id.code', '=', 'pay_later')]"/>
-            </xpath>
-        </field>
-    </record>
+    <data>
+        <record id="qwaco_view_sales_order_filter" model="ir.ui.view">
+            <field name="name">sale.order.list.select</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_sales_order_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="replace">
+                    <field name="name" string="Order"
+                        filter_domain="['|', '|', '|', ('water_meter_id', 'ilike', self), ('name', 'ilike', self), ('client_order_ref', 'ilike', self), ('partner_id', 'child_of', self)]"/>
+                    <field name="ward_id" string="Ward" filter_domain="[('partner_invoice_id.ward_id', 'ilike', self)]"/>
+                    <field name="zone_id" string="Zone" filter_domain="[('partner_invoice_id.zone_id', 'ilike', self)]"/>
+                </xpath>
+                <xpath expr="//filter[@name='customer']" position="before">
+                    <filter name="payment_term" string="Payment Method" domain="[]" context="{'group_by': 'payment_term_id'}"/>
+                </xpath>
+                <xpath expr="//field[@name='analytic_account_id']" position="before">
+                    <filter string="Cash" name="pay_now" domain="[('payment_term_id.code', '=', 'pay_now')]"/>
+                    <filter string="Pay Later" name="pay_later" domain="[('payment_term_id.code', '=', 'pay_later')]"/>
+                </xpath>
+            </field>
+        </record>
 
-    <record id="qwaco_sale_order_view_search_inherit_quotationr" model="ir.ui.view">
-        <field name="name">>sale.order.search.inherit.quotation</field>
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
-        <field name="arch" type="xml">
-            <xpath expr="//filter[@name='filter_create_date']" position="after">
-                <filter string="Order Date" name="filter_order_date" date="date_order"/>
-                <filter string="Paid Date" name="filter_paid_date" date="paid_date"/>
-            </xpath>
-        </field>
-    </record>
+        <record id="qwaco_sale_order_view_search_inherit_quotationr" model="ir.ui.view">
+            <field name="name">>sale.order.search.inherit.quotation</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='filter_create_date']" position="after">
+                    <filter string="Order Date" name="filter_order_date" date="date_order"/>
+                    <filter string="Paid Date" name="filter_paid_date" date="paid_date"/>
+                </xpath>
+            </field>
+        </record>
 
-    <record id="qwaco_view_quotation_tree" model="ir.ui.view">
-        <field name="name">sale.order.tree.inherit.</field>
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_quotation_tree"/>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='amount_total']" position="after">
-                <field name="payment_term_id" options="{'no_create': True}" optional="show" />
-            </xpath>
-            <xpath expr="//field[@name='partner_id']" position="before">
-                <field name="date_order" widget="date"/>
-                <field name="paid_date" widget="date"/>
-                <field name="water_meter_id" options="{'no_create': True}" />
-                <field name="zone_id" options="{'no_create': True}" />
-                <field name="partner_invoice_id" options="{'no_create': True}" optional="show" />
-            </xpath>
-            <xpath expr="//field[@name='user_id']" position="attributes">
-                <attribute name="optional">hide</attribute>
-            </xpath>
-            <xpath expr="//field[@name='create_date']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//field[@name='commitment_date']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-        </field>
-    </record>
+        <record id="qwaco_view_quotation_tree" model="ir.ui.view">
+            <field name="name">sale.order.tree.inherit.</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_total']" position="after">
+                    <field name="payment_term_id" options="{'no_create': True}" optional="show" />
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="before">
+                    <field name="date_order" widget="date"/>
+                    <field name="paid_date" widget="date"/>
+                    <field name="water_meter_id" options="{'no_create': True}" />
+                    <field name="zone_id" options="{'no_create': True}" />
+                    <field name="partner_invoice_id" options="{'no_create': True}" optional="show" />
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="attributes">
+                    <attribute name="optional">hide</attribute>
+                </xpath>
+                <xpath expr="//field[@name='create_date']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='commitment_date']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
 
-    <record id="qwaco_view_order_tree" model="ir.ui.view">
-        <field name="name">sale.order.tree.inherit.</field>
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_order_tree"/>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='amount_total']" position="after">
-                <field name="payment_term_id" options="{'no_create': True}" optional="show" />
-            </xpath>
-            <xpath expr="//field[@name='partner_id']" position="before">
-                <field name="paid_date" widget="date"/>
-                <field name="water_meter_id" options="{'no_create': True}" />
-                <field name="zone_id" options="{'no_create': True}" />
-                <field name="partner_invoice_id" options="{'no_create': True}" optional="show" />
-            </xpath>
-            <xpath expr="//field[@name='user_id']" position="attributes">
-                <attribute name="optional">hide</attribute>
-            </xpath>
-            <xpath expr="//field[@name='commitment_date']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-        </field>
-    </record>
+        <record id="qwaco_view_order_tree" model="ir.ui.view">
+            <field name="name">sale.order.tree.inherit.</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_total']" position="after">
+                    <field name="payment_term_id" options="{'no_create': True}" optional="show" />
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="before">
+                    <field name="paid_date" widget="date"/>
+                    <field name="water_meter_id" options="{'no_create': True}" />
+                    <field name="zone_id" options="{'no_create': True}" />
+                    <field name="partner_invoice_id" options="{'no_create': True}" optional="show" />
+                </xpath>
+                <xpath expr="//field[@name='user_id']" position="attributes">
+                    <attribute name="optional">hide</attribute>
+                </xpath>
+                <xpath expr="//field[@name='commitment_date']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
 
-    <record id="qwaco_view_order_form" model="ir.ui.view">
-        <field name="name">sale.order.form</field>
-        <field name="model">sale.order</field>
-        <field name="inherit_id" ref="sale.view_order_form"/>
-        <field name="arch" type="xml">
-            <button name="action_confirm" position="after">
-                <field name="show_paid_button" invisible="1"/>
-                <button string="Paid Now" name="action_paid" type="object" attrs="{'invisible' : ['|', ('show_paid_button', '=', False), ('state', 'not in', ['done', 'sale'])]}" class="btn-primary"/>
-             </button>
-            <button name="action_draft" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </button>
-            <button name="action_quotation_send" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </button>
-            <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="popular_name" attrs="{'invisible': [('partner_id','=', False)]}"/>
-                <field name="water_meter_id" attrs="{'invisible': [('partner_id','=', False)], 'readonly': [('state', '!=', 'draft')]}"
-                       domain="[('state', '=', 'active')]" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
-                <field name="contract_no" attrs="{'invisible': [('partner_id','=', False)]}"/>
-            </xpath>
-            <xpath expr="//field[@name='payment_term_id']" position="after">
-                <field name="is_paid" attrs="{'invisible': [('payment_term_id','=', False), ('state','in', ['draft', 'sent', 'cancel'])],
-                                              'readonly': [('state', 'not in', ['draft', 'sent'])]}"/>
-                <field name="paid_date" attrs="{'invisible': [('is_paid','=', False)]}" readonly="1"/>
-            </xpath>
-            <xpath expr="//field[@name='payment_term_id']" position="attributes">
-                <attribute name="attrs">{'readonly': [('state', 'not in', ['draft', 'sent'])]}</attribute>
-            </xpath>
-            <xpath expr="//page[@name='customer_signature']" position='after'>
-                 <page name="reminder_list" string="Reminder List" mode="tree" attrs="{'invisible': ['|', ('payment_term_id','=', False), ('state', 'not in', ('sale', 'done'))]}">
-                    <field name="reminder_ids" nolabel="1">
-                        <tree editable="bottom" delete="0">
-                            <field name="reminder_category_id" />
-                            <field name="reminder_date" />
-                            <field name="user_id" />
-                            <field name="actual_reminder_date" />
-                            <field name="is_processed" />
-                        </tree>
-                    </field>
-                 </page>
-                <page name="quantity_list" string="Water Meter Quantity" mode="tree" attrs="{'invisible': [('water_meter_quantity_ids','=', False),]}">
-                    <field name="water_meter_quantity_ids" readonly="1">
-                        <tree>
-                            <field name="create_date" widget="date"/>
-                            <field name="water_meter_id"/>
-                            <field name="old_quantity"/>
-                            <field name="new_quantity"/>
-                            <field name="type"/>
-                        </tree>
-                    </field>
-                </page>
-             </xpath>
-            <xpath expr="//field[@name='order_line']/tree/field[@name='qty_invoiced']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath expr="//field[@name='order_line']/tree/field[@name='qty_delivered']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-        </field>
-    </record>
+        <record id="qwaco_view_order_form" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <button name="action_confirm" position="after">
+                    <field name="show_paid_button" invisible="1"/>
+                    <button string="Paid Now" name="action_paid" type="object" attrs="{'invisible' : ['|', ('show_paid_button', '=', False), ('state', 'not in', ['done', 'sale'])]}" class="btn-primary"/>
+                 </button>
+                <button name="action_draft" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </button>
+                <button name="action_quotation_send" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </button>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="popular_name" attrs="{'invisible': [('partner_id','=', False)]}"/>
+                    <field name="water_meter_id" attrs="{'invisible': [('partner_id','=', False)], 'readonly': [('state', '!=', 'draft')]}"
+                           domain="[('state', '=', 'active')]" options="{'no_create_edit': True, 'no_create': True, 'no_open': True}"/>
+                    <field name="contract_no" attrs="{'invisible': [('partner_id','=', False)]}"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="is_paid" attrs="{'invisible': [('payment_term_id','=', False), ('state','in', ['draft', 'sent', 'cancel'])],
+                                                  'readonly': [('state', 'not in', ['draft', 'sent'])]}"/>
+                    <field name="paid_date" attrs="{'invisible': [('is_paid','=', False)]}" readonly="1"/>
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']" position="attributes">
+                    <attribute name="attrs">{'readonly': [('state', 'not in', ['draft', 'sent'])]}</attribute>
+                </xpath>
+                <xpath expr="//page[@name='customer_signature']" position='after'>
+                     <page name="reminder_list" string="Reminder List" mode="tree" attrs="{'invisible': ['|', ('payment_term_id','=', False), ('state', 'not in', ('sale', 'done'))]}">
+                        <field name="reminder_ids" nolabel="1">
+                            <tree editable="bottom" delete="0">
+                                <field name="reminder_category_id" />
+                                <field name="reminder_date" />
+                                <field name="user_id" />
+                                <field name="actual_reminder_date" />
+                                <field name="is_processed" />
+                            </tree>
+                        </field>
+                     </page>
+                    <page name="quantity_list" string="Water Meter Quantity" mode="tree" attrs="{'invisible': [('water_meter_quantity_ids','=', False),]}">
+                        <field name="water_meter_quantity_ids" readonly="1">
+                            <tree>
+                                <field name="create_date" widget="date"/>
+                                <field name="water_meter_id"/>
+                                <field name="old_quantity"/>
+                                <field name="new_quantity"/>
+                                <field name="type"/>
+                            </tree>
+                        </field>
+                    </page>
+                 </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='qty_invoiced']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='qty_delivered']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
 
-    <record model="ir.ui.view" id="view_reminder_category_form">
-        <field name="name">Reminder Category</field>
-        <field name="model">qwaco.reminder.category</field>
-        <field name="arch" type="xml">
-            <form string="Reminder Category">
-                <field name="name" />
-                <field name="sequence" />
-            </form>
-        </field>
-    </record>
-    <record model="ir.ui.view" id="view_reminder_category_tree">
-        <field name="name">Reminder Category</field>
-        <field name="model">qwaco.reminder.category</field>
-        <field name="arch" type="xml">
-            <tree string="Reminder Category" editable="bottom">
-                <field name="name" />
-                <field name="sequence" />
-            </tree>
-        </field>
-    </record>
-    <record model="ir.actions.act_window" id="action_reminder_category">
-        <field name="name">Reminder Category</field>
-        <field name="res_model">qwaco.reminder.category</field>
-        <field name="view_mode">tree,form</field>
-    </record>
-    <menuitem
-        id="menu_reminder_category"
-        parent="sale.menu_sale_config"
-        name="Reminder Category"
-        action="action_reminder_category"
-        sequence="150"
-        groups="sales_team.group_sale_manager"
-    />
+        <record model="ir.ui.view" id="view_reminder_category_form">
+            <field name="name">Reminder Category</field>
+            <field name="model">qwaco.reminder.category</field>
+            <field name="arch" type="xml">
+                <form string="Reminder Category">
+                    <field name="name" />
+                    <field name="sequence" />
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_reminder_category_tree">
+            <field name="name">Reminder Category</field>
+            <field name="model">qwaco.reminder.category</field>
+            <field name="arch" type="xml">
+                <tree string="Reminder Category" editable="bottom">
+                    <field name="name" />
+                    <field name="sequence" />
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_reminder_category">
+            <field name="name">Reminder Category</field>
+            <field name="res_model">qwaco.reminder.category</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem
+            id="menu_reminder_category"
+            parent="sale.menu_sale_config"
+            name="Reminder Category"
+            action="action_reminder_category"
+            sequence="150"
+            groups="sales_team.group_sale_manager"
+        />
+
+    </data>
+    <data>
+        <record id="view_partners_sale_form" model="ir.ui.view">
+            <field name="name">view.res.partner.sale.form.inherited</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='internal_notes']" position="after">
+                    <page name="sale_order_list" string="Danh sách báo giá">
+                        <field name="sale_order_ids" mode="kanban" readonly="1">
+                            <kanban>
+                                <!-- Các trường để hiển thị trên Kanban -->
+                                <field name="name"/>
+                                <field name="partner_id"/>
+                                <field name="amount_total"/>
+                                <field name="date_order"/>
+                                <field name="state"/>
+                                <field name="currency_id"/>
+                                <field name="water_meter_id"/>
+                                <field name="x_old_quantity"/>
+                                <field name="x_new_quantity"/>
+                                <field name="x_tieu_thu"/>
+                                <field name="x_giam_gia"/>
+                                <field name="amount_untaxed"/>
+                                <field name="amount_tax"/>
+                                <field name="x_amount_text"/>
+                                <field name="x_customer_phone"/>
+                                <field name="x_customer_address"/>
+                                <field name="x_meter_address"/>
+                                <field name="x_ky"/>
+
+                                <templates>
+                                    <t t-name="kanban-box">
+                                        <div t-attf-class="oe_kanban_card oe_kanban_global_click">
+                                            <div class="o_kanban_record_top mb16">
+                                                <div class="o_kanban_record_headings mt4">
+                                                    <strong class="o_kanban_record_title">
+                                                        <field name="name"/>
+                                                    </strong>
+                                                </div>
+                                            </div>
+                                            <div class="oe_kanban_details">
+                                                    <strong class="o_kanban_record_title">
+                                                        Kì thanh toán: <field name="x_ky"/>
+                                                    </strong>
+
+                                            </div>
+                                            <div class="oe_kanban_details">
+                                                     <strong class="o_kanban_record_title">
+                                                       Khách hàng : <span t-out="record.partner_id.value"/>
+                                                    </strong>
+                                            </div>
+                                            <div class="oe_kanban_details">
+                                                <p>
+                                                    SĐT :
+                                                    <field name="x_customer_phone"/>
+                                                    <br/>
+                                                    Địa chỉ :
+                                                    <field name="x_customer_address"/>
+                                                </p>
+                                            </div>
+
+                                            <div class="oe_kanban_details">
+                                                     <strong class="o_kanban_record_title">
+                                                       Đồng hồ : <span t-out="record.water_meter_id.value"/>
+                                                    </strong><br/>
+                                                    <p >
+                                                       ĐC đồng hồ : <field name="x_meter_address"/>
+                                                    </p>
+
+                                            </div>
+                                            <div class="o_kanban_record_bottom">
+                                                <div class="oe_kanban_bottom_left">
+                                                    <p>
+                                                        Số nước mới : <span t-out="record.x_new_quantity.value"/>
+                                                        <br/>
+                                                        Số nước cũ : <span t-out="record.x_old_quantity.value"/>
+                                                        <br/>
+                                                        Tiêu thụ : <span t-out="record.x_tieu_thu.value"/>
+                                                        <br/>
+                                                        Đơn vị: m3
+                                                    </p>
+                                                </div>
+                                                <div class="oe_kanban_bottom_right">
+                                                    <p>
+                                                        Giảm giá : <span t-out="record.x_giam_gia.value"/>
+                                                        <br/>
+                                                        Tiền nước : <span t-out="record.amount_untaxed.value"/>
+                                                        <br/>
+                                                        Thuế GTGT : <span t-out="record.amount_tax.value"/>
+                                                        <br/>
+                                                        Tổng tiền : <span t-out="record.amount_total.value"/>
+                                                    </p>
+                                                </div>
+
+                                            </div>
+                                            <div class="oe_kanban_details text-muted">
+                                                    <p>
+                                                        Bằng chữ :
+                                                        <span>
+                                                            <field name="x_amount_text"/>
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                        </div>
+                                    </t>
+                                </templates>
+                            </kanban>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
 </odoo>

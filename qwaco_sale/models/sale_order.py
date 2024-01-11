@@ -33,6 +33,71 @@ class SaleOrder(models.Model):
         states=READONLY_FIELD_STATES,
         help="Creation date of draft/sent orders,\nConfirmation date of confirmed orders.",
         default=fields.Datetime.now)
+    x_old_quantity = fields.Float('Old Quantity',compute ='compute_water',default=0)
+    x_new_quantity = fields.Float('New Quantity',compute ='compute_water',default=0)
+    x_tieu_thu = fields.Float('Số lượng nước tiêu thụ',compute ='compute_tieu_thu',default=0)
+    x_giam_gia = fields.Float('Giảm giá',compute ='compute_giam_gia',default=0)
+    x_amount_text = fields.Char("Bằng chữ",compute ='compute_bang_chu')
+    x_customer_phone = fields.Char("Điện thoại", related='partner_id.phone')
+    x_customer_address = fields.Text("Địa chỉ", related='partner_id.vietnam_full_address')
+    x_meter_address = fields.Text("Địa chỉ ĐH", related='water_meter_id.partner_id.vietnam_full_address')
+    x_ky= fields.Char("Kỳ tt", compute="compute_ky")
+
+    def compute_ky(self):
+        for r in self:
+            r.x_ky = 'tháng '+ str(r.create_date.month)+'/'+str(r.create_date.year)
+
+    @api.depends('water_meter_quantity_ids')
+    def compute_water(self):
+        for r in self:
+            if r.water_meter_quantity_ids:
+                for line in r.water_meter_quantity_ids:
+                    r.x_new_quantity = line.new_quantity
+                    r.x_old_quantity = line.old_quantity
+            else:
+                r.x_new_quantity = 0
+                r.x_old_quantity = 0
+
+    @api.depends('order_line')
+    def compute_tieu_thu(self):
+        for r in self:
+            if r.order_line:
+                for line in r.order_line.filtered(lambda l: l.product_template_id.id == 1):
+                    r.x_tieu_thu = line.product_uom_qty or 0
+            else:
+                r.x_tieu_thu = 0
+
+    @api.depends('order_line')
+    def compute_giam_gia(self):
+        for r in self:
+            if r.order_line and any(line.product_template_id.id == 5 for line in r.order_line):
+                for line in r.order_line.filtered(lambda l: l.product_template_id.id == 5):
+                    r.x_giam_gia = line.product_uom_qty
+            else:
+                r.x_giam_gia =0
+
+    @api.depends('amount_total')
+    def number_to_words(self,amount):
+        units = ["", "Mười", "Hai Mươi", "Ba Mươi", "Bốn Mươi", "Năm Mươi", "Sáu Mươi", "Bảy Mươi", "Tám Mươi",
+                 "Chín Mươi"]
+        digits = ["", "Một", "Hai", "Ba", "Bốn", "Năm", "Sáu", "Bảy", "Tám", "Chín"]
+
+        amount_str = str(amount)
+        length = len(amount_str)
+
+        result = ""
+
+        for i in range(length):
+            digit = int(amount_str[i])
+            if digit > 0:
+                result += units[length - i - 1] + " " + digits[digit] + " "
+
+        return result.strip()
+
+    @api.depends('amount_total')
+    def compute_bang_chu(self):
+        for r  in self:
+            r.x_amount_text = r.number_to_words(int(r.amount_total)) or ""
 
     def get_first_date_of_month(self, year, month):
         """Return the first date of the month.
