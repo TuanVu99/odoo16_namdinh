@@ -6,6 +6,7 @@ from datetime import timedelta, datetime
 from ast import literal_eval
 import pytz
 import logging
+from . import num2vnd
 
 _logger = logging.getLogger(__name__)
 
@@ -76,28 +77,11 @@ class SaleOrder(models.Model):
             else:
                 r.x_giam_gia =0
 
-    @api.depends('amount_total')
-    def number_to_words(self,amount):
-        units = ["", "Mười", "Hai Mươi", "Ba Mươi", "Bốn Mươi", "Năm Mươi", "Sáu Mươi", "Bảy Mươi", "Tám Mươi",
-                 "Chín Mươi"]
-        digits = ["", "Một", "Hai", "Ba", "Bốn", "Năm", "Sáu", "Bảy", "Tám", "Chín"]
-
-        amount_str = str(amount)
-        length = len(amount_str)
-
-        result = ""
-
-        for i in range(length):
-            digit = int(amount_str[i])
-            if digit > 0:
-                result += units[length - i - 1] + " " + digits[digit] + " "
-
-        return result.strip()
 
     @api.depends('amount_total')
     def compute_bang_chu(self):
         for r  in self:
-            r.x_amount_text = r.number_to_words(int(r.amount_total)) or ""
+            r.x_amount_text = num2vnd.num2word(int(r.amount_total))+' đồng' or ""
 
     def get_first_date_of_month(self, year, month):
         """Return the first date of the month.
