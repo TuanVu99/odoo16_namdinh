@@ -12,7 +12,7 @@ import pytz
 _logger = logging.getLogger(__name__)
 # editable
 
-OUT__customer__call_method__SUCCESS_CODE = 200    # editable
+OUT__customer__call_method__SUCCESS_CODE = 200  # editable
 
 error_code = "01"
 # api_prefix = "/api/qwaco/sale"
@@ -858,7 +858,8 @@ class SaleControllerREST(http.Controller):
             }),
         )
 
-    @http.route('%s/reminder/get_category' % api_prefix, methods=['GET'], type='http', auth='none',csrf=False)  # Bổ sung giá trị tất cả ứng ID 9
+    @http.route('%s/reminder/get_category' % api_prefix, methods=['GET'], type='http', auth='none',
+                csrf=False)  # Bổ sung giá trị tất cả ứng ID 9
     @check_permissions
     def api__sale__reminder__get_category(self, **kw):
         args = {}
@@ -984,7 +985,8 @@ class SaleControllerREST(http.Controller):
             }),
         )
 
-    @http.route('%s/get_list_sale_confirmations_customer' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)
+    @http.route('%s/get_list_sale_confirmations_customer' % api_prefix, methods=['POST'], type='http', auth='none',
+                csrf=False)
     @check_permissions
     def api__sale_confirmations_customer__get_list_sale(self, **kw):
         args = {}
@@ -1011,16 +1013,16 @@ class SaleControllerREST(http.Controller):
             orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
                                                               ('team_id', '!=', False),
                                                               ('partner_id.customer_code', '=', customer),
-                                                              ('partner_id.state', '=', 'active'),
+                                                              ('water_meter_id.state', '=', 'active'),
                                                               ('payment_term_id', '=', payment_term_id.id),
                                                               ('state', 'in', ('sale', 'done'))])
         else:
             orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
                                                               ('team_id', '!=', False),
-                                                              ('partner_id.customer_code', '!=', False),
-                                                              ('partner_id.name.state', '=', 'active'),
+                                                              ('partner_id', '!=', False),
+                                                              ('water_meter_id.state', '=', 'active'),
                                                               ('payment_term_id', '=', payment_term_id.id),
-                                                              ('state', 'in', ('sale', 'done'))],limit=300)
+                                                              ('state', 'in', ('sale', 'done'))], limit=300)
 
         tz = pytz.timezone(str(uid.partner_id.tz) if uid.partner_id.tz else "Asia/Ho_Chi_Minh")
         for order in orders:
@@ -1029,28 +1031,33 @@ class SaleControllerREST(http.Controller):
             else:
                 last_quantity = order.water_meter_id.first_balance
 
-            if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
-                address = order.water_meter_id.partner_id.vietnam_full_address
-            else:
-                address = order.partner_id.vietnam_full_address
+            # if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
+            #    address = order.water_meter_id.partner_id.vietnam_full_address
+            # else:
+            #    address = order.partner_id.vietnam_full_address
 
             popular_name = order.partner_id.popular_name
-            if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
-                name = order.water_meter_id.partner_id.name
-                id_number = order.water_meter_id.partner_id.id_number
-            else:
-                name = order.partner_id.name
+
+            # if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
+            #    name = order.water_meter_id.partner_id.name
+            #    id_number = order.water_meter_id.partner_id.id_number
+            # else:
+            name = order.partner_id.name
+
+            if order.partner_id.id_number:  # Bổ sung thông tin CCCD / MST
                 id_number = order.partner_id.id_number
+            else:
+                id_number = ""
 
             vals = {'order_no': order.name,
                     'customer': {'name': name,
                                  'popular_name': popular_name,
-                                 'id_number':id_number,
+                                 'id_number': id_number,
                                  'address': order.partner_id.vietnam_full_address
                                  },
                     'meter': {'code': order.water_meter_id.name,
                               'last_quantity': round(last_quantity, 3),
-                              'address': address
+                              'address': order.water_meter_id.partner_id.vietnam_full_address
                               },
                     'create_date': order.create_date.astimezone(tz).strftime(DEFAULT_SERVER_DATE_FORMAT),
                     'is_paid': order.is_paid
@@ -1095,8 +1102,8 @@ class SaleControllerREST(http.Controller):
             orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
                                                               ('team_id', '!=', False),
                                                               ('partner_id', '!=', False),
-                                                              ('partner_id.state', '=', 'active'),
-                                                              ('state', 'in', ('draft', 'sent'))],limit=300)
+                                                              ('water_meter_id.state', '=', 'active'),
+                                                              ('state', 'in', ('draft', 'sent'))], limit=300)
         tz = pytz.timezone(str(uid.partner_id.tz) if uid.partner_id.tz else "Asia/Ho_Chi_Minh")
         for order in orders:
             if order.water_meter_id.balance > 0:
@@ -1104,27 +1111,33 @@ class SaleControllerREST(http.Controller):
             else:
                 last_quantity = order.water_meter_id.first_balance
 
-            if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
-                address = order.water_meter_id.partner_id.vietnam_full_address
-            else:
-                address = order.partner_id.vietnam_full_address
+            # if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
+            #    address = order.water_meter_id.partner_id.vietnam_full_address
+            # else:
+            #    address = order.partner_id.vietnam_full_address
+
             popular_name = order.partner_id.popular_name
-            if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
-                name = order.water_meter_id.partner_id.name
-                id_number = order.water_meter_id.partner_id.id_number
-            else:
-                name = order.partner_id.name
+
+            # if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
+            #    name = order.water_meter_id.partner_id.name
+            #    id_number = order.water_meter_id.partner_id.id_number
+            # else:
+            name = order.partner_id.name
+
+            if order.partner_id.id_number:  # Bổ sung thông tin CCCD / MST
                 id_number = order.partner_id.id_number
+            else:
+                id_number = ""
 
             vals = {'order_no': order.name,
                     'customer': {'name': name,
                                  'popular_name': popular_name,
-                                 'id_number':id_number,
+                                 'id_number': id_number,
                                  'address': order.partner_id.vietnam_full_address
                                  },
                     'meter': {'code': order.water_meter_id.name,
                               'last_quantity': round(last_quantity, 3),
-                              'address': address
+                              'address': order.water_meter_id.partner_id.vietnam_full_address
                               },
                     'create_date': order.create_date.astimezone(tz).strftime(DEFAULT_SERVER_DATE_FORMAT),
                     'is_paid': order.is_paid
@@ -1144,7 +1157,8 @@ class SaleControllerREST(http.Controller):
             }),
         )
 
-    @http.route('%s/reminder/get_list_sale_customer' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)
+    @http.route('%s/reminder/get_list_sale_customer' % api_prefix, methods=['POST'], type='http', auth='none',
+                csrf=False)
     @check_permissions
     def api__sale__reminder__get_list_sale_customer(self, **kw):
         args = {}
@@ -1165,10 +1179,15 @@ class SaleControllerREST(http.Controller):
         # # Convert json data into Odoo vals:
         uid = request.env['res.users'].sudo().browse(request.session.uid)
         reminder_cat = request.env['qwaco.reminder.category'].sudo().search([('id', '=', int(reminder_category))])
+
+        if int(reminder_category) == 9:
+            reminder_cat = request.env['qwaco.reminder.category'].sudo().search(
+                [('id', '=', 1)])  # Gán trường bất kỳ với trường hợp search tất cả (reminder_category = 0)
         data = []
         tz = pytz.timezone("Asia/Ho_Chi_Minh")
         date_start = fields.datetime.now().astimezone(tz).strftime(DEFAULT_SERVER_DATE_FORMAT)
         if reminder_cat:
+
             domain = [('order_id.team_id.member_ids', 'in', uid.ids),
                       ('order_id.team_id', '!=', False),
                       ('order_id.state', 'in', ('sale', 'done')),
@@ -1176,9 +1195,18 @@ class SaleControllerREST(http.Controller):
                       ('reminder_category_id', '=', reminder_cat.id),
                       ('reminder_date', '<=', date_start),
                       ('is_processed', '=', False)]
+
+            if int(reminder_category) == 9:  # Loại bỏ điều kiện reminder_category trong domain tìm kiếm
+                domain = [('order_id.team_id.member_ids', 'in', uid.ids),
+                          ('order_id.team_id', '!=', False),
+                          ('order_id.state', 'in', ('sale', 'done')),
+                          ('order_id.is_paid', '=', False),
+                          ('reminder_date', '<=', date_start),
+                          ('is_processed', '=', False)]
+
             if customer_code and len(customer_code) > 0:
-                domain += [('order_id.partner_id.customer_code', '=',customer_code)]
-            order_reminders = request.env['qwaco.sale.order.reminder'].sudo().search(domain,limit=300)
+                domain += [('order_id.partner_id.customer_code', '=', customer_code)]
+            order_reminders = request.env['qwaco.sale.order.reminder'].sudo().search(domain, limit=300)
 
             for reminder in order_reminders:
                 quant_his = request.env['qwaco.water.meter.quantity.history'].sudo().search(
@@ -1190,27 +1218,33 @@ class SaleControllerREST(http.Controller):
                     new_quantity = quant_his.new_quantity
                     used_quantity = quant_his.new_quantity - quant_his.old_quantity
 
-                if reminder.order_id.water_meter_id and reminder.order_id.water_meter_id.partner_id.vietnam_full_address:
-                    address = reminder.order_id.water_meter_id.partner_id.vietnam_full_address
-                else:
-                    address = reminder.order_id.partner_id.vietnam_full_address
+                # if reminder.order_id.water_meter_id and reminder.order_id.water_meter_id.partner_id.vietnam_full_address:
+                #    address = reminder.order_id.water_meter_id.partner_id.vietnam_full_address
+                # else:
+                #    address = reminder.order_id.partner_id.vietnam_full_address
 
                 popular_name = reminder.order_id.partner_id.popular_name
-                if reminder.order_id.water_meter_id and reminder.order_id.water_meter_id.partner_id and reminder.order_id.water_meter_id.partner_id.name:
-                    name = reminder.order_id.water_meter_id.partner_id.name
-                    id_number = reminder.order_id.water_meter_id.partner_id.id_number
-                else:
-                    name = reminder.order_id.partner_id.name
+
+                # if reminder.order_id.water_meter_id and reminder.order_id.water_meter_id.partner_id and reminder.order_id.water_meter_id.partner_id.name:
+                #    name = reminder.order_id.water_meter_id.partner_id.name
+                #    id_number = reminder.order_id.water_meter_id.partner_id.id_number
+                # else:
+
+                name = reminder.order_id.partner_id.name
+
+                if order.partner_id.id_number:  # Bổ sung thông tin CCCD / MST
                     id_number = reminder.order_id.partner_id.id_number
+                else:
+                    id_number = ""
 
                 vals = {'order_no': reminder.order_id.name,
                         'customer': {'name': name,
                                      'popular_name': popular_name,
-                                     'id_number':id_number,
+                                     'id_number': id_number,
                                      'address': reminder.partner_id.vietnam_full_address
                                      },
                         'meter': {'code': reminder.order_id.water_meter_id.name,
-                                  'address': address,
+                                  'address': reminder.order_id.water_meter_id.partner_id.vietnam_full_address,
                                   'last_quantity': round(last_qty, 3),
                                   'used_quantity': round(used_quantity, 3),
                                   'current_quantity': round(new_quantity, 3),
