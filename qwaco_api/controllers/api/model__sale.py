@@ -42,7 +42,7 @@ class SaleControllerREST(http.Controller):
         if meter_code and len(meter_code) > 0:
             orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
                                                               ('team_id', '!=', False),
-                                                              ('water_meter_id.name', '=', meter_code),
+                                                              ('water_meter_id.name', 'ilike', '%' meter_code '%'),     #Tìm kiếm gần đúng
                                                               ('water_meter_id.state', '=', 'active'),
                                                               ('state', 'in', ('draft', 'sent'))])
         else:
@@ -138,7 +138,7 @@ class SaleControllerREST(http.Controller):
         if meter_code and len(meter_code) > 0:
             orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
                                                               ('team_id', '!=', False),
-                                                              ('water_meter_id.name', '=', meter_code),
+                                                              ('water_meter_id.name', 'ilike', '%' + meter_code + '%'),     #Tìm kiếm gần đúng
                                                               ('water_meter_id.state', '=', 'active'),
                                                               ('payment_term_id', '=', payment_term_id.id),
                                                               ('state', 'in', ('sale', 'done'))])
@@ -573,7 +573,7 @@ class SaleControllerREST(http.Controller):
                           ('reminder_date', '<=', date_start),
                           ('is_processed', '=', False)]
             if meter_code and len(meter_code) > 0:
-                domain += [('order_id.water_meter_id.name', '=', meter_code)]
+                domain += [('order_id.water_meter_id.name', 'ilike', '%' + meter_code + '%')]                           #Tìm kiếm gần đúng
 
             order_reminders = request.env['qwaco.sale.order.reminder'].sudo().search(domain)
 
@@ -1012,7 +1012,7 @@ class SaleControllerREST(http.Controller):
         if customer and len(customer) > 0:
             orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
                                                               ('team_id', '!=', False),
-                                                              ('partner_id.customer_code', '=', customer),
+                                                              ('partner_id.customer_code', 'ilike', '%' + customer + '%'),      #Tìm kiếm gần đúng
                                                               ('water_meter_id.state', '=', 'active'),
                                                               ('payment_term_id', '=', payment_term_id.id),
                                                               ('state', 'in', ('sale', 'done'))])
@@ -1095,7 +1095,7 @@ class SaleControllerREST(http.Controller):
         if customer_code and len(customer_code) > 0:
             orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
                                                               ('team_id', '!=', False),
-                                                              ('partner_id.customer_code', '=', customer_code),
+                                                              ('partner_id.customer_code', 'ilike', '%' + customer_code + '%'),         #Tìm kiếm gần đúng mã kh
                                                               ('water_meter_id.state', '=', 'active'),
                                                               ('state', 'in', ('draft', 'sent'))])
         else:
@@ -1205,7 +1205,7 @@ class SaleControllerREST(http.Controller):
                           ('is_processed', '=', False)]
 
             if customer_code and len(customer_code) > 0:
-                domain += [('order_id.partner_id.customer_code', '=', customer_code)]
+                domain += [('order_id.partner_id.customer_code', 'ilike', '%' + customer_code + '%')]                   #Tìm kiếm gần đúng mã kh
             order_reminders = request.env['qwaco.sale.order.reminder'].sudo().search(domain, limit=300)
 
             for reminder in order_reminders:
