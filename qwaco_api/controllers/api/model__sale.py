@@ -42,7 +42,7 @@ class SaleControllerREST(http.Controller):
         if meter_code and len(meter_code) > 0:
             orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
                                                               ('team_id', '!=', False),
-                                                              ('water_meter_id.name', 'ilike', '%' meter_code '%'),     #Tìm kiếm gần đúng
+                                                              ('water_meter_id.name', 'ilike', '%' + meter_code + '%'),     #Tìm kiếm gần đúng
                                                               ('water_meter_id.state', '=', 'active'),
                                                               ('state', 'in', ('draft', 'sent'))])
         else:
