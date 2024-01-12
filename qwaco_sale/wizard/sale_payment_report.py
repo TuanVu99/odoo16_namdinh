@@ -70,11 +70,11 @@ class SaleListReport(models.TransientModel):
                     country_2.name as quoc_gia_dhn,
                     product_pricelist.name as bang_gia,
                     sol_1.price_unit as đon_gia,
-                    qwaco_water_meter_quantity_history.old_quantity as so_cu,
-                    qwaco_water_meter_quantity_history.new_quantity as so_moi,
-                    sol_1.product_uom_qty as slg_tieu_thu,
-                    sol_2.product_uom_qty as giam_gia,
-                    sol_1.product_uom_qty + sol_2.product_uom_qty as slg_thanh_toan,
+                    coalesce(qwaco_water_meter_quantity_history.old_quantity,0) as so_cu,
+                    coalesce(qwaco_water_meter_quantity_history.new_quantity,0) as so_moi,
+                    coalesce(sol_1.product_uom_qty,0) as slg_tieu_thu,
+                    coalesce(sol_2.product_uom_qty,0) as giam_gia,
+                    coalesce(sol_1.product_uom_qty,0) + coalesce(sol_2.product_uom_qty,0) as slg_thanh_toan,
                     sale_order.amount_untaxed as tien_truoc_thue,
                     sale_order.amount_tax as thue,
                     sale_order.amount_total as tien_sau_thue,
@@ -115,7 +115,7 @@ class SaleListReport(models.TransientModel):
             where sale_order.state not in ('cancel')
                   and district_1.id in {huyen}
                   and extract ('year' from sale_order.date_order)::character varying ='{year}'
-                    and	extract ('month' from sale_order.date_order)::character varying = '{month}'
+                    and	extract ('month' from sale_order.date_order)::character varying = '{month}
             '''.format(month= self.month,year= current_year, huyen=tuple(self.district_ids.ids + [0, 0]))
         # print(sql)
         self._cr.execute(sql)
@@ -153,14 +153,14 @@ class SaleListReport(models.TransientModel):
                                                     r.get('xa_kh')['en_US'] + ',' if r.get('xa_kh') else ' ',
                                                     r['huyen_kh']['en_US'] + ',' if r.get('huyen_kh') else ' ',
                                                     r.get('tinh_kh')+',' if r.get('tinh_kh') else ' ' ,
-                                                    r['quoc_gia_kh']['vi_VN'] + ',' if r.get('quoc_gia_kh') else ' '),highlight
+                                                    r['quoc_gia_kh']['vi_VN'] if r.get('quoc_gia_kh') else ' '),highlight
             ws.cell(row, 7).value, ws.cell(row, 7).style = r['ma_hd'],highlight
             ws.cell(row, 8).value, ws.cell(row, 8).style = r['ma_dhn'],highlight
             ws.cell(row, 9).value, ws.cell(row, 9).style = '%s%s%s%s%s' % (r['xom_dhn']['en_US']+',' if r.get('xom_dhn') else ' ',
                                                     r.get('xa_dhn')['en_US'] + ',' if r.get('xa_dhn') else ' ',
                                                     r['huyen_dhn']['en_US'] + ',' if r.get('huyen_dhn') else ' ',
                                                     r.get('tinh_dhn')+','  if r.get('tinh_dhn') else ' ' ,
-                                                    r['quoc_gia_dhn']['vi_VN'] + ',' if r.get('quoc_gia_dhn') else ' '),highlight
+                                                    r['quoc_gia_dhn']['vi_VN'] if r.get('quoc_gia_dhn') else ' '),highlight
             ws.cell(row, 10).value, ws.cell(row, 10).style = r['bang_gia']['en_US'],highlight
             ws.cell(row, 11).value, ws.cell(row, 11).style = r['đon_gia'],style_sum1
             ws.cell(row, 12).value , ws.cell(row, 12).style= r['so_cu'],style_sum1
