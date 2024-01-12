@@ -22,5 +22,5 @@ class ResPartner(models.Model):
                                           (datetime.now() + relativedelta(months=1)).strftime('%Y-%m-01 00:00:00')),
                                          ('create_date', '>=',
                                           (datetime.now() - relativedelta(months=0)).strftime('%Y-%m-01 00:00:00')),
-                                         ('is_paid','!=',True),('state', 'in', ['sale', 'sent'])
+                                         ('is_paid','!=',True),('state', 'in', ['sale', 'done'])
                                      ])
