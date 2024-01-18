@@ -376,7 +376,7 @@ class eHoadon(models.Model):
         if last_date:
             d2 = order_date - relativedelta(months=1)
             d1 = last_date
-            period_year = order_date.year
+            period_year = d2.year
             months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
             count_months = []
             totalmonts = (d2.year - d1.year) * 12 + d2.month - 11 + 12 - d1.month
@@ -546,7 +546,7 @@ class eHoadon(models.Model):
         if last_date:
             d2 = order_date - relativedelta(months=1)
             d1 = last_date
-            period_year = order_date.year
+            period_year = d2.year
             months = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
             count_months = []
             totalmonts = (d2.year - d1.year) * 12 + d2.month - 11 + 12 - d1.month
