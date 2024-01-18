@@ -49,6 +49,7 @@ class SaleListReport(models.TransientModel):
                     ])
             for einvoice in einvoice_sign:
                 order_ids.append(einvoice.order_id)
+            print(order_ids)
             return self.env['sale.order'].re_send_einvoice(order_ids)
 
 
