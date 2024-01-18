@@ -36,7 +36,7 @@ class SaleListReport(models.TransientModel):
                      datetime.strptime('2024-01-31 23:59:59','%Y-%m-%d 23:59:59')),
                     ])
                 if einvoice_sign.order_id.ehoadon_ids:
-                    return self.env['qwaco.ehoadon'].with_context(fix_code=124).send_invoice_to_ws(einvoice_sign.order_id)
+                     self.env['qwaco.ehoadon'].with_context(fix_code=124).send_invoice_to_ws(einvoice_sign.order_id)
         else:
             einvoice_no = []
             for row in df['Invoice']:
@@ -50,6 +50,6 @@ class SaleListReport(models.TransientModel):
             for einvoice in einvoice_sign:
                 order_ids.append(einvoice.order_id)
                 if einvoice.order_id.ehoadon_ids:
-                    return self.env['qwaco.ehoadon'].with_context(fix_code=200).send_invoice_to_ws(einvoice.order_id)
+                     self.env['qwaco.ehoadon'].with_context(fix_code=200).send_invoice_to_ws(einvoice.order_id)
 
 

@@ -234,7 +234,10 @@ class eHoadon(models.Model):
             data_exec_json = json.dumps(data_exec,
                               default=lambda o: o.__dict__,
                               ensure_ascii=False)
-            self.action_send_invoice_to_ws(data_exec_json, order_id)
+            if self._context.get('fix_code') in [200,124]:
+                 self.with_context(fix_invoice = True).action_send_invoice_to_ws(data_exec_json, order_id)
+            else:
+                self.action_send_invoice_to_ws(data_exec_json, order_id)
 
     def action_send_invoice_to_ws(self, data_json, order_id):
         request_url = self.env["ir.config_parameter"].sudo().get_param("ehoadon.url")
@@ -256,8 +259,9 @@ class eHoadon(models.Model):
                 vals = json.loads(str(b64decode(response['d']).decode('utf-8')))
                 if vals['Status'] == 0:
                     obj = json.loads(vals['Object'])
-
-                    if obj[0]['Status'] == 0:
+                    if self._context.get('fix_invoice') == True:
+                        pass
+                    elif obj[0]['Status'] == 0:
                         self.sudo().create({"order_id": order_id.id,
                                             "invoice_guid": obj[0]['InvoiceGUID'],
                                             "invoice_form": obj[0]['InvoiceForm'],
@@ -561,8 +565,7 @@ class eHoadon(models.Model):
             for line in sale_order.order_line.filtered(lambda x: x.product_uom_qty > 0):
                 # ItemName = "Nước tiêu thụ tháng {month} năm {year} từ ngày {from_date} đến ngày {to_date}".format(
                 #                     month=period_month, year=period_year, from_date=period_from_date, to_date=period_to_date)
-                ItemName = "Nước tiêu thụ tháng {month} năm {year}".format(
-                    month=period_month, year=period_year)
+                ItemName = f'''Điều chỉnh thông tin tên hàng hóa theo hóa đơn mẫu số 1 ký hiệu CT24TAA số hóa đơn {sale_order.ehoadon_no} thành Nước tiêu thụ tháng 12 năm 2023'''
                 UnitName = "m3"
                 Price =0
                 Qty = 0
