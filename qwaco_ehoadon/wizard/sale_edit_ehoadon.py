@@ -31,8 +31,8 @@ class SaleListReport(models.TransientModel):
             for row in df['Invoice']:
                 einvoice_sign = self.env['qwaco.ehoadon'].search([
                     ('invoice_no' ,'=',row),
-                    ('write_date', '>=',datetime.strptime('2024-01-01 00:00:00','%Y-%m-%d 00:00:00')),
-                    ('write_date', '<=',
+                    ('create_date', '>=',datetime.strptime('2024-01-01 00:00:00','%Y-%m-%d 00:00:00')),
+                    ('create_date', '<=',
                      datetime.strptime('2024-01-31 23:59:59','%Y-%m-%d 23:59:59')),
                     ])
                 order_ids.append(einvoice_sign.order_id)
@@ -43,8 +43,8 @@ class SaleListReport(models.TransientModel):
                 einvoice_no.append(row)
             einvoice_sign = self.env['qwaco.ehoadon'].search([
                     ('invoice_no' ,'not in',einvoice_no),
-                    ('write_date', '>=',datetime.strptime('2024-01-01 00:00:00','%Y-%m-%d 00:00:00')),
-                    ('write_date', '<=',
+                    ('create_date', '>=',datetime.strptime('2024-01-01 00:00:00','%Y-%m-%d 00:00:00')),
+                    ('create_date', '<=',
                      datetime.strptime('2024-01-31 23:59:59','%Y-%m-%d 23:59:59')),
                     ])
             for einvoice in einvoice_sign:
