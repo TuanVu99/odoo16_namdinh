@@ -19,10 +19,10 @@ class SaleOrder(models.Model):
 
     def edit_einvoice(self,order_ids):
         for record in order_ids:
-            if record.state in ['sale', 'done'] and record.ehoadon_ids:
+            if record.ehoadon_ids:
                 return self.env['qwaco.ehoadon'].with_context(fix_code=124).send_invoice_to_ws(record)
 
     def re_send_einvoice(self,order_ids):
         for record in order_ids:
-            if record.state in ['sale', 'done'] and record.ehoadon_ids:
+            if record.ehoadon_ids:
                 return self.env['qwaco.ehoadon'].with_context(fix_code=200).send_invoice_to_ws(record)
