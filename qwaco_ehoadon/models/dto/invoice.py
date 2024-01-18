@@ -25,7 +25,9 @@ class InvoiceDTO:
         InvoiceSerial=None,
         InvoiceNo=None,
         UserDefine=None,
-        OriginalInvoiceIdentify=None
+        OriginalInvoiceIdentify=None,
+        Reason=None,
+
     ):
         self.InvoiceTypeID = InvoiceTypeID
         self.InvoiceDate = InvoiceDate
@@ -51,6 +53,8 @@ class InvoiceDTO:
             self.UserDefine = UserDefine
         if OriginalInvoiceIdentify:
             self.OriginalInvoiceIdentify = OriginalInvoiceIdentify
+        if Reason:
+            self.Reason = Reason
 
     def to_json(self):
         return json.dumps(self.__dict__)

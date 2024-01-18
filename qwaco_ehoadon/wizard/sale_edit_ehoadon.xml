@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="wizard_sale_ehoadon" model="ir.ui.view">
+            <field name="name">Chỉnh sửa HĐĐT</field>
+            <field name="model">sale.edit.ehoadon</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="sửa e hóa đơn">
+                    <group>
+                         <field name="type"/>
+                         <field name="file_data" widget="binary" filename="filename" string="File"/>
+                    </group>
+                     <footer>
+                        <button string="Thực hiện điều chỉnh" name="edit_ehoadon" type="object" class="btn-primary"/>
+                        <button string="Huỷ" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="ehoadon_wizard" model="ir.actions.act_window">
+            <field name="name">Chỉnh sửa HĐĐT</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.edit.ehoadon</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem action="ehoadon_wizard"
+                  name="Chỉnh sửa HĐĐT"
+                  parent="sale.menu_sale_report"
+                  id="menu_sale_ehoadon_wizard"
+                  sequence="100"/>
+    </data>
+</odoo>
