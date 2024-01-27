@@ -24,7 +24,7 @@ SUPPORTED_IMAGE_EXTENSIONS = ['.gif', '.jpe', '.jpeg', '.jpg', '.png', '.svg']
 
 class SaleControllerREST(http.Controller):
 
-    @http.route('%s/get_list_sale' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)  # Upgraded
+    @http.route('%s/get_list_sale' % api_prefix, methods=['POST'], type='http', auth='none', csrf=False)  # Upgraded - Tìm kiếm theo nhiều yếu tố
     @check_permissions
     def api__sale__get_list_sale(self, **kw):
         args = {}
@@ -40,17 +40,59 @@ class SaleControllerREST(http.Controller):
         uid = request.env['res.users'].sudo().browse(request.session.uid)
         data = []
         if meter_code and len(meter_code) > 0:
-            orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+            orders1 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
                                                               ('team_id', '!=', False),
                                                               ('water_meter_id.name', 'ilike', '%' + meter_code + '%'),     #Tìm kiếm gần đúng
                                                               ('water_meter_id.state', '=', 'active'),
                                                               ('state', 'in', ('draft', 'sent'))])
         else:
-            orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+            orders1 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
                                                               ('team_id', '!=', False),
                                                               ('water_meter_id', '!=', False),
                                                               ('water_meter_id.state', '=', 'active'),
                                                               ('state', 'in', ('draft', 'sent'))])
+        
+        if meter_code and len(meter_code) > 0:
+            orders2 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                              ('team_id', '!=', False),
+                                                              ('partner_id.customer_code', 'ilike', '%' + meter_code + '%'),         #Tìm kiếm gần đúng mã kh
+                                                              ('water_meter_id.state', '=', 'active'),
+                                                              ('state', 'in', ('draft', 'sent'))])
+        else:
+            orders2 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                              ('team_id', '!=', False),
+                                                              ('partner_id', '!=', False),
+                                                              ('water_meter_id.state', '=', 'active'),
+                                                              ('state', 'in', ('draft', 'sent'))], limit=300)
+                                                              
+        if meter_code and len(meter_code) > 0:
+            orders3 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                              ('team_id', '!=', False),
+                                                              ('partner_id.name', 'ilike', '%' + meter_code + '%'),         #Tìm kiếm gần đúng tên kh
+                                                              ('water_meter_id.state', '=', 'active'),
+                                                              ('state', 'in', ('draft', 'sent'))])
+        else:
+            orders3 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                              ('team_id', '!=', False),
+                                                              ('partner_id', '!=', False),
+                                                              ('water_meter_id.state', '=', 'active'),
+                                                              ('state', 'in', ('draft', 'sent'))], limit=300)
+                                                              
+        if meter_code and len(meter_code) > 0:
+            orders4 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                              ('team_id', '!=', False),
+                                                              ('partner_id.id_number', 'ilike', '%' + meter_code + '%'),         #Tìm kiếm gần đúng tên kh
+                                                              ('water_meter_id.state', '=', 'active'),
+                                                              ('state', 'in', ('draft', 'sent'))])
+        else:
+            orders4 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                              ('team_id', '!=', False),
+                                                              ('partner_id', '!=', False),
+                                                              ('water_meter_id.state', '=', 'active'),
+                                                              ('state', 'in', ('draft', 'sent'))], limit=300)
+        
+        orders = orders1 + orders2 + orders3 + orders4
+        
         tz = pytz.timezone(str(uid.partner_id.tz) if uid.partner_id.tz else "Asia/Ho_Chi_Minh")
 
         banghi = 0
@@ -112,7 +154,7 @@ class SaleControllerREST(http.Controller):
         )
 
     @http.route('%s/get_list_sale_confirmations' % api_prefix, methods=['POST'], type='http', auth='none',
-                csrf=False)  # Upgraded
+                csrf=False)  # Upgraded - Tìm kiếm theo nhiều yếu tố và trả thêm thông tin đã thanh to
     @check_permissions
     def api__sale__get_list_sale_confirmations(self, **kw):
         args = {}
@@ -128,34 +170,145 @@ class SaleControllerREST(http.Controller):
         # # Convert json data into Odoo vals:
         uid = request.env['res.users'].sudo().browse(request.session.uid)
         data = []
-        if not payment_term or payment_term not in "pay_later":
+        if not payment_term:
             error_descrip = _("Vui lòng nhập đầy đủ giá trị !")
             error = error_code
             _logger.error(error_descrip)
             return error_response(400, error, error_descrip)
 
-        payment_term_id = request.env['account.payment.term'].sudo().search([('code', '=', payment_term)], limit=1)
-        if meter_code and len(meter_code) > 0:
-            orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
-                                                              ('team_id', '!=', False),
-                                                              ('water_meter_id.name', 'ilike', '%' + meter_code + '%'),     #Tìm kiếm gần đúng
-                                                              ('water_meter_id.state', '=', 'active'),
-                                                              ('payment_term_id', '=', payment_term_id.id),
-                                                              ('state', 'in', ('sale', 'done'))])
+        if payment_term in "pay_later":
+            payment_term_id = request.env['account.payment.term'].sudo().search([('code', '=', payment_term)], limit=1)
+            if meter_code and len(meter_code) > 0:
+                orders1 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),
+                                                                  ('water_meter_id.name', 'ilike', '%' + meter_code + '%'),     #Tìm kiếm gần đúng
+                                                                  ('water_meter_id.state', '=', 'active'),
+                                                                  ('payment_term_id', '=', payment_term_id.id),
+                                                                  ('state', 'in', ('sale', 'done'))])
+            else:
+                orders1 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),
+                                                                  ('water_meter_id', '!=', False),
+                                                                  ('water_meter_id.state', '=', 'active'),
+                                                                  ('payment_term_id', '=', payment_term_id.id),
+                                                                  ('state', 'in', ('sale', 'done'))])
+            
+            if meter_code and len(meter_code) > 0:
+                orders2 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),
+                                                                  ('partner_id.customer_code', 'ilike', '%' + meter_code + '%'),         #Tìm kiếm gần đúng mã kh
+                                                                  ('water_meter_id.state', '=', 'active'),
+                                                                  ('payment_term_id', '=', payment_term_id.id),
+                                                                  ('state', 'in', ('sale', 'done'))])
+            else:
+                orders2 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),
+                                                                  ('partner_id', '!=', False),
+                                                                  ('water_meter_id.state', '=', 'active'),
+                                                                  ('payment_term_id', '=', payment_term_id.id),
+                                                                  ('state', 'in', ('sale', 'done'))], limit=300)
+                                                                  
+            if meter_code and len(meter_code) > 0:
+                orders3 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),
+                                                                  ('partner_id.name', 'ilike', '%' + meter_code + '%'),         #Tìm kiếm gần đúng tên kh
+                                                                  ('water_meter_id.state', '=', 'active'),
+                                                                  ('payment_term_id', '=', payment_term_id.id),
+                                                                  ('state', 'in', ('sale', 'done'))])
+            else:
+                orders3 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),
+                                                                  ('partner_id', '!=', False),
+                                                                  ('water_meter_id.state', '=', 'active'),
+                                                                  ('payment_term_id', '=', payment_term_id.id),
+                                                                  ('state', 'in', ('sale', 'done'))], limit=300)
+                                                                  
+            if meter_code and len(meter_code) > 0:
+                orders4 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),
+                                                                  ('partner_id.id_number', 'ilike', '%' + meter_code + '%'),         #Tìm kiếm gần đúng tên kh
+                                                                  ('water_meter_id.state', '=', 'active'),
+                                                                  ('payment_term_id', '=', payment_term_id.id),
+                                                                  ('state', 'in', ('sale', 'done'))])
+            else:
+                orders4 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),
+                                                                  ('partner_id', '!=', False),
+                                                                  ('water_meter_id.state', '=', 'active'),
+                                                                  ('payment_term_id', '=', payment_term_id.id),
+                                                                  ('state', 'in', ('sale', 'done'))], limit=300)
+            
+            orders = orders1 + orders2 + orders3 + orders4
+            
         else:
-            orders = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
-                                                              ('team_id', '!=', False),
-                                                              ('water_meter_id', '!=', False),
-                                                              ('water_meter_id.state', '=', 'active'),
-                                                              ('payment_term_id', '=', payment_term_id.id),
-                                                              ('state', 'in', ('sale', 'done'))])
+            if meter_code and len(meter_code) > 0:
+                orders1 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),
+                                                                  ('water_meter_id.name', 'ilike', '%' + meter_code + '%'),     #Tìm kiếm gần đúng
+                                                                  ('water_meter_id.state', '=', 'active'),
+                                                                  ('is_paid', '=', True),
+                                                                  ('state', 'in', ('sale', 'done'))])
+            else:
+                orders1 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),
+                                                                  ('water_meter_id', '!=', False),
+                                                                  ('water_meter_id.state', '=', 'active'),
+                                                                  ('is_paid', '=', True),
+                                                                  ('state', 'in', ('sale', 'done'))])
+                                                                  
+            if meter_code and len(meter_code) > 0:
+                orders2 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),
+                                                                  ('partner_id.customer_code', 'ilike', '%' + meter_code + '%'),         #Tìm kiếm gần đúng mã kh
+                                                                  ('water_meter_id.state', '=', 'active'),
+                                                                  ('is_paid', '=', True),
+                                                                  ('state', 'in', ('sale', 'done'))])
+            else:
+                orders2 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),
+                                                                  ('partner_id', '!=', False),
+                                                                  ('water_meter_id.state', '=', 'active'),
+                                                                  ('is_paid', '=', True),
+                                                                  ('state', 'in', ('sale', 'done'))], limit=300)
+                                                                  
+            if meter_code and len(meter_code) > 0:
+                orders3 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),
+                                                                  ('partner_id.name', 'ilike', '%' + meter_code + '%'),         #Tìm kiếm gần đúng tên kh
+                                                                  ('water_meter_id.state', '=', 'active'),
+                                                                  ('is_paid', '=', True),
+                                                                  ('state', 'in', ('sale', 'done'))])
+            else:
+                orders3 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),
+                                                                  ('partner_id', '!=', False),
+                                                                  ('water_meter_id.state', '=', 'active'),
+                                                                  ('is_paid', '=', True),
+                                                                  ('state', 'in', ('sale', 'done'))], limit=300)
+                                                                  
+            if meter_code and len(meter_code) > 0:
+                orders4 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),
+                                                                  ('partner_id.id_number', 'ilike', '%' + meter_code + '%'),         #Tìm kiếm gần đúng tên kh
+                                                                  ('water_meter_id.state', '=', 'active'),
+                                                                  ('is_paid', '=', True),
+                                                                  ('state', 'in', ('sale', 'done'))])
+            else:
+                orders4 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),
+                                                                  ('partner_id', '!=', False),
+                                                                  ('water_meter_id.state', '=', 'active'),
+                                                                  ('is_paid', '=', True),
+                                                                  ('state', 'in', ('sale', 'done'))], limit=300)
+            
+            orders = orders1 + orders2 + orders3 + orders4
 
         tz = pytz.timezone(str(uid.partner_id.tz) if uid.partner_id.tz else "Asia/Ho_Chi_Minh")
 
         banghi = 0
         for order in orders:
             if banghi > 260:
-                break  # Trả về request 60 bản ghi
+                break  # Trả về request 260 bản ghi
 
             if order.water_meter_id.balance > 0:
                 last_quantity = order.water_meter_id.balance
@@ -312,7 +465,8 @@ class SaleControllerREST(http.Controller):
                     'amount_untaxed': order.amount_untaxed + abs(order.get_discount_amount()),
                     'amount_tax': order.amount_tax,
                     'amount_discount': abs(order.get_discount_amount()),
-                    'price_unit': price_unit
+                    'price_unit': price_unit,
+                    'is_paid': order.is_paid
                     }
         else:
             error_descrip = _('Hoá đơn không tồn tại !')
@@ -528,7 +682,7 @@ class SaleControllerREST(http.Controller):
         )
 
     @http.route('%s/reminder/get_list_sale' % api_prefix, methods=['POST'], type='http', auth='none',
-                csrf=False)  # Upgraded
+                csrf=False)  # Upgraded trả thông tin theo nhiều yếu tố
     @check_permissions
     def api__sale__reminder__get_list_sale(self, **kw):
         args = {}
@@ -558,24 +712,32 @@ class SaleControllerREST(http.Controller):
 
         if reminder_cat:
 
-            domain = [('order_id.team_id.member_ids', 'in', uid.ids),
-                      ('order_id.team_id', '!=', False),
-                      ('order_id.state', 'in', ('sale', 'done')),
-                      ('order_id.is_paid', '=', False),
-                      ('reminder_category_id', '=', reminder_cat.id),
-                      ('reminder_date', '<=', date_start),
-                      ('is_processed', '=', False)]
+            domain1 = domain2 = domain3 = domain4 = [('order_id.team_id.member_ids', 'in', uid.ids),
+                                                      ('order_id.team_id', '!=', False),
+                                                      ('order_id.state', 'in', ('sale', 'done')),
+                                                      ('order_id.is_paid', '=', False),
+                                                      ('reminder_category_id', '=', reminder_cat.id),
+                                                      ('reminder_date', '<=', date_start),
+                                                      ('is_processed', '=', False)]
             if int(reminder_category) == 9:  # Loại bỏ điều kiện reminder_category trong domain tìm kiếm
-                domain = [('order_id.team_id.member_ids', 'in', uid.ids),
-                          ('order_id.team_id', '!=', False),
-                          ('order_id.state', 'in', ('sale', 'done')),
-                          ('order_id.is_paid', '=', False),
-                          ('reminder_date', '<=', date_start),
-                          ('is_processed', '=', False)]
+                domain1 = domain2 = domain3 = domain4 = [('order_id.team_id.member_ids', 'in', uid.ids),
+                                                          ('order_id.team_id', '!=', False),
+                                                          ('order_id.state', 'in', ('sale', 'done')),
+                                                          ('order_id.is_paid', '=', False),
+                                                          ('reminder_date', '<=', date_start),
+                                                          ('is_processed', '=', False)]
             if meter_code and len(meter_code) > 0:
-                domain += [('order_id.water_meter_id.name', 'ilike', '%' + meter_code + '%')]                           #Tìm kiếm gần đúng
+                domain1 += [('order_id.water_meter_id.name', 'ilike', '%' + meter_code + '%')]                           #Tìm kiếm gần đúng
+                domain2 += [('order_id.partner_id.customer_code', 'ilike', '%' + meter_code + '%')]
+                domain3 += [('order_id.partner_id.name', 'ilike', '%' + meter_code + '%')]
+                domain4 += [('order_id.partner_id.id_number', 'ilike', '%' + meter_code + '%')]
 
-            order_reminders = request.env['qwaco.sale.order.reminder'].sudo().search(domain)
+            order_reminders1 = request.env['qwaco.sale.order.reminder'].sudo().search(domain1)
+            order_reminders2 = request.env['qwaco.sale.order.reminder'].sudo().search(domain2)
+            order_reminders3 = request.env['qwaco.sale.order.reminder'].sudo().search(domain3)
+            order_reminders4 = request.env['qwaco.sale.order.reminder'].sudo().search(domain4)
+            
+            order_reminders = order_reminders1 + order_reminders2 + order_reminders3 + order_reminders4
 
             banghi = 0
 
@@ -964,7 +1126,8 @@ class SaleControllerREST(http.Controller):
                     'amount_untaxed': order.amount_untaxed + abs(order.get_discount_amount()),
                     'amount_tax': order.amount_tax,
                     'amount_discount': abs(order.get_discount_amount()),
-                    'price_unit': price_unit
+                    'price_unit': price_unit,
+                    'is_paid': order.is_paid
                     }
         else:
             error_descrip = _('Hoá đơn không tồn tại !')
