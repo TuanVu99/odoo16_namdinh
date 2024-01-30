@@ -115,7 +115,7 @@ class SaleListReport(models.TransientModel):
             where sale_order.state not in ('cancel')
                   and district_1.id in {huyen}
                   and extract ('year' from sale_order.date_order)::character varying ='{year}'
-                    and	extract ('month' from sale_order.date_order)::character varying = '{month}
+                    and	extract ('month' from sale_order.date_order)::character varying = '{month}'
             '''.format(month= self.month,year= current_year, huyen=tuple(self.district_ids.ids + [0, 0]))
         # print(sql)
         self._cr.execute(sql)
