@@ -7,6 +7,7 @@ from ast import literal_eval
 import pytz
 import logging
 from . import num2vnd
+from babel.numbers import format_decimal
 
 _logger = logging.getLogger(__name__)
 
@@ -77,6 +78,9 @@ class SaleOrder(models.Model):
             else:
                 r.x_giam_gia =0
 
+    @staticmethod
+    def format_decimal(number):
+        return format_decimal(number, '#,##0', locale='en_US')
 
     @api.depends('amount_total')
     def compute_bang_chu(self):

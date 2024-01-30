@@ -62,7 +62,7 @@
                                             </td>
                                             <td colspan='2' class="text-center align-middle" bgcolor="#FFFFFF">
                                                 <p style="padding-left: 100px; padding-right: 100px;">
-                                                    Địa chỉ : Tổ dân phố Lâm Khang, Thị Trấn
+                                                    Địa chỉ: Tổ dân phố Lâm Khang, Thị Trấn
                                                     Quất Lâm, Huyện Giao Thủy, Tỉnh Nam Định, Việt Nam
                                                 </p>
                                             </td>
@@ -73,7 +73,7 @@
                                         <tr>
                                             <td colspan='4' height="21" class="text-center align-middle"
                                                 bgcolor="#FFFFFF">
-                                                <p>Số ĐT : 0903803700</p>
+                                                <p>Số ĐT: 0903803700</p>
                                             </td>
                                         </tr>
                                         <tr>
@@ -240,7 +240,7 @@
                                             <td style="border-right: 1px solid #000000" class="text-left align-middle"
                                                 bgcolor="#FFFFFF">
 
-                                                <p>Đơn vị : m3</p>
+                                                <p>Đơn vị: m3</p>
 
                                             </td>
                                             <td class="text-left align-middle" bgcolor="#FFFFFF">
@@ -260,7 +260,7 @@
                                                 class="text-left align-middle" bgcolor="#FFFFFF">
 
                                                 <p>Tiền nước:
-                                                    <span t-esc="o.amount_untaxed"/>
+                                                    <span t-esc="o.format_decimal(o.amount_untaxed)"/> đ
                                                 </p>
 
                                             </td>
@@ -277,8 +277,8 @@
                                             <td style="border-left: 1px solid #000000; border-right: 1px solid #000000"
                                                 colspan='2'
                                                 class="text-left align-middle" bgcolor="#FFFFFF">
-                                                <p>Thuế GTGT :
-                                                    <span t-esc="o.amount_tax"/>
+                                                <p>Thuế GTGT:
+                                                    <span t-esc="o.format_decimal(o.amount_tax)"/> đ
                                                 </p>
                                             </td>
                                             <td class="text-left align-middle" bgcolor="#FFFFFF">
@@ -296,7 +296,7 @@
                                                 class="text-left align-middle" bgcolor="#FFFFFF">
 
                                                 <p>Khuyến mãi:
-                                                    <span t-esc="o.x_giam_gia"/>
+                                                    <span t-esc="o.format_decimal(o.x_giam_gia)"/> đ
                                                 </p>
 
                                             </td>
@@ -317,7 +317,7 @@
                                                 class="text-left align-middle" bgcolor="#FFFFFF">
 
                                                 <p>Tổng:
-                                                    <span t-esc="o.amount_total"/>
+                                                    <span t-esc="o.format_decimal(o.amount_total)"/> đ
                                                 </p>
 
                                             </td>
