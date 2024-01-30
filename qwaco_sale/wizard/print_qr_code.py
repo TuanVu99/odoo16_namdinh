@@ -1,6 +1,4 @@
 from odoo import models, api, fields, _
-from copy import deepcopy
-import re
 
 from odoo.exceptions import UserError, ValidationError
 

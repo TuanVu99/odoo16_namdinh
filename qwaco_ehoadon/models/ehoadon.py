@@ -6,7 +6,6 @@ from .dto.cmd_obj import CommandObjectDTO
 from .dto.data import DataDTO
 from base64 import b64encode, b64decode
 from dateutil.relativedelta import relativedelta
-
 import json
 import pytz
 import datetime
@@ -565,7 +564,7 @@ class eHoadon(models.Model):
             for line in sale_order.order_line.filtered(lambda x: x.product_uom_qty > 0):
                 # ItemName = "Nước tiêu thụ tháng {month} năm {year} từ ngày {from_date} đến ngày {to_date}".format(
                 #                     month=period_month, year=period_year, from_date=period_from_date, to_date=period_to_date)
-                ItemName = f'''Điều chỉnh thông tin tên hàng hóa theo hóa đơn mẫu số 1 ký hiệu CT24TAA số hóa đơn {sale_order.ehoadon_no} thành Nước tiêu thụ tháng 12 năm 2023'''
+                ItemName = f'''Điều chỉnh thông tin tên hàng hóa theo hóa đơn mẫu số 1 ký hiệu C24TAA số hóa đơn {sale_order.ehoadon_no} thành Nước tiêu thụ tháng 12 năm 2023'''
                 UnitName = "m3"
                 Price =0
                 Qty = 0

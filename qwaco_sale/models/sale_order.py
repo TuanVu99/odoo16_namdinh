@@ -352,3 +352,8 @@ class SaleOrder(models.Model):
             'is_paid': True,
             'paid_date': fields.Datetime.now()
         }
+
+    def print_order(self):
+        self.ensure_one()
+        report = self.env.ref('qwaco_sale.in_sale_order').report_action(self)
+        return report

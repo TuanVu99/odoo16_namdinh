@@ -18,6 +18,7 @@
         "views/res_config_settings_view.xml",
         "views/water_meter.xml",
         'wizard/print_qr_code.xml',
-        'wizard/sale_payment_report.xml'
+        'wizard/sale_payment_report.xml',
+        'views/print_order.xml'
         ],
 }

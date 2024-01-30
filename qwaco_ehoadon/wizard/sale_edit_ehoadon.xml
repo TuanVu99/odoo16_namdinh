@@ -30,6 +30,7 @@
                   name="Chỉnh sửa HĐĐT"
                   parent="sale.menu_sale_report"
                   id="menu_sale_ehoadon_wizard"
-                  sequence="100"/>
+                  sequence="100"
+                  active='False'/>
     </data>
 </odoo>
