@@ -6,6 +6,7 @@ from odoo import _, tools
 from odoo.exceptions import UserError
 from datetime import date, timedelta
 from dateutil.relativedelta import relativedelta
+from unidecode import unidecode
 
 import pytz
 
@@ -66,11 +67,12 @@ class SaleControllerREST(http.Controller):
                                                               ('state', 'in', ('draft', 'sent'))], limit=300)
                                                               
         if meter_code and len(meter_code) > 0:
-            orders3 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
-                                                              ('team_id', '!=', False),
-                                                              ('partner_id.name', 'ilike', '%' + meter_code + '%'),         #Tìm kiếm gần đúng tên kh
+            orders33 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                              ('team_id', '!=', False),         #Tìm kiếm gần đúng tên kh
                                                               ('water_meter_id.state', '=', 'active'),
                                                               ('state', 'in', ('draft', 'sent'))])
+            search_name = unidecode(meter_code)
+            orders3 = orders33.filtered(lambda order: unidecode(order.partner_id.name).lower().find(search_name.lower()) != -1)
         else:
             orders3 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
                                                               ('team_id', '!=', False),
@@ -126,7 +128,8 @@ class SaleControllerREST(http.Controller):
                     'customer': {'name': name,
                                  'popular_name': popular_name,
                                  'id_number': id_number,  # Thêm thông tin CCDC với cá nhân / MST với tổ chức
-                                 'address': address
+                                 'address': address,
+                                 'customer_code': order.partner_id.customer_code
                                  },
                     'meter': {'code': order.water_meter_id.name,
                               'address': order.water_meter_id.partner_id.vietnam_full_address,
@@ -209,12 +212,13 @@ class SaleControllerREST(http.Controller):
                                                                   ('state', 'in', ('sale', 'done'))], limit=300)
                                                                   
             if meter_code and len(meter_code) > 0:
-                orders3 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
-                                                                  ('team_id', '!=', False),
-                                                                  ('partner_id.name', 'ilike', '%' + meter_code + '%'),         #Tìm kiếm gần đúng tên kh
+                orders33 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),        #Tìm kiếm gần đúng tên kh
                                                                   ('water_meter_id.state', '=', 'active'),
                                                                   ('payment_term_id', '=', payment_term_id.id),
                                                                   ('state', 'in', ('sale', 'done'))])
+                search_name = unidecode(meter_code)
+                orders3 = orders33.filtered(lambda order: unidecode(order.partner_id.name).lower().find(search_name.lower()) != -1)
             else:
                 orders3 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
                                                                   ('team_id', '!=', False),
@@ -272,12 +276,13 @@ class SaleControllerREST(http.Controller):
                                                                   ('state', 'in', ('sale', 'done'))], limit=300)
                                                                   
             if meter_code and len(meter_code) > 0:
-                orders3 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
-                                                                  ('team_id', '!=', False),
-                                                                  ('partner_id.name', 'ilike', '%' + meter_code + '%'),         #Tìm kiếm gần đúng tên kh
+                orders33 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
+                                                                  ('team_id', '!=', False),        #Tìm kiếm gần đúng tên kh
                                                                   ('water_meter_id.state', '=', 'active'),
                                                                   ('is_paid', '=', True),
                                                                   ('state', 'in', ('sale', 'done'))])
+                search_name = unidecode(meter_code)
+                orders3 = orders33.filtered(lambda order: unidecode(order.partner_id.name).lower().find(search_name.lower()) != -1)
             else:
                 orders3 = request.env['sale.order'].sudo().search([('team_id.member_ids', 'in', uid.ids),
                                                                   ('team_id', '!=', False),
@@ -336,7 +341,8 @@ class SaleControllerREST(http.Controller):
                     'customer': {'name': name,
                                  'popular_name': popular_name,
                                  'id_number': id_number,  # Thêm thông tin CCDC với cá nhân / MST với tổ chức
-                                 'address': address
+                                 'address': address,
+                                 'customer_code': order.partner_id.customer_code
                                  },
                     'meter': {'code': order.water_meter_id.name,
                               'address': order.water_meter_id.partner_id.vietnam_full_address,
