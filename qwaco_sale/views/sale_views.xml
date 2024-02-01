@@ -189,7 +189,7 @@
             <field name="arch" type="xml">
                 <xpath expr="//page[@name='internal_notes']" position="after">
                     <page name="sale_order_list" string="Danh sách báo giá">
-                        <field name="sale_order_ids" mode="kanban" readonly="1">
+                        <field name="x_sale_order_ids" mode="kanban" readonly="1">
                             <kanban>
                                 <!-- Các trường để hiển thị trên Kanban -->
                                 <field name="name"/>
