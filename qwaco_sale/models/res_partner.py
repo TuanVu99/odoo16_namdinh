@@ -17,10 +17,7 @@ class ResPartner(models.Model):
         help="This pricelist will be used, instead of the default one, for sales to the current partner")
 
     sale_order_ids = fields.One2many('sale.order', 'partner_id', 'Sales Order',
-                                     domain=[
-                                         ('create_date', '<',
-                                          (datetime.now() + relativedelta(months=1)).strftime('%Y-%m-01 00:00:00')),
-                                         ('create_date', '>=',
-                                          (datetime.now() - relativedelta(months=0)).strftime('%Y-%m-01 00:00:00')),
-                                         ('is_paid','!=',True),('state', 'in', ['sale', 'done'])
+                                     domain=[                                         
+                                         ('is_paid','!=',True),
+                                         ('state', 'in', ['sale', 'done'])
                                      ])
