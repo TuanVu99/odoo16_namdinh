@@ -81,7 +81,7 @@
                                                 bgcolor="#FFFFFF">
                                                 <b>
                                                     <font face="Times New Roman" size='3' color="#000000">
-                                                        <p>PHIẾU THANH TOÁN NƯỚC KỲ<span
+                                                        <p>PHIẾU THANH TOÁN NƯỚC KỲ <span
                                                                 t-esc="'{:02d}'.format(o.create_date.month)"/>/
                                                             <span t-esc="o.create_date.year"/>
                                                         </p>
@@ -504,7 +504,7 @@
         <record id="in_sale_order_fm" model="report.paperformat">
             <field name="name">Custom A5 without borders</field>
             <field name="default" eval="False"/>
-            <field name="format">A5</field>
+            <field name="format">A4</field>
             <field name="orientation">Portrait</field>
             <field name="margin_top">1</field>
             <field name="margin_bottom">0</field>
