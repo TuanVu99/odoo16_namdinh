@@ -1,3 +1,5 @@
+import datetime
+
 from odoo import models, api, fields, _
 from odoo.exceptions import UserError
 
@@ -17,12 +19,10 @@ class SaleOrder(models.Model):
             if record.state in ['sale', 'done'] and not record.ehoadon_ids:
                 return self.env['qwaco.ehoadon'].with_delay(max_retries=1, channel='root.ehoadon', eta=60*5).send_invoice_to_ws(record)
 
-    # def edit_einvoice(self,order_ids):
-    #     for record in order_ids:
-    #         if record.ehoadon_ids:
-    #             return self.env['qwaco.ehoadon'].with_context(fix_code=124).send_invoice_to_ws(record)
-    #
-    # def re_send_einvoice(self,order_ids):
-    #     for record in order_ids:
-    #         if record.ehoadon_ids:
-    #             return self.env['qwaco.ehoadon'].with_context(fix_code=200).send_invoice_to_ws(record)
+    def re_send_einvoice(self):
+        current_month_start = datetime.datetime.now().replace(day=1, hour=0, minute=0, second=0, microsecond=0)
+        next_month_start = (current_month_start + datetime.timedelta(days=31)).replace(day=1)
+        for record in self.filtered(lambda l: l.create_date < next_month_start and l.create_date >= current_month_start):
+            if record.state in ['sale', 'done'] and not record.ehoadon_ids:
+                return self.env['qwaco.ehoadon'].with_delay(max_retries=1, channel='root.ehoadon',
+                                                            eta=60 * 5).send_invoice_to_ws(record)
