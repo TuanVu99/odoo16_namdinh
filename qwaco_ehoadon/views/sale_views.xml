@@ -21,16 +21,5 @@
                 </xpath>
             </field>
         </record>
-        <record model="ir.actions.server" id="action_re_send_order">
-            <field name="name">Confirm Invoice</field>
-            <field name="model_id" ref="sale.model_sale_order"/>
-            <field name="binding_model_id" ref="sale.model_sale_order"/>
-            <field name="binding_view_types">list</field>
-            <field name="state">code</field>
-            <field name="code">
-                action = records.re_send_einvoice()
-            </field>
-            <field name="groups" eval="[(4, ref('base.group_erp_manager'))]"/>
-        </record>
     </data>
 </odoo>

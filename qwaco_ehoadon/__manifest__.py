@@ -20,7 +20,8 @@
         'data/data_automation.xml',
         'data/queue_job_channel_data.xml',
         'views/sale_views.xml',
-        'wizard/sale_edit_ehoadon.xml'
+        'wizard/sale_edit_ehoadon.xml',
+        'wizard/sale_resend_ehoadon.xml'
     ],
 }
 # -*- coding: utf-8 -*-

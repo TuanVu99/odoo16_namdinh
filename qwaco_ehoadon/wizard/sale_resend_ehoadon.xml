@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="wizard_sale_resend_ehoadon" model="ir.ui.view">
+            <field name="name">Chỉnh sửa HĐĐT</field>
+            <field name="model">sale.resend.ehoadon</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="sửa e hóa đơn">
+                    <p>
+                        Chức năng này sẽ ra soát và gửi lại các báo giá trong thái hiện tại. Hãy cân nhắc trước khi thực hiện !
+                    </p>
+                     <footer>
+                        <button string="Gửi lại HĐĐT" name="re_send_confirm" type="object" class="btn-primary"/>
+                        <button string="Huỷ" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+        <record id="resend_ehoadon_wizard" model="ir.actions.act_window">
+            <field name="name">Gửi lại HĐĐT</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.resend.ehoadon</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem action="resend_ehoadon_wizard"
+                  name="Gửi lại HĐĐT"
+                  parent="sale.menu_sale_report"
+                  id="menu_sale_resend_ehoadon_wizard"
+                  sequence="101"
+                  active='True'
+                  groups="base.group_erp_manager"/>
+    </data>
+</odoo>
