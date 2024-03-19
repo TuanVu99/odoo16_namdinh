@@ -270,7 +270,7 @@
                                     class="text-left align-middle" bgcolor="#FFFFFF">
 
                                     <p>Tiền nước:
-                                        <span t-field="o.amount_untaxed"/> đ
+                                        <span t-field="o.amount_untaxed"/> 
                                     </p>
 
                                 </td>
@@ -288,7 +288,7 @@
                                     colspan='2'
                                     class="text-left align-middle" bgcolor="#FFFFFF">
                                     <p>Thuế GTGT:
-                                        <span t-field="o.amount_tax"/> đ
+                                        <span t-field="o.amount_tax"/>
                                     </p>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
