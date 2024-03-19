@@ -1,0 +1,25 @@
+.oe_hidden {
+    display: none;
+}
+
+.oe_status .oe_red, .oe_icon.oe_red {
+    color: #c53400;
+}
+
+.oe_status .oe_green, .oe_icon.oe_green {
+    color: #5eb937;
+}
+
+.oe_icon {
+    font-size: 18px;
+    margin-top: -10px;
+}
+
+.js_print_doc {
+    margin: 0 auto;
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    right: 0;
+    z-index: 100;
+}

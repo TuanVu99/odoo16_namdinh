@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="SyncNetworkPrinterWidget">
+        <li class="nw_printer oe_status js_synch" title="Sync with the connected printer">
+            <div class="js_success oe_icon oe_green oe_hidden">
+                <i class="fa fa-fw fa-print"/>
+            </div>
+            <div class="js_connected oe_icon oe_hidden" style="color: yellow;">
+                <i class="fa fa-fw fa-print"/>
+            </div>
+
+            <div class="js_connecting oe_icon oe_hidden">
+                <i class="fa fa-fw fa-spin fa-spinner"/>
+            </div>
+
+            <div class="js_c_error oe_icon oe_red oe_hidden">
+                <i class="fa fa-fw fa-print"/>
+            </div>
+        </li>
+    </t>
+
+    <t t-name="printButtonWidget">
+        <button tabindex="0" class="btn btn-primary js_print_doc fa fa-print" aria-label="Info" title="Direct Print" style="width: 150px;margin-right: 45%;" data-toggle="tooltip">
+            <span>In Hoá Đơn</span>
+        </button>
+    </t>
+
+</templates>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="qwaco_printer_form" model="ir.ui.view">
+            <field name="name">qwaco.printer.form</field>
+            <field name="model">qwaco.printer</field>
+            <field name="arch" type="xml">
+                <form string="Qwaco Printer">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="model_id" options="{'no_create': True}"/>
+                                <field name="model_name" attrs="{'invisible': [('model_id', '=', False)]}"/>
+                                <field name="active" widget="boolean_toggle"/>
+                            </group>
+                            <group>
+                                <field name="printer_type"/>
+                                <field name="printer_name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="qwaco_printer_tree" model="ir.ui.view">
+            <field name="name">qwaco.printer.tree</field>
+            <field name="model">qwaco.printer</field>
+            <field name="arch" type="xml">
+                <tree string="Qwaco Printer">
+                    <field name="name"/>
+                    <field name="model_id"/>
+                    <field name="printer_type"/>
+                    <field name="printer_name"/>
+                    <field name="active" widget="boolean_toggle"/>
+                </tree>
+            </field>
+        </record>
+        <record id="qwaco_printer_action" model="ir.actions.act_window">
+            <field name="name">Qwaco Printer</field>
+            <field name="res_model">qwaco.printer</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="qwaco_printer_menu" name="Qwaco Printer" parent="base.reporting_menuitem" sequence="10"
+        action="qwaco_printer_action" groups="base.group_no_one"/>
+    </data>
+</odoo>

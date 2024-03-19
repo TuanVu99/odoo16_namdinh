@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <template id="qwaco_printer.sale_order_receipt">
+        &lt;!DOCTYPE html&gt;
+        <html>
+            <head>
+                <meta charset="UTF-8"/>
+                <style type="text/css">]
+                    .body {
+                        width: 150%;
+                    }
+                    table {
+                        font-family: Times New Roman;
+                        width: 120%;
+                    }
+                    tr {
+                        border: none;
+                    }
+                    td {
+                        border: none;
+                    }
+                    p {
+                        display: block;
+                        margin-bottom:0;
+                        margin: 0 0.5rem;
+                    }
+                    .text-center {
+                        text-align: center;
+                    }
+                    .text-left {
+                        text-align: left;
+                    }
+                    .align-middle {
+                        vertical-align: middle;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="page" >
+                    <table align="center" border="0" cellpadding="1" cellspacing="1">
+                        <tbody border="0">
+                            <colgroup border="0" style="border: none;" width="10%"/>
+                            <colgroup border="0" style="border: none;" width="50%"/>
+                            <colgroup border="0" style="border: none;" width="50%"/>
+                            <colgroup border="0" style="border: none;" width="10%"/>
+                            <tr>
+                                <td style="text-align: center" colspan='4'>
+                                    <p>
+                                        <img alt="Logo" src="https://qwaco.com.vn/qwaco_sale/static/description/icon.png" style="width:90px; height:90px;"/>
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border: none;font-weight: bold;" class="text-center align-middle" colspan='4' height="23">
+                                    <b>
+                                        <p>CÔNG TY CỔ PHẦN NƯỚC SẠCH QUẤT LÂM</p>
+                                    </b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign='center'>
+                                    <p/>
+                                </td>
+                                <td colspan='2' class="text-center align-middle" bgcolor="#FFFFFF">
+                                    <p>
+                                        Địa chỉ: Tổ dân phố Lâm Khang, Thị Trấn
+                                        Quất Lâm, Huyện Giao Thủy, Tỉnh Nam Định, Việt Nam
+                                    </p>
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+                                    <p/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan='4' height="21" class="text-center align-middle"
+                                    bgcolor="#FFFFFF">
+                                    <p>Số ĐT: 0903803700</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan='4' height="32" class="text-center align-middle"
+                                    bgcolor="#FFFFFF">
+                                    <b>
+
+                                        <p>PHIẾU THANH TOÁN NƯỚC KỲ 03/2025
+<!--                                                <span t-field="o.create_date"/>/-->
+<!--                                                <span t-field="o.create_date"/>-->
+                                        </p>
+                                    </b>
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+                                    <p/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan='4' height="21" class="text-center align-middle"
+                                    bgcolor="#FFFFFF">
+
+                                    <p>Mã khách hàng:
+                                        <span t-field="o.partner_id.customer_code"/>
+                                    </p>
+
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+                                    <p/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+                                    <p/>
+                                </td>
+                                <td style="border-top: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                    colspan='2' class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p>Số hóa đơn:
+                                        <span t-field="o.name"/>
+                                    </p>
+
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                                <td style="border-top: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                    colspan='2' class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p>Tên khách hàng:
+                                        <span t-field="o.partner_id.name"/>
+                                    </p>
+
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                                <td style="border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                    colspan='2'
+                                    class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p>Địa chỉ:
+                                        <span t-field="o.partner_id.vietnam_full_address"/>
+                                    </p>
+
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                                <td style="border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                    colspan='2'
+                                    class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p>SĐT:
+                                        <span t-field="o.partner_id.phone"/>
+                                    </p>
+
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                                <td style="border-bottom: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                    colspan='2' class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p>Mã ĐHN:
+                                        <span t-field="o.water_meter_id.name"/>
+                                    </p>
+
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+                                    <p/>
+                                </td>
+                                <td style="border-left: 0.063rem solid #000000" class="text-left align-middle"
+                                    bgcolor="#FFFFFF">
+                                    <p>Số nước cũ:
+    <!--                                    <span t-field="o.x_old_quantity"/>-->
+                                        <span>100</span>
+                                    </p>
+                                </td>
+                                <td style="border-right: 0.063rem solid #000000" class="text-left align-middle"
+                                    bgcolor="#FFFFFF">
+
+                                    <p>Số nước mới:
+    <!--                                    <span t-field="o.x_new_quantity"/>-->
+                                        <span>200</span>
+                                    </p>
+
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                                <td style="border-left: 0.063rem solid #000000" class="text-left align-middle"
+                                    bgcolor="#FFFFFF">
+
+                                    <p>Số nước tiêu thụ:
+    <!--                                    <span t-field="o.x_tieu_thu"/>-->
+                                        <span>100</span>
+                                    </p>
+
+                                </td>
+                                <td style="border-right: 0.063rem solid #000000" class="text-left align-middle"
+                                    bgcolor="#FFFFFF">
+
+                                    <p>Đơn vị: m3</p>
+
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                                <td style="border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                    colspan='2'
+                                    class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p>Tiền nước:
+                                        <span t-field="o.amount_untaxed"/> đ
+                                    </p>
+
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+                                    <p/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <br/>
+
+                                </td>
+                                <td style="border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                    colspan='2'
+                                    class="text-left align-middle" bgcolor="#FFFFFF">
+                                    <p>Thuế GTGT:
+                                        <span t-field="o.amount_tax"/> đ
+                                    </p>
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+                                    <br/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                                <td style="border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                    colspan='2'
+                                    class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p>Khuyến mãi:
+    <!--                                    <span t-field="o.format_decimal(o.x_giam_gia)"/> đ-->
+                                        <span>0</span> đ
+                                    </p>
+
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                                <td style="border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                    colspan='2'
+                                    class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p>Tổng:
+                                        <span t-field="o.amount_total"/> đ
+                                    </p>
+
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                                <td style="border-bottom: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                    colspan='2' class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p>Bằng chữ:
+    <!--                                    <span t-field="o.x_amount_text"/>-->
+                                        <span>Hai trăm đồng</span>
+                                    </p>
+
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                                <td style="border-bottom: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                    colspan='2' class="text-left align-middle" bgcolor="#FFFFFF">
+                                    <t t-if="o.is_paid">
+                                        <p>
+                                            <strong>Đã thanh toán</strong>
+                                        </p>
+                                    </t>
+                                    <t t-else="">
+                                        <p>
+                                            <strong>Chưa thanh toán</strong>
+                                        </p>
+                                    </t>
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                                <td style="border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                    colspan='2'
+                                    class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p>Nhân viên:
+                                        <span t-field="user.partner_id.name"/>
+                                    </p>
+
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                                <td style="border-bottom: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                    colspan='2' class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p>SĐT:
+    <!--                                    <span t-esc="user.partner_id.phone"/>-->
+                                        <span t-field="user.partner_id.phone"/>
+                                    </p>
+
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="49" class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                                <td style="border-bottom: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                    colspan='2' class="text-center align-middle" bgcolor="#FFFFFF">
+                                    <hr style="border-top: 0.063rem dashed;"/>
+
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="51" class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                                <td style="border-bottom: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                    colspan='2' class="text-center align-middle" bgcolor="#FFFFFF">
+                                    <t t-if="o.is_paid">
+                                        <p>Quý khách lấy hóa đơn điện tử vui lòng truy cập vào đường dẫn sau
+                                            https://van.ehoadon.vn/TCHD
+                                        </p>
+                                    </t>
+                                    <t t-else="">
+                                        <p>Quý khách vui lòng thanh toán tiền nước trong vòng 4 - 6 ngày kể
+                                            từ ngày có thông tin thanh toán.
+                                        </p>
+                                    </t>
+
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                                <td style="border-bottom: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                    colspan='2' bgcolor="#FFFFFF">
+                                    <strong>
+                                        <t t-if="o.is_paid">
+                                            <p>Mã tra cứu: <span t-field="o.ehoadon_mtc"/></p>
+                                        </t>
+                                        <t t-else="">
+                                            <p class="text-center align-middle">Xin trân trọng cám ơn quý khách
+                                            </p>
+                                        </t>
+
+                                    </strong>
+                                </td>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </body>
+        </html>
+    </template>
+    </data>
+</odoo>
