@@ -306,7 +306,7 @@
                                     class="text-left align-middle" bgcolor="#FFFFFF">
 
                                     <p>Khuyến mãi:
-                                        <span t-field="o.format_decimal(o.x_giam_gia)"/> đ
+                                        <span t-field="o.x_giam_gia"/> đ
 
                                     </p>
 

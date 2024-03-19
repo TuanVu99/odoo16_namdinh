@@ -76,7 +76,7 @@ class SaleOrder(models.Model):
                 for line in r.order_line.filtered(lambda l: l.product_template_id.id == 5):
                     r.x_giam_gia = line.product_uom_qty
             else:
-                r.x_giam_gia =0
+                r.x_giam_gia = 0
 
     @staticmethod
     def format_decimal(number):
