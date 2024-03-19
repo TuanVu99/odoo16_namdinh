@@ -8,11 +8,11 @@
                 <meta charset="UTF-8"/>
                 <style type="text/css">]
                     .body {
-                        width: 150%;
+                        width: 100%;
                     }
                     table {
                         font-family: Times New Roman;
-                        width: 120%;
+                        width: 80%;
                     }
                     tr {
                         border: none;
@@ -75,7 +75,7 @@
                             <tr>
                                 <td colspan='4' height="21" class="text-center align-middle"
                                     bgcolor="#FFFFFF">
-                                    <p>Số ĐT: 0903803700</p>
+                                    <p>Số ĐT:  <span t-esc="o.partner_id.phone"/></p>
                                 </td>
                             </tr>
                             <tr>
@@ -270,7 +270,7 @@
                                     class="text-left align-middle" bgcolor="#FFFFFF">
 
                                     <p>Tiền nước:
-                                        <span t-field="o.amount_untaxed"/> 
+                                        <span t-field="o.amount_untaxed"/>
                                     </p>
 
                                 </td>
@@ -306,7 +306,7 @@
                                     class="text-left align-middle" bgcolor="#FFFFFF">
 
                                     <p>Khuyến mãi:
-                                        <span t-field="o.x_giam_gia"/> đ
+                                        <span t-field="o.x_giam_gia"/>
 
                                     </p>
 
