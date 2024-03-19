@@ -328,7 +328,7 @@
                                     class="text-left align-middle" bgcolor="#FFFFFF">
 
                                     <p>Tổng:
-                                        <span t-field="o.amount_total"/> đ
+                                        <span t-field="o.amount_total"/>
                                     </p>
 
                                 </td>
