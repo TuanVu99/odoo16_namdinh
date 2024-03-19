@@ -38,7 +38,7 @@ class SaleOrder(models.Model):
     x_old_quantity = fields.Float('Old Quantity',compute ='compute_water',default=0)
     x_new_quantity = fields.Float('New Quantity',compute ='compute_water',default=0)
     x_tieu_thu = fields.Float('Số lượng nước tiêu thụ',compute ='compute_tieu_thu',default=0)
-    x_giam_gia = fields.Float('Giảm giá',compute ='compute_giam_gia',default=0)
+    x_giam_gia = fields.Monetary('Giảm giá',compute ='compute_giam_gia',default=0)
     x_amount_text = fields.Char("Bằng chữ",compute ='compute_bang_chu')
     x_customer_phone = fields.Char("Điện thoại", related='partner_id.phone')
     x_customer_address = fields.Text("Địa chỉ", related='partner_id.vietnam_full_address')
