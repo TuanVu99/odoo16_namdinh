@@ -83,9 +83,9 @@
                                     bgcolor="#FFFFFF">
                                     <b>
 
-                                        <p>PHIẾU THANH TOÁN NƯỚC KỲ 03/2025
-<!--                                                <span t-field="o.create_date"/>/-->
-<!--                                                <span t-field="o.create_date"/>-->
+                                        <p>PHIẾU THANH TOÁN NƯỚC KỲ <span
+                                                t-esc="'{:02d}'.format(o.create_date.month)"/>/
+                                            <span t-esc="o.create_date.year"/>
                                         </p>
                                     </b>
                                 </td>
@@ -213,16 +213,16 @@
                                 <td style="border-left: 0.063rem solid #000000" class="text-left align-middle"
                                     bgcolor="#FFFFFF">
                                     <p>Số nước cũ:
-    <!--                                    <span t-field="o.x_old_quantity"/>-->
-                                        <span>100</span>
+                                        <span t-field="o.x_old_quantity"/>
+
                                     </p>
                                 </td>
                                 <td style="border-right: 0.063rem solid #000000" class="text-left align-middle"
                                     bgcolor="#FFFFFF">
 
                                     <p>Số nước mới:
-    <!--                                    <span t-field="o.x_new_quantity"/>-->
-                                        <span>200</span>
+                                        <span t-field="o.x_new_quantity"/>
+
                                     </p>
 
                                 </td>
@@ -242,8 +242,8 @@
                                     bgcolor="#FFFFFF">
 
                                     <p>Số nước tiêu thụ:
-    <!--                                    <span t-field="o.x_tieu_thu"/>-->
-                                        <span>100</span>
+                                        <span t-field="o.x_tieu_thu"/>
+
                                     </p>
 
                                 </td>
@@ -306,8 +306,8 @@
                                     class="text-left align-middle" bgcolor="#FFFFFF">
 
                                     <p>Khuyến mãi:
-    <!--                                    <span t-field="o.format_decimal(o.x_giam_gia)"/> đ-->
-                                        <span>0</span> đ
+                                        <span t-field="o.format_decimal(o.x_giam_gia)"/> đ
+
                                     </p>
 
                                 </td>
@@ -348,8 +348,8 @@
                                     colspan='2' class="text-left align-middle" bgcolor="#FFFFFF">
 
                                     <p>Bằng chữ:
-    <!--                                    <span t-field="o.x_amount_text"/>-->
-                                        <span>Hai trăm đồng</span>
+                                        <span t-field="o.x_amount_text"/>
+
                                     </p>
 
                                 </td>
