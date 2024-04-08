@@ -13,6 +13,7 @@
                     table {
                         font-family: Times New Roman;
                         width: 80%;
+                        font-size: 12;
                     }
                     tr {
                         border: none;
@@ -65,7 +66,7 @@
                                 <td colspan='2' class="text-center align-middle" bgcolor="#FFFFFF">
                                     <p>
                                         Địa chỉ: Tổ dân phố Lâm Khang, Thị Trấn
-                                        Quất Lâm, Huyện Giao Thủy, Tỉnh Nam Định, Việt Nam
+                                        Quất Lâm, Huyện Giao Thủy
                                     </p>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
@@ -371,6 +372,10 @@
                                         <p>
                                             <strong>Đã thanh toán</strong>
                                         </p>
+                                        <br/>
+                                        <p>Ngày thanh toán:
+                                             <span t-field="o.paid_date"/>
+                                        </p>
                                     </t>
                                     <t t-else="">
                                         <p>
@@ -495,6 +500,24 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td class="text-left align-middle" bgcolor="#FFFFFF">
+
+                                    <p/>
+                                </td>
+                            </tr>
+                             <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
 
                                     <p/>

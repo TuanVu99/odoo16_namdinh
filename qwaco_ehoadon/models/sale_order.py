@@ -17,7 +17,7 @@ class SaleOrder(models.Model):
     def _send_einvoice_automation(self):
         for record in self:
             if record.state in ['sale', 'done'] and not record.ehoadon_ids:
-                return self.env['qwaco.ehoadon'].with_delay(max_retries=1, channel='root.ehoadon', eta=60*5).send_invoice_to_ws(record)
+                return self.env['qwaco.ehoadon'].with_delay(max_retries=1, channel='root.ehoadon', eta=60*60).send_invoice_to_ws(record)
 
     def re_send_einvoice(self):
         current_month_start = datetime.datetime.now().replace(day=1, hour=0, minute=0, second=0, microsecond=0)
@@ -25,4 +25,4 @@ class SaleOrder(models.Model):
         for record in self.filtered(lambda l: l.create_date < next_month_start and l.create_date >= current_month_start):
             if record.state in ['sale', 'done'] and not record.ehoadon_ids:
                 return self.env['qwaco.ehoadon'].with_delay(max_retries=1, channel='root.ehoadon',
-                                                            eta=60 * 5).send_invoice_to_ws(record)
+                                                            eta=60 * 60).send_invoice_to_ws(record)
