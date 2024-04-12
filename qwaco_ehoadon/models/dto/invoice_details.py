@@ -4,7 +4,7 @@ import json
 class InvoiceDetailsDTO:
     def __init__(
         self,
-        ItemTypeID=None,
+        # ItemTypeID=None,
         ItemName=None,
         UnitName=None,
         Qty=None,
@@ -18,7 +18,7 @@ class InvoiceDetailsDTO:
         IsDiscount=None,
         IsIncrease=None
     ):
-        self.ItemTypeID = ItemTypeID
+        # self.ItemTypeID = ItemTypeID
         self.ItemName = ItemName
         self.UnitName = UnitName
         self.Qty = Qty
