@@ -94,14 +94,14 @@ class SaleControllerREST(http.Controller):
             ##if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
             ##    address = order.water_meter_id.partner_id.vietnam_full_address
             ##else:
-            address = order.partner_id.vietnam_full_address  # Địa chỉ khách hàng (không phải địa chỉ lắp đồng hồ)
+            address = order.water_meter_id.partner_id.vietnam_full_address  # Địa chỉ khách hàng (không phải địa chỉ lắp đồng hồ)
 
-            popular_name = order.partner_id.popular_name
+            popular_name = order.water_meter_id.partner_id.popular_name
 
             # if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
             #    name = order.water_meter_id.partner_id.name
             # else:
-            name = order.partner_id.name  # Tên khách hàng, không phải tên đại diện lắp đồng hồ
+            name = order.water_meter_id.partner_id.name  # Tên khách hàng, không phải tên đại diện lắp đồng hồ
 
             if order.partner_id.id_number:
                 id_number = order.partner_id.id_number
@@ -269,9 +269,9 @@ class SaleControllerREST(http.Controller):
             # if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
             #    address = order.water_meter_id.partner_id.vietnam_full_address
             # else:
-            address = order.partner_id.vietnam_full_address  # Lấy địa chỉ khách hàng
+            address = order.water_meter_id.partner_id.vietnam_full_address  # Lấy địa chỉ khách hàng
 
-            popular_name = order.partner_id.popular_name
+            popular_name = order.water_meter_id.partner_id.popular_name
 
             if order.partner_id.id_number:
                 id_number = order.partner_id.id_number
@@ -281,7 +281,7 @@ class SaleControllerREST(http.Controller):
             # if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
             #    name = order.water_meter_id.partner_id.name
             # else:
-            name = order.partner_id.name  # Lấy tên khách hàng
+            name = order.water_meter_id.partner_id.name  # Lấy tên khách hàng
 
             vals = {'order_no': order.name,
                     'customer': {'name': name,
@@ -388,14 +388,14 @@ class SaleControllerREST(http.Controller):
             # if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
             #    address = order.water_meter_id.partner_id.vietnam_full_address
             # else:
-            address = order.partner_id.vietnam_full_address
+            address = order.water_meter_id.partner_id.vietnam_full_address
 
-            popular_name = order.partner_id.popular_name
+            popular_name = order.water_meter_id.partner_id.popular_name
 
             # if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
             #    name = order.water_meter_id.partner_id.name
             # else:
-            name = order.partner_id.name
+            name = order.water_meter_id.partner_id.name
 
             if order.partner_id.id_number:  # Bổ sung thông tin CCCD / MST
                 id_number = order.partner_id.id_number
@@ -565,7 +565,7 @@ class SaleControllerREST(http.Controller):
             # if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
             #    address = order.water_meter_id.partner_id.vietnam_full_address
             # else:
-            address = order.partner_id.vietnam_full_address
+            address = order.water_meter_id.partner_id.vietnam_full_address
 
             ehoadon_tracking_url = request.env['ir.config_parameter'].sudo().get_param(
                 'ehoadon.tracking_url') or False
@@ -578,7 +578,7 @@ class SaleControllerREST(http.Controller):
             # if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
             #    name = order.water_meter_id.partner_id.name
             # else:
-            name = order.partner_id.name
+            name = order.water_meter_id.partner_id.name
 
             if order.partner_id.id_number:  # Bổ sung thông tin CCCD / MST
                 id_number = order.partner_id.id_number
@@ -709,7 +709,7 @@ class SaleControllerREST(http.Controller):
                 # if reminder.order_id.water_meter_id and reminder.order_id.water_meter_id.partner_id.vietnam_full_address:
                 #    address = reminder.order_id.water_meter_id.partner_id.vietnam_full_address
                 # else:
-                address = reminder.order_id.partner_id.vietnam_full_address  # Lấy địa chỉ khách hàng
+                address = reminder.order_id.water_meter_id.partner_id.vietnam_full_address  # Lấy địa chỉ khách hàng
 
                 popular_name = reminder.order_id.partner_id.popular_name
 
@@ -721,7 +721,7 @@ class SaleControllerREST(http.Controller):
                 # if reminder.order_id.water_meter_id and reminder.order_id.water_meter_id.partner_id and reminder.order_id.water_meter_id.partner_id.name:
                 #    name = reminder.order_id.water_meter_id.partner_id.name
                 # else:
-                name = reminder.order_id.partner_id.name  # Lấy tên khách hàng
+                name = reminder.order_id.water_meter_id.partner_id.name  # Lấy tên khách hàng
 
                 vals = {'order_no': reminder.order_id.name,
                         'customer': {'name': name,
@@ -913,14 +913,14 @@ class SaleControllerREST(http.Controller):
             # if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
             #    address = order.water_meter_id.partner_id.vietnam_full_address
             # else:
-            address = order.partner_id.vietnam_full_address
+            address = order.water_meter_id.partner_id.vietnam_full_address
 
             popular_name = order.partner_id.popular_name
 
             # if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
             #    name = order.water_meter_id.partner_id.name
             # else:
-            name = order.partner_id.name
+            name = order.water_meter_id.partner_id.name
 
             if order.partner_id.id_number:  # Bổ sung thông tin CCCD / MST
                 id_number = order.partner_id.id_number
@@ -1049,7 +1049,7 @@ class SaleControllerREST(http.Controller):
             # if order.water_meter_id and order.water_meter_id.partner_id.vietnam_full_address:
             #    address = order.water_meter_id.partner_id.vietnam_full_address
             # else:
-            address = order.partner_id.vietnam_full_address
+            address = order.water_meter_id.partner_id.vietnam_full_address
 
             popular_name = order.partner_id.popular_name
 
@@ -1061,7 +1061,7 @@ class SaleControllerREST(http.Controller):
             # if order.water_meter_id and order.water_meter_id.partner_id and order.water_meter_id.partner_id.name:
             #    name = order.water_meter_id.partner_id.name
             # else:
-            name = order.partner_id.name
+            name = order.water_meter_id.partner_id.name
 
             data = {'order_no': order.name,
                     'customer': {'name': name,
@@ -1157,7 +1157,7 @@ class SaleControllerREST(http.Controller):
             #    name = order.water_meter_id.partner_id.name
             #    id_number = order.water_meter_id.partner_id.id_number
             # else:
-            name = order.partner_id.name
+            name = order.water_meter_id.partner_id.name
 
             if order.partner_id.id_number:  # Bổ sung thông tin CCCD / MST
                 id_number = order.partner_id.id_number
@@ -1168,7 +1168,7 @@ class SaleControllerREST(http.Controller):
                     'customer': {'name': name,
                                  'popular_name': popular_name,
                                  'id_number': id_number,
-                                 'address': order.partner_id.vietnam_full_address
+                                 'address': order.water_meter_id.partner_id.vietnam_full_address
                                  },
                     'meter': {'code': order.water_meter_id.name,
                               'last_quantity': round(last_quantity, 3),
@@ -1237,7 +1237,7 @@ class SaleControllerREST(http.Controller):
             #    name = order.water_meter_id.partner_id.name
             #    id_number = order.water_meter_id.partner_id.id_number
             # else:
-            name = order.partner_id.name
+            name = order.water_meter_id.partner_id.name
 
             if order.partner_id.id_number:  # Bổ sung thông tin CCCD / MST
                 id_number = order.partner_id.id_number
@@ -1248,7 +1248,7 @@ class SaleControllerREST(http.Controller):
                     'customer': {'name': name,
                                  'popular_name': popular_name,
                                  'id_number': id_number,
-                                 'address': order.partner_id.vietnam_full_address
+                                 'address': order.water_meter_id.partner_id.vietnam_full_address
                                  },
                     'meter': {'code': order.water_meter_id.name,
                               'last_quantity': round(last_quantity, 3),

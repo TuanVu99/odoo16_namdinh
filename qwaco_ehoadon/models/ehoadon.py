@@ -632,3 +632,99 @@ class eHoadon(models.Model):
                                        ensure_ascii=False)
                 return data_json
         return None
+
+
+
+    def get_invoice_info_ws(self, order):
+        #Prepare data template to get invoice info
+        
+        
+        temp_data = {
+            "CmdType": 800,
+            "CommandObject": str(order.id)
+        }
+        
+        data = json.dumps(temp_data)
+
+        a=str(b64encode(bytes(data, 'utf-8')), 'utf-8')
+
+        partnerGUID = self.env["ir.config_parameter"].sudo().get_param("ehoadon.pguid") or False
+
+        datasent = json.dumps({
+          "partnerGUID": partnerGUID,
+          "CommandData": a
+        })
+                                     
+        if datasent and partnerGUID:
+            _logger.info("Data json eHoadon:" + datasent)
+            
+
+    
+        request_url = self.env["ir.config_parameter"].sudo().get_param("ehoadon.url")
+        headers = {
+            'Content-Type': 'application/json'
+        }
+        try:
+            res = requests.post(
+                request_url,
+                headers=headers,
+                data=datasent, timeout=60)
+                
+            status = res.status_code
+            
+            if int(status) in (204, 404):  # Page not found, no response
+                raise self.env['res.config.settings'].get_config_warning(
+                    _("Something went wrong when you request to eHoadon for getting invoice info"))
+            else:
+                
+                response = res.json()
+                
+                vals = json.loads(str(b64decode(response['d']).decode('utf-8')))
+                _logger.info("Data response for invoice info from eHoadon:" + str(vals))
+                
+                if vals['Status'] == 0:
+                    obj = json.loads(vals['Object'])
+                    invoice_guid = obj['Invoice']['InvoiceGUID']
+                    InvoiceCode = obj['Invoice']['InvoiceCode']
+                    InvoiceForm = obj['Invoice']['InvoiceForm']
+                    InvoiceSerial = obj['Invoice']['InvoiceSerial']
+                    InvoiceNo = obj['Invoice']['InvoiceNo']
+                    _logger.info("invoice_guid: " + str(invoice_guid))
+                    _logger.info("InvoiceForm: " + str(InvoiceForm))
+                    _logger.info("InvoiceSerial: " + str(InvoiceSerial))
+                    _logger.info("InvoiceNo: " + str(InvoiceNo))
+                    _logger.info("InvoiceCode: " + str(InvoiceCode))
+                    
+                    _logger.info(str(self.order_id.id))
+                    _logger.info(str(order.id))
+                    
+                    self.sudo().create({"order_id": order.id,
+                                            "invoice_guid": invoice_guid,
+                                            "invoice_form": InvoiceForm,
+                                            "invoice_serial": InvoiceSerial,
+                                            "invoice_no": InvoiceNo,
+                                            "mtc": InvoiceCode,
+                                            })
+                    _logger.info("Tao moi du lieu Invoice info cua sale order: " + str(order.id))
+                        
+                else:
+                    _logger.error(vals['Object'])
+                    raise self.env['res.config.settings'].get_config_warning(vals['Object'])
+        except requests.HTTPError as error:
+            if error.response.status_code in (204, 404):
+                status = error.response.status_code
+                response = ""
+                raise error
+            else:
+                _logger.exception("Bad request : %s !", error.response.content)
+                if error.response.status_code in (400, 401, 410):
+                    raise error
+                    # _logger.error(error)
+                _logger.error(_("Something went wrong with your request to eHoadon"))
+                raise self.env['res.config.settings'].get_config_warning(
+                    _("Something went wrong with your request to eHoadon"))
+        except IOError:
+            _logger.error(_("Something went wrong with your request to eHoadon"))
+            raise self.env['res.config.settings'].get_config_warning(
+                _("Something went wrong with your request to eHoadon"))
+        return True
