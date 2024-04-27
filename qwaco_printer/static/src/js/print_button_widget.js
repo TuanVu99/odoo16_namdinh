@@ -124,6 +124,7 @@ odoo.define('qwaco_printer.print_button_widget', function(require) {
                             format: 'html',
                             flavor: 'plain',
                             data: data,
+                            options: { pageWidth: 8},
                         }];
                     console.log(data)
                     if (!qz.websocket.isActive()) {
