@@ -124,7 +124,6 @@ odoo.define('qwaco_printer.print_button_widget', function(require) {
                             format: 'html',
                             flavor: 'plain',
                             data: data,
-                            options: { pageWidth: 8},
                         }];
                     console.log(data)
                     if (!qz.websocket.isActive()) {
@@ -138,7 +137,7 @@ odoo.define('qwaco_printer.print_button_widget', function(require) {
                         })
                     } else {
                         // var top = 0.25, right = 0.25, bottom = 0.25, left = 0.25;
-                        var config = qz.configs.create(self.printer_name, { margins: { right: -0.1, left: 0.1 }, rasterize: false, scaleContent: false, density: "600" });
+                        var config = qz.configs.create(self.printer_name, { margins: { right: -0.1, left: 0.1 }, rasterize: false, scaleContent: true, density: "600" });
                         qz.print(config, data).then(function() {
                         }).catch(function(e) {
                             console.error(e);

@@ -129,7 +129,7 @@ class eHoadon(models.Model):
             order_date_old = water_meter_old.order_id.date_order.astimezone(tz)
             last_date = water_meter_old.order_id.date_order.astimezone(tz)
             qty_prev_month = water_meter_old.new_quantity
-            diff_date = (order_date - order_date_old).days
+            diff_date = (order_date.date() - order_date_old.date()).days
             user_define.update({"NgayDocThangTruoc": order_date_old.strftime(DEFAULT_SERVER_DATE_FORMAT),
                                 "ChiSoDHThangTruoc": "{:.3f}".format(round(qty_prev_month, 3)),
                                 "SoNgaySuDung": diff_date
