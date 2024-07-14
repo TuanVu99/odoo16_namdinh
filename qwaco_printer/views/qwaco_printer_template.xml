@@ -12,8 +12,8 @@
                     }
                     table {
                         font-family: Times New Roman;
-                        width: 95%;
-                        font-size: 11;
+                        width: 100%;
+                        font-size: 8;
                     }
                     tr {
                         border: none;
@@ -24,7 +24,7 @@
                     p {
                         display: block;
                         margin-bottom:0;
-                        margin: 0 0.5rem;
+                        margin: 0 rem;
                     }
                     .text-center {
                         text-align: center;
@@ -38,7 +38,7 @@
                 </style>
             </head>
             <body>
-                <div class="page" >
+                <div class="page" style="width: 100%, margin: 5px; padding: 5px;">
                     <table align="center" border="0" cellpadding="1" cellspacing="1">
                         <tbody border="0">
                             <colgroup border="0" style="border: none;" width="10%"/>
@@ -47,9 +47,9 @@
                             <colgroup border="0" style="border: none;" width="10%"/>
                             <tr>
                                 <td style="text-align: center" colspan='4'>
-                                    <p>
-                                        <img alt="Logo" src="https://qwaco.com.vn/qwaco_sale/static/description/icon.png" style="width:90px; height:90px;"/>
-                                    </p>
+                                    <span>
+                                        <img alt="Logo" src="https://qwaco.com.vn/qwaco_sale/static/description/icon.png" style="width:128px; height:128px;"/>
+                                    </span>
                                 </td>
                             </tr>
                             <tr>
@@ -61,426 +61,289 @@
                             </tr>
                             <tr>
                                 <td align="left" valign='center'>
-                                    <p/>
                                 </td>
-                                <td colspan='2' class="text-center align-middle" bgcolor="#FFFFFF">
-                                    <p>
+                                <td colspan='2' class="text-center align-middle" bgcolor="#FFFFFF" style="font-size: 6;">
+                                    <span>
                                         Địa chỉ: Tổ dân phố Lâm Khang, Thị Trấn
                                         Quất Lâm, Huyện Giao Thủy
-                                    </p>
+                                    </span>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-                                    <p/>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan='4' height="21" class="text-center align-middle"
                                     bgcolor="#FFFFFF">
-                                    <p>Số ĐT:  <span t-esc="o.partner_id.phone"/></p>
+                                    <span>Số ĐT:  <span t-esc="user.company_id.partner_id.phone"/></span>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan='4' height="32" class="text-center align-middle"
                                     bgcolor="#FFFFFF">
                                     <b>
-
-                                        <p>PHIẾU THANH TOÁN NƯỚC KỲ <span
+                                        <span>PHIẾU THANH TOÁN NƯỚC KỲ <span
                                                 t-esc="'{:02d}'.format(o.create_date.month)"/>/
                                             <span t-esc="o.create_date.year"/>
-                                        </p>
+                                        </span>
                                     </b>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-                                    <p/>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan='4' height="21" class="text-center align-middle"
                                     bgcolor="#FFFFFF">
-
-                                    <p>Mã khách hàng:
+                                    <span>Mã khách hàng:
                                         <span t-field="o.partner_id.customer_code"/>
-                                    </p>
-
+                                    </span>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-                                    <p/>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-                                    <p/>
                                 </td>
                                 <td style="border-top: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
                                     colspan='2' class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p>Số hóa đơn:
+                                    <span>Số hóa đơn:
                                         <span t-field="o.name"/>
-                                    </p>
-
+                                    </span>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                                 <td style="border-top: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
                                     colspan='2' class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p>Tên khách hàng:
+                                    <span>Tên khách hàng:
                                         <span t-field="o.partner_id.name"/>
-                                    </p>
-
+                                    </span>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
-                                <td style="border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                <td style="border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000; font-size: 8;"
                                     colspan='2'
-                                    class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p>Địa chỉ:
+                                    class="text-left align-middle" bgcolor="#FFFFFF" >
+                                    <span>Địa chỉ:
                                         <span t-field="o.partner_id.vietnam_full_address"/>
-                                    </p>
-
+                                    </span>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                                 <td style="border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
                                     colspan='2'
                                     class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p>SĐT:
+                                    <span>SĐT:
                                         <span t-field="o.partner_id.phone"/>
-                                    </p>
-
+                                    </span>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                                 <td style="border-bottom: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
                                     colspan='2' class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p>Mã ĐHN:
+                                    <span>Mã ĐHN:
                                         <span t-field="o.water_meter_id.name"/>
-                                    </p>
-
+                                    </span>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                             </tr>
-                            <tr>
+                            <tr style="font-size: 7;">
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-                                    <p/>
                                 </td>
                                 <td style="border-left: 0.063rem solid #000000" class="text-left align-middle"
                                     bgcolor="#FFFFFF">
-                                    <p>Số nước cũ:
+                                    <span>Số cũ:
                                         <span t-field="o.x_old_quantity"/>
-
-                                    </p>
+                                    </span>
                                 </td>
                                 <td style="border-right: 0.063rem solid #000000" class="text-left align-middle"
                                     bgcolor="#FFFFFF">
-
-                                    <p>Số nước mới:
+                                    <span>Số mới:
                                         <span t-field="o.x_new_quantity"/>
-
-                                    </p>
-
+                                    </span>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                                 <td style="border-left: 0.063rem solid #000000" class="text-left align-middle"
                                     bgcolor="#FFFFFF">
-
-                                    <p>Số nước tiêu thụ:
+                                    <span>Số tiêu thụ:
                                         <span t-field="o.x_tieu_thu"/>
-
-                                    </p>
-
+                                    </span>
                                 </td>
                                 <td style="border-right: 0.063rem solid #000000" class="text-left align-middle"
                                     bgcolor="#FFFFFF">
-
-                                    <p>Đơn vị: m3</p>
-
+                                    <span>Đơn vị: m3</span>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                                 <td style="border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
                                     colspan='2'
                                     class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p>Tiền nước:
+                                    <span>Tiền nước:
                                         <span t-field="o.amount_untaxed"/>
-                                    </p>
-
+                                    </span>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-                                    <p/>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <br/>
-
                                 </td>
                                 <td style="border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
                                     colspan='2'
                                     class="text-left align-middle" bgcolor="#FFFFFF">
-                                    <p>Thuế GTGT:
+                                    <span>Thuế GTGT:
                                         <span t-field="o.amount_tax"/>
-                                    </p>
+                                    </span>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-                                    <br/>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                                 <td style="border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
                                     colspan='2'
                                     class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p>Khuyến mãi:
+                                    <span>Khuyến mãi:
                                         <span t-field="o.x_giam_gia"/>
-
-                                    </p>
-
+                                    </span>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                                 <td style="border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
                                     colspan='2'
                                     class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p>Tổng:
+                                    <span>Tổng:
                                         <span t-field="o.amount_total"/>
-                                    </p>
-
+                                    </span>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                                 <td style="border-bottom: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
                                     colspan='2' class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p>Bằng chữ:
+                                    <span>Bằng chữ:
                                         <span t-field="o.x_amount_text"/>
-
-                                    </p>
-
+                                    </span>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                                 <td style="border-bottom: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
                                     colspan='2' class="text-left align-middle" bgcolor="#FFFFFF">
                                     <t t-if="o.is_paid">
-                                        <p>
+                                        <span>
                                             <strong>Đã thanh toán</strong>
-                                        </p>
+                                        </span>
                                         <br/>
-                                        <p>Ngày thanh toán:
+                                        <span>Ngày thanh toán:
                                              <span t-field="o.paid_date"/>
-                                        </p>
+                                        </span>
                                     </t>
                                     <t t-else="">
-                                        <p>
+                                        <span>
                                             <strong>Chưa thanh toán</strong>
-                                        </p>
+                                        </span>
                                     </t>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                                 <td style="border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
                                     colspan='2'
                                     class="text-left align-middle" bgcolor="#FFFFFF">
 
-                                    <p>Nhân viên:
+                                    <span>Nhân viên:
                                         <span t-field="user.partner_id.name"/>
-                                    </p>
+                                    </span>
 
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                                 <td style="border-bottom: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
                                     colspan='2' class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p>SĐT:
+                                    <span>SĐT:
     <!--                                    <span t-esc="user.partner_id.phone"/>-->
                                         <span t-field="user.partner_id.phone"/>
-                                    </p>
-
+                                    </span>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                             </tr>
                             <tr>
                                 <td height="49" class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                                 <td style="border-bottom: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
                                     colspan='2' class="text-center align-middle" bgcolor="#FFFFFF">
                                     <hr style="border-top: 0.063rem dashed;"/>
-
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                             </tr>
                             <tr>
                                 <td height="51" class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
-                                <td style="border-bottom: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                <td style="border-bottom: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000; font-size: 8;"
                                     colspan='2' class="text-center align-middle" bgcolor="#FFFFFF">
                                     <t t-if="o.is_paid">
-                                        <p>Quý khách lấy hóa đơn điện tử vui lòng truy cập vào đường dẫn sau
+                                        <span>Quý khách lấy hóa đơn điện tử vui lòng truy cập vào đường dẫn sau
                                             https://van.ehoadon.vn/TCHD
-                                        </p>
+                                        </span>
                                     </t>
                                     <t t-else="">
-                                        <p>Quý khách vui lòng thanh toán tiền nước trong vòng 4 - 6 ngày kể
+                                        <span>Quý khách vui lòng thanh toán tiền nước trong vòng 4 - 6 ngày kể
                                             từ ngày có thông tin thanh toán.
-                                        </p>
+                                        </span>
                                     </t>
-
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
-                                <td style="border-bottom: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000"
+                                <td style="border-bottom: 0.063rem solid #000000; border-left: 0.063rem solid #000000; border-right: 0.063rem solid #000000; font-size: 8;"
                                     colspan='2' bgcolor="#FFFFFF">
                                     <strong>
                                         <t t-if="o.is_paid">
@@ -490,37 +353,25 @@
                                             <p class="text-center align-middle">Xin trân trọng cám ơn quý khách
                                             </p>
                                         </t>
-
                                     </strong>
                                 </td>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
-
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
                                 </td>
                             </tr>
                              <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
                                 </td>
                             </tr>
                              <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
                                 </td>
                             </tr>
                              <tr>
                                 <td class="text-left align-middle" bgcolor="#FFFFFF">
-
-                                    <p/>
                                 </td>
                             </tr>
                         </tbody>
